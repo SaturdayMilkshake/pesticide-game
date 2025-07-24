@@ -1,1 +1,4 @@
+res://scenes/managers/dialogue_manager/dialogue_manager.tscn
+res://scenes/managers/dialogue_manager/dialogue_manager.gd
 res://scenes/title_screen/title_screen.tscn
+res://scenes/stage/stage.tscn
