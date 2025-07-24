@@ -1,4 +1,15 @@
 res://scenes/managers/dialogue_manager/dialogue_manager.tscn
-res://scenes/managers/dialogue_manager/dialogue_manager.gd
+res://styles/default_theme.tres
+res://scenes/managers/game_manager/game_manager.tscn
 res://scenes/title_screen/title_screen.tscn
+res://scenes/managers/log_manager/log_manager.tscn
 res://scenes/stage/stage.tscn
+res://scenes/managers/dialogue_file_manager/dialogue_file_manager.tscn
+res://scenes/managers/scene_manager/scene_manager.tscn
+res://scripts/signal_handler.gd
+res://scenes/managers/scene_manager/scene_manager.gd
+res://scenes/managers/dialogue_manager/dialogue_manager.gd
+res://scenes/managers/game_manager/game_manager.gd
+res://scenes/managers/log_manager/log_manager.gd
+res://scenes/splash_screen/splash_screen.tscn
+res://scripts/data_handler.gd

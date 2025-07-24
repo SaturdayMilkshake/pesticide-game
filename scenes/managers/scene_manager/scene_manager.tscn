@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://h3b2wv4b5mqh"]
+
+[ext_resource type="Script" uid="uid://cdq5w0m1x3ytu" path="res://scenes/managers/scene_manager/scene_manager.gd" id="1_570er"]
+
+[node name="SceneManager" type="Node2D"]
+script = ExtResource("1_570er")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

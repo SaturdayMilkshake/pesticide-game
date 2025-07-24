@@ -1,13 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bv6o43ep8giuk"]
 
 [ext_resource type="Script" uid="uid://hr4eaui4ww4u" path="res://scenes/stage/stage.gd" id="1_ecxui"]
-[ext_resource type="PackedScene" uid="uid://bkg48ip2pojym" path="res://scenes/managers/dialogue_manager/dialogue_manager.tscn" id="2_erodg"]
+[ext_resource type="PackedScene" uid="uid://b6l0abp45x6su" path="res://scenes/managers/game_manager/game_manager.tscn" id="2_erodg"]
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_ecxui")
 
-[node name="DialogueManager" parent="." instance=ExtResource("2_erodg")]
-offset_left = 64.0
-offset_top = 760.0
-offset_right = 1856.0
-offset_bottom = 1016.0
+[node name="GameManager" parent="." instance=ExtResource("2_erodg")]

@@ -12,10 +12,15 @@ config_version=5
 
 config/name="Pesticide Game"
 config/version="0.1.0"
-run/main_scene="res://scenes/title_screen/title_screen.tscn"
+run/main_scene="uid://h3b2wv4b5mqh"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+DataHandler="*res://scripts/data_handler.gd"
+SignalHandler="*res://scripts/signal_handler.gd"
 
 [display]
 

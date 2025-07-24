@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6l0abp45x6su"]
+
+[ext_resource type="Script" uid="uid://u4d6t5gv2n7g" path="res://scenes/managers/game_manager/game_manager.gd" id="1_imdmq"]
+[ext_resource type="PackedScene" uid="uid://c7ykebmwpg4o6" path="res://scenes/managers/log_manager/log_manager.tscn" id="1_kiihf"]
+[ext_resource type="PackedScene" uid="uid://b6fy1ne8ob27p" path="res://scenes/managers/dialogue_file_manager/dialogue_file_manager.tscn" id="2_6fqxo"]
+[ext_resource type="PackedScene" uid="uid://bkg48ip2pojym" path="res://scenes/managers/dialogue_manager/dialogue_manager.tscn" id="2_imdmq"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_imdmq")
+
+[node name="DialogueFileManager" parent="." instance=ExtResource("2_6fqxo")]
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.154876, 0.154876, 0.154876, 1)
+
+[node name="DialogueManager" parent="." instance=ExtResource("2_imdmq")]
+offset_left = 64.0
+offset_top = 760.0
+offset_right = 72.3199
+offset_bottom = 767.6
+
+[node name="AchievementsButton" type="Button" parent="."]
+offset_left = 1440.0
+offset_top = 32.0
+offset_right = 1568.0
+offset_bottom = 160.0
+focus_mode = 0
+text = "A"
+
+[node name="DictionaryButton" type="Button" parent="."]
+offset_left = 1600.0
+offset_top = 32.0
+offset_right = 1728.0
+offset_bottom = 160.0
+focus_mode = 0
+text = "D"
+
+[node name="SettingsButton" type="Button" parent="."]
+offset_left = 1760.0
+offset_top = 32.0
+offset_right = 1888.0
+offset_bottom = 160.0
+focus_mode = 0
+text = "S"
+
+[node name="LogManager" parent="." instance=ExtResource("1_kiihf")]
+visible = false
+
+[connection signal="log_showing_requested" from="DialogueManager" to="." method="_on_dialogue_manager_log_showing_requested"]
