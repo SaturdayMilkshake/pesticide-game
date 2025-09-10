@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://hhppru4j5e1r"
+
+[deps]
+
+files=["res://test_dialogue_format.parameter1.translation", "res://test_dialogue_format.parameter2.translation"]
+
+source_file="res://test_dialogue_format.csv"
+dest_files=["res://test_dialogue_format.parameter1.translation", "res://test_dialogue_format.parameter2.translation"]
+
+[params]
+
+compress=true
+delimiter=0

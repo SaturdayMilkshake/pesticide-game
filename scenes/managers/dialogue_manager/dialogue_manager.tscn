@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkg48ip2pojym"]
+[gd_scene load_steps=8 format=3 uid="uid://bkg48ip2pojym"]
 
 [ext_resource type="Script" uid="uid://btys7rq8kgkh2" path="res://scenes/managers/dialogue_manager/dialogue_manager.gd" id="1_g3jrk"]
 [ext_resource type="Theme" uid="uid://cfe5ygomt3n1n" path="res://styles/default_theme.tres" id="2_56vqo"]
+[ext_resource type="PackedScene" uid="uid://cn246vwelwvsu" path="res://scenes/managers/dialogue_manager/character/character.tscn" id="3_gv2nn"]
+[ext_resource type="PackedScene" uid="uid://b6fy1ne8ob27p" path="res://scenes/managers/dialogue_file_manager/dialogue_file_manager.tscn" id="4_wja8m"]
 
 [sub_resource type="Animation" id="Animation_56vqo"]
 resource_name = "HideDialogue"
@@ -65,7 +67,7 @@ _data = {
 &"RESET": SubResource("Animation_gv2nn")
 }
 
-[node name="DialogueManager" type="Control"]
+[node name="DialogueManager" type="Control" node_paths=PackedStringArray("text_label", "character_label")]
 layout_mode = 3
 anchor_right = 0.929
 anchor_bottom = 0.23
@@ -75,16 +77,33 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_56vqo")
 script = ExtResource("1_g3jrk")
+text_label = NodePath("DialogueBox/TextLabel")
+character_label = NodePath("DialogueBox/CharacterLabel")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_gv2nn")
 }
 
+[node name="Characters" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Character" parent="Characters" instance=ExtResource("3_gv2nn")]
+offset_left = 32.0
+offset_top = -448.0
+offset_right = 480.0
+offset_bottom = 64.0
+
 [node name="DialogueBox" type="Control" parent="."]
+z_index = 1
+z_as_relative = false
+layout_mode = 3
 anchors_preset = 0
 offset_right = 1792.0
 offset_bottom = 256.0
+metadata/_edit_group_ = true
 
 [node name="TextBoxBackground" type="ColorRect" parent="DialogueBox"]
 layout_mode = 0
@@ -126,6 +145,7 @@ offset_top = -24.0
 offset_right = 1776.0
 offset_bottom = 24.0
 focus_mode = 0
+toggle_mode = true
 text = "Auto"
 
 [node name="CharacterLabelBackground" type="ColorRect" parent="DialogueBox"]
@@ -149,8 +169,11 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="DialogueBox"]
 one_shot = true
 
+[node name="DialogueFileManager" parent="." instance=ExtResource("4_wja8m")]
+
 [connection signal="meta_clicked" from="DialogueBox/TextLabel" to="." method="_on_text_label_meta_clicked"]
 [connection signal="pressed" from="DialogueBox/Log" to="." method="_on_log_pressed"]
 [connection signal="pressed" from="DialogueBox/Skip" to="." method="_on_skip_pressed"]
-[connection signal="pressed" from="DialogueBox/Auto" to="." method="_on_auto_pressed"]
+[connection signal="toggled" from="DialogueBox/Auto" to="." method="_on_auto_toggled"]
 [connection signal="timeout" from="DialogueBox/Timer" to="." method="_on_timer_timeout"]
+[connection signal="dialogue_file_processed" from="DialogueFileManager" to="." method="_on_dialogue_file_manager_dialogue_file_processed"]

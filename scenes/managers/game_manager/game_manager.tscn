@@ -1,25 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6l0abp45x6su"]
+[gd_scene load_steps=4 format=3 uid="uid://b6l0abp45x6su"]
 
 [ext_resource type="Script" uid="uid://u4d6t5gv2n7g" path="res://scenes/managers/game_manager/game_manager.gd" id="1_imdmq"]
 [ext_resource type="PackedScene" uid="uid://c7ykebmwpg4o6" path="res://scenes/managers/log_manager/log_manager.tscn" id="1_kiihf"]
-[ext_resource type="PackedScene" uid="uid://b6fy1ne8ob27p" path="res://scenes/managers/dialogue_file_manager/dialogue_file_manager.tscn" id="2_6fqxo"]
 [ext_resource type="PackedScene" uid="uid://bkg48ip2pojym" path="res://scenes/managers/dialogue_manager/dialogue_manager.tscn" id="2_imdmq"]
 
-[node name="GameManager" type="Node"]
+[node name="GameManager" type="Node" node_paths=PackedStringArray("background")]
 script = ExtResource("1_imdmq")
+background = NodePath("Background")
 
-[node name="DialogueFileManager" parent="." instance=ExtResource("2_6fqxo")]
-
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.154876, 0.154876, 0.154876, 1)
+expand_mode = 1
+stretch_mode = 5
 
 [node name="DialogueManager" parent="." instance=ExtResource("2_imdmq")]
 offset_left = 64.0
-offset_top = 760.0
+offset_top = 768.0
 offset_right = 72.3199
-offset_bottom = 767.6
+offset_bottom = 775.6
 
 [node name="AchievementsButton" type="Button" parent="."]
 offset_left = 1440.0
@@ -48,4 +47,7 @@ text = "S"
 [node name="LogManager" parent="." instance=ExtResource("1_kiihf")]
 visible = false
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="change_background" from="DialogueManager" to="." method="_on_dialogue_manager_change_background"]
 [connection signal="log_showing_requested" from="DialogueManager" to="." method="_on_dialogue_manager_log_showing_requested"]

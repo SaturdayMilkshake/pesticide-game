@@ -1,0 +1,5 @@
+command_type,parameter1,parameter2
+INIT,1,
+SAY,1,Hello world!
+INIT,2,
+SAY,2,"Hello, world!"

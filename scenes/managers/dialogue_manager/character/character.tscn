@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn246vwelwvsu"]
+
+[ext_resource type="Script" uid="uid://ch3qdhlyepx6q" path="res://scenes/managers/dialogue_manager/character/character.gd" id="1_dppid"]
+[ext_resource type="Texture2D" uid="uid://ykhe05p8417s" path="res://icon.svg" id="2_jftni"]
+
+[node name="Character" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 448.0
+offset_bottom = 512.0
+script = ExtResource("1_dppid")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 448.0
+offset_bottom = 512.0
+texture = ExtResource("2_jftni")
+expand_mode = 1
+stretch_mode = 5

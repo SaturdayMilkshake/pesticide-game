@@ -4,3 +4,4 @@
 
 [node name="DialogueFileManager" type="Node"]
 script = ExtResource("1_3mqcr")
+dialogue_file_path = "res://dialogue/prologue.csv"

@@ -31,5 +31,28 @@ offset_left = 128.0
 offset_top = 192.0
 offset_right = 1792.0
 offset_bottom = 1016.0
+horizontal_scroll_mode = 0
+
+[node name="LogItem" type="Control" parent="ScrollContainer"]
+custom_minimum_size = Vector2(1664, 128)
+layout_mode = 2
+
+[node name="Character" type="Label" parent="ScrollContainer/LogItem"]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 32
+text = "Magenta"
+vertical_alignment = 1
+
+[node name="Dialogue" type="Label" parent="ScrollContainer/LogItem"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 1664.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 46
+text = "The quick brown fox jumped over the lazy dog."
+vertical_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
