@@ -1,8 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://h3b2wv4b5mqh"]
+[gd_scene load_steps=7 format=3 uid="uid://h3b2wv4b5mqh"]
 
 [ext_resource type="Script" uid="uid://cdq5w0m1x3ytu" path="res://scenes/managers/scene_manager/scene_manager.gd" id="1_570er"]
+[ext_resource type="PackedScene" uid="uid://d1sscgte0826m" path="res://scenes/dialogs/message_dialog.tscn" id="3_4adeb"]
+[ext_resource type="PackedScene" uid="uid://b5ngllrq1r77o" path="res://scenes/dialogs/option_dialog.tscn" id="4_hkee1"]
+
+[sub_resource type="Animation" id="Animation_4adeb"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_aj75n"]
+resource_name = "ShowMessage"
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hkee1"]
+_data = {
+&"RESET": SubResource("Animation_4adeb"),
+&"ShowMessage": SubResource("Animation_aj75n")
+}
 
 [node name="SceneManager" type="Node2D"]
 script = ExtResource("1_570er")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hkee1")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MessageDialog" parent="CanvasLayer" instance=ExtResource("3_4adeb")]
+
+[node name="OptionDialog" parent="CanvasLayer" instance=ExtResource("4_hkee1")]
+
+[node name="LoadingScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[connection signal="okay_pressed" from="CanvasLayer/MessageDialog" to="." method="_on_message_dialog_okay_pressed"]
+[connection signal="cancel_pressed" from="CanvasLayer/OptionDialog" to="." method="_on_option_dialog_cancel_pressed"]
+[connection signal="okay_pressed" from="CanvasLayer/OptionDialog" to="." method="_on_option_dialog_okay_pressed"]

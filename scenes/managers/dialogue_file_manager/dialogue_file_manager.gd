@@ -42,3 +42,6 @@ func process_dialogue_line(row_data: PackedStringArray) -> void:
 		dialogue.append(dialogue_dictionary)
 	else:
 		return
+
+func check_row_data_sufficience(amount: int) -> void:
+	pass

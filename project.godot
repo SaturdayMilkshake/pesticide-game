@@ -26,6 +26,7 @@ SignalHandler="*res://scripts/signal_handler.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=2
 
 [input]
 
@@ -39,3 +40,4 @@ advance_dialogue={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
