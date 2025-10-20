@@ -1,7 +1,11 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cfe5ygomt3n1n"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://cfe5ygomt3n1n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yajo1"]
-bg_color = Color(0.441861, 0.441624, 0.499991, 1)
+bg_color = Color(0.6, 0.6, 0.658824, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_blend = true
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -95,6 +99,20 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56hmt"]
+bg_color = Color(0.705882, 0.529412, 0.705882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xipde"]
+bg_color = Color(0.705882, 0.529412, 0.705882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [resource]
 DialogButton/base_type = &"Button"
 DialogButton/colors/font_color = Color(1, 1, 1, 1)
@@ -120,3 +138,8 @@ DialogText/font_sizes/font_size = 48
 DialogTitle/base_type = &"Label"
 DialogTitle/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
 DialogTitle/font_sizes/font_size = 40
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_56hmt")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_xipde")
+Label/font_sizes/font_size = 32
+LoadingLabel/base_type = &"Label"
+LoadingLabel/font_sizes/font_size = 48

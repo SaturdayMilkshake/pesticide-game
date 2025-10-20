@@ -1,3 +1,84 @@
-[gd_scene format=3 uid="uid://c7qiofigeie0o"]
+[gd_scene load_steps=3 format=3 uid="uid://c7qiofigeie0o"]
+
+[ext_resource type="Script" uid="uid://s61s7v3ysnh7" path="res://scenes/title_screen/title_screen.gd" id="1_5df70"]
+[ext_resource type="Theme" uid="uid://cfe5ygomt3n1n" path="res://styles/default_theme.tres" id="2_vuv2h"]
 
 [node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_5df70")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_vuv2h")
+
+[node name="Play" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 768.0
+offset_right = 320.0
+offset_bottom = 832.0
+focus_mode = 0
+theme = ExtResource("2_vuv2h")
+theme_type_variation = &"DialogButton"
+text = "Play
+"
+
+[node name="Journal" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 832.0
+offset_right = 320.0
+offset_bottom = 896.0
+focus_mode = 0
+theme = ExtResource("2_vuv2h")
+theme_type_variation = &"DialogButton"
+text = "Journal"
+
+[node name="Settings" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 896.0
+offset_right = 320.0
+offset_bottom = 960.0
+focus_mode = 0
+theme = ExtResource("2_vuv2h")
+theme_type_variation = &"DialogButton"
+text = "Settings"
+
+[node name="Quit" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 960.0
+offset_right = 320.0
+offset_bottom = 1024.0
+focus_mode = 0
+theme = ExtResource("2_vuv2h")
+theme_type_variation = &"DialogButton"
+text = "Quit"
+
+[node name="Version" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 1704.0
+offset_top = 1016.0
+offset_right = 1902.0
+offset_bottom = 1064.0
+text = "Version 0.1.0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 128.0
+text = "Research Game"
+vertical_alignment = 1
+
+[connection signal="pressed" from="UI/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UI/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="UI/Quit" to="." method="_on_quit_pressed"]

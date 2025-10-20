@@ -1,9 +1,15 @@
 res://scenes/managers/scene_manager/scene_manager.tscn
 res://styles/default_theme.tres
-res://scenes/title_screen/title_screen.tscn
 res://scenes/dialogs/message_dialog.tscn
 res://scenes/dialogs/option_dialog.tscn
+res://scenes/title_screen/title_screen.tscn
 res://scenes/managers/scene_manager/scene_manager.gd
+res://scenes/title_screen/title_screen.gd
 res://scripts/messages.gd
+res://scripts/data_handler.gd
+res://default_bus_layout.tres
+res://scenes/dialogs/settings_dialog.tscn
 res://scenes/dialogs/message_dialog.gd
-res://scenes/dialogs/option_dialog.gd
+res://scenes/dialogs/settings_dialog.gd
+res://scripts/signal_handler.gd
+res://scenes/stage_select_screen/stage_select_screen.tscn

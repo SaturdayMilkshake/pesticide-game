@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DataHandler="*res://scripts/data_handler.gd"
+DataHandler="*res://data_handler.gd"
 SignalHandler="*res://scripts/signal_handler.gd"
 
 [display]
