@@ -8,8 +8,10 @@ extends Control
 @export var character_label: Node = null
 @onready var characters: Node = $Characters
 
-@onready var timer: Node = $DialogueBox/Timer
+@onready var timer: Node = $CanvasLayer/DialogueBox/Timer
 @onready var animation_player: Node = $AnimationPlayer
+@onready var camera: Node = $Camera
+@onready var wait_timer: Node = $WaitTimer
 
 var example_dialogue: Dictionary = {
 	"character": "Magenta",
@@ -22,7 +24,7 @@ var word_definitions: Dictionary = {
 
 var active_characters: Array = []
 
-var dialogue: Array = [{"character": "Magenta", "dialogue": "Hello World! [url]Test URL[/url]"}, {"character": "Magenta", "dialogue": "This dialogue system is working now! Neat!"}, {"character": "Blue", "dialogue": "Goodbye!"}]
+var dialogue: Array = []
 var current_dialogue_index: int = 0
 
 var auto_mode_active: bool = false
@@ -35,7 +37,7 @@ enum TextBoxState {
 	FINISHED,
 }
 
-var dialogue_tween: Tween = create_tween()
+var dialogue_tween: Tween = null
 
 var text_box_state: int = TextBoxState.READING
 
@@ -45,10 +47,10 @@ signal log_showing_requested
 signal change_background(path: String)
 
 func _ready() -> void:
-	pass
+	advance_dialogue()
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") && advancing_active:
 		match text_box_state:
 			TextBoxState.READY:
 				advance_dialogue()
@@ -56,12 +58,6 @@ func _physics_process(_delta: float) -> void:
 				skip_playing_dialogue()
 			TextBoxState.FINISHED:
 				hide_dialogue()
-				
-func initiate_dialogue(new_dialogue: Array) -> void:
-	dialogue = new_dialogue
-	#This requires -1 due to an issue with it not advancing on some commands automatically.
-	current_dialogue_index = -1
-	advance_dialogue()
 
 func advance_dialogue() -> void:
 	if current_dialogue_index >= dialogue.size() - 1:
@@ -71,7 +67,8 @@ func advance_dialogue() -> void:
 		process_dialogue_command()
 
 func skip_playing_dialogue() -> void:
-	dialogue_tween.kill()
+	if dialogue_tween:
+		dialogue_tween.kill()
 	text_label.visible_ratio = 1.0
 	if current_dialogue_index >= dialogue.size():
 		text_box_state = TextBoxState.FINISHED
@@ -117,12 +114,9 @@ func _on_auto_toggled(toggled_on: bool) -> void:
 				skip_playing_dialogue()
 				timer.start()
 			TextBoxState.FINISHED:
-				hide_dialogue()
+				pass
 	else:
 		auto_mode_active = false
-
-func hide_dialogue() -> void:
-	animation_player.play("HideDialogue")
 
 func initialize_new_character() -> void:
 	var new_character: Node = load("res://scenes/managers/dialogue_manager/character/character.tscn").instantiate()
@@ -136,36 +130,59 @@ func set_character_portrait(_target: int, _new_texture: String) -> void:
 		print_debug("No characters initialized!")
 
 func _on_dialogue_file_manager_dialogue_file_processed(new_dialogue: Array) -> void:
+	dialogue = new_dialogue
 	advancing_active = true
-	initiate_dialogue(new_dialogue)
 
 func process_dialogue_command() -> void:
-	var current_command: Dictionary = dialogue[current_dialogue_index]
-	if !current_command.has("type"):
-		return
-	else:
-		match current_command["type"]:
-			"BG":
-				if !ResourceLoader.exists(current_command["path"]):
-					advance_dialogue()
-				elif !current_command["path"].get_extension() != "png":
-					advance_dialogue()
-				emit_signal("change_background", current_command["path"])
+	var current_command: DialogueData = dialogue[current_dialogue_index]
+	match current_command.type:
+		"BG":
+			if !ResourceLoader.exists(current_command.parameters[0]):
 				advance_dialogue()
-			"INIT":
+			elif !current_command.parameters[0].get_extension() != "png":
 				advance_dialogue()
-			"SAY":
-				text_box_state = TextBoxState.READING
-				text_label.visible_characters = 0
+			else:
+				emit_signal("change_background", current_command.parameters[0])
+				advance_dialogue()
+		"C_MOVE":
+			advancing_active = false
+			var tween: Tween = create_tween()
+			tween.tween_property(camera, "global_position", Vector2(int(current_command.parameters[0]), int(current_command.parameters[1])), float(current_command.parameters[2]))
+			tween.tween_callback(func() -> void: advancing_active = true)
+			tween.tween_callback(func() -> void: advance_dialogue())
+		"C_MOVE_R":
+			advancing_active = false
+			var tween: Tween = create_tween()
+			tween.tween_property(camera, "global_position", Vector2(camera.global_position.x + int(current_command.parameters[0]), camera.global_position.y + int(current_command.parameters[1])), float(current_command.parameters[2]))
+			tween.tween_callback(func() -> void: advancing_active = true)
+			tween.tween_callback(func() -> void: advance_dialogue())
+		"C_ZOOM":
+			advancing_active = false
+			var tween: Tween = create_tween()
+			tween.tween_property(camera, "zoom", Vector2(float(current_command.parameters[0]), float(current_command.parameters[0])), float(current_command.parameters[1]))
+			tween.tween_callback(func() -> void: advancing_active = true)
+			tween.tween_callback(func() -> void: advance_dialogue())
+		"CHAR":
+			advance_dialogue()
+		"SAY":
+			text_box_state = TextBoxState.READING
+			text_label.visible_characters = 0
 
-				#$DialogueBox/CharacterLabel.text = dialogue[current_dialogue_index]["character"]
-				text_label.text = dialogue[current_dialogue_index]["dialogue"]
-				
+			character_label.text = current_command.parameters[0]
+			text_label.text = current_command.parameters[1]
+			
+			if dialogue_tween:
 				dialogue_tween.kill()
-				dialogue_tween = create_tween()
-				dialogue_tween.connect("finished", dialogue_tween_finished)
-				dialogue_tween.tween_property(text_label, "visible_characters", dialogue[current_dialogue_index]["dialogue"].length(), (1.0 / chars_per_second) * (text_label.get_total_character_count()))
-				dialogue_tween.tween_callback(func() -> void: text_box_state = TextBoxState.READY)
-			_:
-				return
+			dialogue_tween = create_tween()
+			dialogue_tween.connect("finished", dialogue_tween_finished)
+			dialogue_tween.tween_property(text_label, "visible_characters", current_command.parameters[1].length(), (1.0 / chars_per_second) * (text_label.get_total_character_count()))
+			dialogue_tween.tween_callback(func() -> void: text_box_state = TextBoxState.READY)
+		"WAIT":
+			advancing_active = false
+			wait_timer.start(float(current_command.parameters[0]))
+		_:
+			advance_dialogue()
 	
+func _on_wait_timer_timeout() -> void:
+	advance_dialogue()
+	advancing_active = true

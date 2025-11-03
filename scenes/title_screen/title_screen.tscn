@@ -76,6 +76,9 @@ offset_left = 64.0
 offset_top = 64.0
 offset_right = 320.0
 offset_bottom = 128.0
+theme = ExtResource("2_vuv2h")
+theme_type_variation = &"DialogText"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Research Game"
 vertical_alignment = 1
 

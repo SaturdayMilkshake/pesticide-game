@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://bn0f4fjhgqk1j"]
+[gd_scene load_steps=3 format=3 uid="uid://bn0f4fjhgqk1j"]
+
+[ext_resource type="Theme" uid="uid://cfe5ygomt3n1n" path="res://styles/default_theme.tres" id="1_56y5s"]
+[ext_resource type="Script" uid="uid://c7u3j8d1g77lw" path="res://scenes/splash_screen/splash_screen.gd" id="1_wuvn5"]
 
 [node name="SplashScreen" type="Node2D"]
+script = ExtResource("1_wuvn5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 256.0
+offset_bottom = 64.0
+theme = ExtResource("1_56y5s")
+text = "A game by SaturdayMilkshake"
+horizontal_alignment = 1
+vertical_alignment = 1

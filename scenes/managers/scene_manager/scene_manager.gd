@@ -17,7 +17,7 @@ func _ready() -> void:
 	SignalHandler.connect("scene_manager_change_scene", Callable(self, "change_scene"))
 	SignalHandler.connect("scene_manager_show_dialog", Callable(self, "scene_manager_show_dialog"))
 	SignalHandler.connect("scene_manager_show_settings", Callable(self, "scene_manager_show_settings"))
-	scene_manager_show_dialog("option", "survey")
+	change_scene("res://scenes/research_scenes/pre_test_scene.tscn")
 			
 func add_new_root_scene() -> void:
 	var scene_loading_status: int = ResourceLoader.load_threaded_get_status(root_scene_path)
@@ -35,6 +35,7 @@ func check_scene_loading_status() -> void:
 		animation_player.queue("AnimateLoading")
 	else:
 		animation_player.queue("HideLoading")
+		animation_player.clear_queue()
 	
 func load_scene(path: String) -> void:
 	scene_loaded = false
@@ -77,13 +78,18 @@ func process_action(action: String) -> void:
 		"scene_title":
 			change_scene("res://scenes/title_screen/title_screen.tscn")
 		"survey_pre":
-			OS.shell_open("https://en.wikipedia.org")
+			OS.shell_open("https://docs.google.com/forms/d/e/1FAIpQLSdV9vULENCtw_Moc_J189RC0ePo314hT0Sni5v7lnRBig1T-Q/viewform?usp=publish-editor")
+			get_tree().root.mode = Window.MODE_MINIMIZED
 			scene_manager_show_dialog("message", "survey_pre")
 		"survey_post":
 			OS.shell_open("https://en.uncyclopedia.co")
 			scene_manager_show_dialog("message", "survey_post")
-		"save_file":
-			pass
+		"reset_save":
+			root_scene.queue_free()
+			root_scene = null
+			root_scene_path = ""
+			settings_dialog.hide_dialog()
+			change_scene("res://scenes/research_scenes/pre_test_scene.tscn")
 		_:
 			pass
 
@@ -94,9 +100,10 @@ func process_action_cancel(action_cancel: String) -> void:
 		_:
 			pass
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "ShowLoading":
-		pass
-
 func scene_manager_show_settings() -> void:
 	settings_dialog.show_dialog()
+
+func set_root_scene_load_ready() -> void:
+	if root_scene:
+		if root_scene.has_method("load_ready"):
+			root_scene.load_ready()

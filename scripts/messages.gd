@@ -12,10 +12,16 @@ var messages: Dictionary = {
 		"message": "Unable to load scene!\nYou will be redirected to the title screen.",
 		"action": "scene_title",
 	},
-	"save_file": {
+	"no_save_file": {
 		"title": "Save File Error",
 		"message": "No save file detected. A new save file will be created.",
 		"action": "new_save",
+	},
+	"reset_save_file": {
+		"title": "Reset Save File?",
+		"message": "Are you sure you want to reset your save file? There is no undo!",
+		"action": "reset_save",
+		"cancel": "",
 	},
 	"survey": {
 		"title": "Heads up!",

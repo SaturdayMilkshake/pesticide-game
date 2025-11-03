@@ -26,6 +26,10 @@ func show_dialog(messages: Dictionary = {}) -> void:
 		current_action_cancel = str(messages["cancel"])
 	
 	animation_player.queue("ShowDialog")
+	
+func hide_dialog() -> void:
+	animation_player.play("HideDialog")
+	animation_player.clear_queue()
 
 func _on_accept_button_pressed() -> void:
 	emit_signal("okay_pressed", current_action)

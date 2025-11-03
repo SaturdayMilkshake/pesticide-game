@@ -6,10 +6,10 @@ uid="uid://hhppru4j5e1r"
 
 [deps]
 
-files=["res://test_dialogue_format.parameter1.translation", "res://test_dialogue_format.parameter2.translation"]
+files=["res://test_dialogue_format.parameter1.translation", "res://test_dialogue_format.parameter2.translation", "res://test_dialogue_format.parameter3.translation"]
 
 source_file="res://test_dialogue_format.csv"
-dest_files=["res://test_dialogue_format.parameter1.translation", "res://test_dialogue_format.parameter2.translation"]
+dest_files=["res://test_dialogue_format.parameter1.translation", "res://test_dialogue_format.parameter2.translation", "res://test_dialogue_format.parameter3.translation"]
 
 [params]
 

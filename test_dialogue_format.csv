@@ -1,5 +1,12 @@
-command_type,parameter1,parameter2
-INIT,1,
-SAY,1,Hello world!
-INIT,2,
-SAY,2,"Hello, world!"
+command_type,parameter1,parameter2,parameter3
+CHAR,,,
+SAY,1,"Hello, world!",
+CHAR,Magenta,,
+SAY,2,Test Dialogue! Here is an extremely long sentence I thought up to extend the word count to stress test the Dialogue Manager! Cool!,
+MOVE,1,,
+,,,
+C_MOVE,200,200,1
+C_MOVE_R,15,15,1
+WAIT,,,
+C_ZOOM,,,
+BG,,,

@@ -1,6 +1,7 @@
 extends Control
 
 @onready var animation_player: Node = $AnimationPlayer
+@onready var panel: Node = $Panel
 
 var button: Node = null
 
@@ -10,5 +11,11 @@ func _ready() -> void:
 func show_dialog() -> void:
 	animation_player.queue("ShowDialog")
 
+func hide_dialog() -> void:
+	animation_player.queue("HideDialog")
+
 func _on_okay_button_pressed() -> void:
 	animation_player.play("HideDialog")
+
+func _on_reset_save_file_pressed() -> void:
+	SignalHandler.emit_signal("scene_manager_show_dialog", "option", "reset_save_file")
