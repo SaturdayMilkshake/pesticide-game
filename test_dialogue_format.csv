@@ -5,8 +5,8 @@ CHAR,Magenta,,
 SAY,2,Test Dialogue! Here is an extremely long sentence I thought up to extend the word count to stress test the Dialogue Manager! Cool!,
 MOVE,1,,
 ,,,
-C_MOVE,200,200,1
-C_MOVE_R,15,15,1
-WAIT,,,
-C_ZOOM,,,
-BG,,,
+C_MOVE,,,
+C_MOVE_R,,,
+WAIT,1,,
+C_ZOOM,2,2,
+BG,NULL,,

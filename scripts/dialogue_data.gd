@@ -18,17 +18,22 @@ func _init(initial_data: PackedStringArray) -> void:
 		elif current_parameter_index == 0:
 			pass
 		else:
-			parameters[current_parameter_index - 1] = parameter
+			if current_parameter_index - 1 >= parameters.size():
+				pass
+			else:
+				parameters[current_parameter_index - 1] = parameter
 		current_parameter_index += 1
 
 func set_default_parameter_sizes() -> void:
 	match type:
-		"BG", "WAIT":
+		"BG", "WAIT", "MUSIC":
 			parameters.resize(1)
-		"CHAR", "C_ZOOM", "SAY":
+		"CHAR", "C_ZOOM":
 			parameters.resize(2)
-		"C_MOVE", "C_MOVE_R":
+		"C_MOVE", "C_MOVE_R", "SAY":
 			parameters.resize(3)
+		"C_MAZ", "CHAR_MOVE":
+			parameters.resize(4)
 		_:
 			pass
 	

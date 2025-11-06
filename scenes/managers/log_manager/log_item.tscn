@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://xqobrvjuq81b"]
+
+[ext_resource type="Script" uid="uid://ygfhxc8cvlrk" path="res://scenes/managers/log_manager/log_item.gd" id="1_04rs2"]
+
+[node name="LogItem" type="Control" node_paths=PackedStringArray("character", "dialogue")]
+custom_minimum_size = Vector2(1664, 128)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_04rs2")
+character = NodePath("Character")
+dialogue = NodePath("Dialogue")
+
+[node name="Character" type="Label" parent="."]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 32
+vertical_alignment = 1
+
+[node name="Dialogue" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 1664.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 46
+vertical_alignment = 1

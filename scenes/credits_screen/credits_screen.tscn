@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpqqgp75u2trs"]
+
+[ext_resource type="Script" uid="uid://c5ag5uydauthp" path="res://scenes/credits_screen/credits_screen.gd" id="1_cq7cq"]
+[ext_resource type="Theme" uid="uid://cfe5ygomt3n1n" path="res://styles/default_theme.tres" id="2_o77a0"]
+
+[node name="CreditsScreen" type="Node2D"]
+script = ExtResource("1_cq7cq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_o77a0")
+
+[node name="Credits" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 128.0
+text = "Credits"
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 128.0
+offset_right = 928.0
+offset_bottom = 192.0
+text = "This game was created by these wonderful people:"
+vertical_alignment = 1

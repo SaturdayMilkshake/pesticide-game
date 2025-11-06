@@ -219,8 +219,9 @@ _data = {
 &"ShowLoading": SubResource("Animation_hkee1")
 }
 
-[node name="SceneManager" type="Node2D"]
+[node name="SceneManager" type="Node"]
 script = ExtResource("1_570er")
+starting_scene_override = "uid://b6l0abp45x6su"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -228,6 +229,7 @@ libraries = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 99
 
 [node name="LoadingScreen" type="Control" parent="CanvasLayer"]
 visible = false

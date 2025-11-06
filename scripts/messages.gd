@@ -2,6 +2,11 @@ class_name Messages
 extends Node
 
 var messages: Dictionary = {
+	"return_chapter": {
+		"title": "Return to Chapter Select",
+		"message": "Are you sure you want to exit the current chapter?",
+		"action": "return_chapter",
+	},
 	"error_header": {
 		"title": "Message Header Error",
 		"message": "Message header not found! Header: ",
@@ -39,8 +44,4 @@ var messages: Dictionary = {
 		"message": "The post-test survey has been opened in your default web browser. Please press Okay when accomplished.\nThank you for your participation!",
 		"action": "",
 	},
-}
-
-var error_messages: Dictionary = {
-	
 }

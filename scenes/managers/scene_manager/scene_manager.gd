@@ -1,5 +1,6 @@
-extends Node2D
+extends Node
 
+@export_file var starting_scene_override: String = ""
 @export var root_scene: Node = null
 var root_scene_path: String = ""
 
@@ -17,7 +18,10 @@ func _ready() -> void:
 	SignalHandler.connect("scene_manager_change_scene", Callable(self, "change_scene"))
 	SignalHandler.connect("scene_manager_show_dialog", Callable(self, "scene_manager_show_dialog"))
 	SignalHandler.connect("scene_manager_show_settings", Callable(self, "scene_manager_show_settings"))
-	change_scene("res://scenes/research_scenes/pre_test_scene.tscn")
+	if starting_scene_override:
+		change_scene(starting_scene_override)
+	else:
+		change_scene("res://scenes/research_scenes/pre_test_scene.tscn")
 			
 func add_new_root_scene() -> void:
 	var scene_loading_status: int = ResourceLoader.load_threaded_get_status(root_scene_path)
@@ -85,11 +89,14 @@ func process_action(action: String) -> void:
 			OS.shell_open("https://en.uncyclopedia.co")
 			scene_manager_show_dialog("message", "survey_post")
 		"reset_save":
+			DataHandler.reset_data()
 			root_scene.queue_free()
 			root_scene = null
 			root_scene_path = ""
 			settings_dialog.hide_dialog()
 			change_scene("res://scenes/research_scenes/pre_test_scene.tscn")
+		"return_chapter":
+			change_scene("res://scenes/stage_select_screen/stage_select_screen.tscn")
 		_:
 			pass
 

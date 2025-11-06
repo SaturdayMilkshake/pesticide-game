@@ -18,9 +18,9 @@ theme = ExtResource("2_vuv2h")
 [node name="Play" type="Button" parent="UI"]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 768.0
+offset_top = 704.0
 offset_right = 320.0
-offset_bottom = 832.0
+offset_bottom = 768.0
 focus_mode = 0
 theme = ExtResource("2_vuv2h")
 theme_type_variation = &"DialogButton"
@@ -30,9 +30,9 @@ text = "Play
 [node name="Journal" type="Button" parent="UI"]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 832.0
+offset_top = 768.0
 offset_right = 320.0
-offset_bottom = 896.0
+offset_bottom = 832.0
 focus_mode = 0
 theme = ExtResource("2_vuv2h")
 theme_type_variation = &"DialogButton"
@@ -41,13 +41,23 @@ text = "Journal"
 [node name="Settings" type="Button" parent="UI"]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 896.0
+offset_top = 832.0
 offset_right = 320.0
-offset_bottom = 960.0
+offset_bottom = 896.0
 focus_mode = 0
 theme = ExtResource("2_vuv2h")
 theme_type_variation = &"DialogButton"
 text = "Settings"
+
+[node name="Button" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 896.0
+offset_right = 320.0
+offset_bottom = 960.0
+theme = ExtResource("2_vuv2h")
+theme_type_variation = &"DialogButton"
+text = "Credits"
 
 [node name="Quit" type="Button" parent="UI"]
 layout_mode = 0
@@ -84,4 +94,5 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="UI/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="UI/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/Quit" to="." method="_on_quit_pressed"]

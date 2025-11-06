@@ -1,24 +1,81 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkg48ip2pojym"]
+[gd_scene load_steps=7 format=3 uid="uid://bkg48ip2pojym"]
 
 [ext_resource type="Script" uid="uid://btys7rq8kgkh2" path="res://scenes/managers/dialogue_manager/dialogue_manager.gd" id="1_g3jrk"]
 [ext_resource type="Theme" uid="uid://cfe5ygomt3n1n" path="res://styles/default_theme.tres" id="2_56vqo"]
-[ext_resource type="PackedScene" uid="uid://cn246vwelwvsu" path="res://scenes/managers/dialogue_manager/character/character.tscn" id="3_gv2nn"]
 [ext_resource type="PackedScene" uid="uid://b6fy1ne8ob27p" path="res://scenes/managers/dialogue_file_manager/dialogue_file_manager.tscn" id="4_wja8m"]
 
+[sub_resource type="Animation" id="Animation_wja8m"]
+resource_name = "HideDialogueBox"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/DialogueBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(64, 760), Vector2(64, 824)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/DialogueBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gv2nn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/DialogueBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 760)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/DialogueBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gv2nn"]
+_data = {
+&"HideDialogueBox": SubResource("Animation_wja8m"),
+&"RESET": SubResource("Animation_gv2nn")
+}
 
 [node name="DialogueManager" type="Control" node_paths=PackedStringArray("text_label", "character_label")]
 layout_mode = 3
 anchor_right = 0.929
 anchor_bottom = 0.23
-offset_right = 8.31995
-offset_bottom = 7.59999
+offset_right = 136.32
+offset_bottom = 831.6
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_56vqo")
 script = ExtResource("1_g3jrk")
-chars_per_second = null
-base_character_position = null
 text_label = NodePath("CanvasLayer/DialogueBox/TextLabel")
 character_label = NodePath("CanvasLayer/DialogueBox/CharacterLabel")
 
@@ -35,11 +92,12 @@ offset_right = 1856.0
 offset_bottom = 1016.0
 metadata/_edit_group_ = true
 
-[node name="TextBoxBackground" type="ColorRect" parent="CanvasLayer/DialogueBox"]
+[node name="TextBoxBackground" type="Panel" parent="CanvasLayer/DialogueBox"]
 layout_mode = 0
 offset_right = 1792.0
 offset_bottom = 256.0
-color = Color(0.88815, 0.417115, 0.701572, 1)
+theme = ExtResource("2_56vqo")
+theme_type_variation = &"DialogPanel"
 
 [node name="TextLabel" type="RichTextLabel" parent="CanvasLayer/DialogueBox"]
 layout_mode = 0
@@ -47,6 +105,7 @@ offset_left = 64.0
 offset_top = 32.0
 offset_right = 1728.0
 offset_bottom = 224.0
+theme = ExtResource("2_56vqo")
 theme_override_font_sizes/normal_font_size = 42
 bbcode_enabled = true
 
@@ -57,6 +116,8 @@ offset_top = -24.0
 offset_right = 1552.0
 offset_bottom = 24.0
 focus_mode = 0
+theme = ExtResource("2_56vqo")
+theme_type_variation = &"DialogButton"
 text = "Log"
 
 [node name="Skip" type="Button" parent="CanvasLayer/DialogueBox"]
@@ -66,6 +127,8 @@ offset_top = -24.0
 offset_right = 1664.0
 offset_bottom = 24.0
 focus_mode = 0
+theme = ExtResource("2_56vqo")
+theme_type_variation = &"DialogButton"
 text = "Skip"
 
 [node name="Auto" type="Button" parent="CanvasLayer/DialogueBox"]
@@ -75,6 +138,8 @@ offset_top = -24.0
 offset_right = 1776.0
 offset_bottom = 24.0
 focus_mode = 0
+theme = ExtResource("2_56vqo")
+theme_type_variation = &"DialogButton"
 toggle_mode = true
 text = "Auto"
 
@@ -96,7 +161,7 @@ theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="CanvasLayer/DialogueBox"]
+[node name="AdvanceTimer" type="Timer" parent="CanvasLayer/DialogueBox"]
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -108,26 +173,27 @@ libraries = {
 anchors_preset = 0
 offset_right = 1928.0
 offset_bottom = 1088.0
-
-[node name="Character" parent="Characters" instance=ExtResource("3_gv2nn")]
-offset_left = 208.0
-offset_top = 288.0
-offset_right = 656.0
-offset_bottom = 800.0
+metadata/_edit_lock_ = true
 
 [node name="DialogueFileManager" parent="." instance=ExtResource("4_wja8m")]
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(960, 544)
+position = Vector2(960, 540)
 metadata/_edit_lock_ = true
 
 [node name="WaitTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="SoundEffectPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="meta_clicked" from="CanvasLayer/DialogueBox/TextLabel" to="." method="_on_text_label_meta_clicked"]
 [connection signal="pressed" from="CanvasLayer/DialogueBox/Log" to="." method="_on_log_pressed"]
 [connection signal="pressed" from="CanvasLayer/DialogueBox/Skip" to="." method="_on_skip_pressed"]
 [connection signal="toggled" from="CanvasLayer/DialogueBox/Auto" to="." method="_on_auto_toggled"]
-[connection signal="timeout" from="CanvasLayer/DialogueBox/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/DialogueBox/AdvanceTimer" to="." method="_on_advance_timer_timeout"]
 [connection signal="dialogue_file_processed" from="DialogueFileManager" to="." method="_on_dialogue_file_manager_dialogue_file_processed"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

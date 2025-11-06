@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck68dbwdn2qai"]
+
+[ext_resource type="Script" uid="uid://df6hjjw0uvu0r" path="res://scenes/journal/achievement_screen.gd" id="1_aelur"]
+[ext_resource type="PackedScene" uid="uid://ntta6va4uxox" path="res://scenes/journal/achievement_item.tscn" id="2_2v2sv"]
+
+[node name="AchievementScreen" type="Node2D"]
+script = ExtResource("1_aelur")
+
+[node name="Achievements" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AchievementItem" parent="Achievements" instance=ExtResource("2_2v2sv")]

@@ -2,18 +2,20 @@
 
 [ext_resource type="Script" uid="uid://3axtgfdac5nk" path="res://scenes/managers/log_manager/log_manager.gd" id="1_guclr"]
 
-[node name="LogManager" type="Control"]
+[node name="LogManager" type="Control" node_paths=PackedStringArray("scroll_container", "log_item_container")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_guclr")
+scroll_container = NodePath("ScrollContainer")
+log_item_container = NodePath("ScrollContainer/LogItemContainer")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.109804, 0.109804, 0.109804, 0.768627)
+color = Color(0.0196078, 0.0196078, 0.0196078, 0.862745)
 
 [node name="Log" type="Label" parent="."]
 layout_mode = 0
@@ -33,26 +35,7 @@ offset_right = 1792.0
 offset_bottom = 1016.0
 horizontal_scroll_mode = 0
 
-[node name="LogItem" type="Control" parent="ScrollContainer"]
-custom_minimum_size = Vector2(1664, 128)
+[node name="LogItemContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
-
-[node name="Character" type="Label" parent="ScrollContainer/LogItem"]
-layout_mode = 0
-offset_right = 176.0
-offset_bottom = 64.0
-theme_override_font_sizes/font_size = 32
-text = "Magenta"
-vertical_alignment = 1
-
-[node name="Dialogue" type="Label" parent="ScrollContainer/LogItem"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 64.0
-offset_right = 1664.0
-offset_bottom = 128.0
-theme_override_font_sizes/font_size = 46
-text = "The quick brown fox jumped over the lazy dog."
-vertical_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

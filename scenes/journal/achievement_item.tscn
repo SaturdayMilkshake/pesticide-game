@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ntta6va4uxox"]
+
+[ext_resource type="Script" uid="uid://0ryfxrdof38x" path="res://scenes/journal/achievement_item.gd" id="1_ev3ri"]
+
+[sub_resource type="Gradient" id="Gradient_ev3ri"]
+colors = PackedColorArray(1, 0, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_muy2f"]
+gradient = SubResource("Gradient_ev3ri")
+
+[node name="AchievementItem" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 384.0
+offset_bottom = 384.0
+rotation = -0.00218224
+script = ExtResource("1_ev3ri")
+
+[node name="Texture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 384.0
+texture = SubResource("GradientTexture2D_muy2f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

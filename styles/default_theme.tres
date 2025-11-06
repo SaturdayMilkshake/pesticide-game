@@ -98,6 +98,8 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+shadow_color = Color(0.8, 0.8, 0.8, 0.603922)
+shadow_size = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56hmt"]
 bg_color = Color(0.705882, 0.529412, 0.705882, 1)
@@ -143,3 +145,5 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_xipde")
 Label/font_sizes/font_size = 32
 LoadingLabel/base_type = &"Label"
 LoadingLabel/font_sizes/font_size = 48
+RichTextLabel/colors/default_color = Color(0.376471, 0.376471, 0.376471, 1)
+RichTextLabel/font_sizes/normal_font_size = 42

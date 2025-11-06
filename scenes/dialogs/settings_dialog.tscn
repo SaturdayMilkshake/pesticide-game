@@ -418,9 +418,10 @@ offset_right = 1152.0
 offset_bottom = 144.0
 focus_mode = 0
 theme = ExtResource("2_phb1t")
-min_value = 1.0
-max_value = 5.0
-value = 3.0
+min_value = 10.0
+max_value = 50.0
+step = 10.0
+value = 30.0
 
 [node name="ResetSaveFile" type="Button" parent="ScrollContainer/Control/Game"]
 layout_mode = 0
@@ -434,4 +435,7 @@ theme_type_variation = &"DialogButton"
 text = "Reset Save File"
 
 [connection signal="pressed" from="OkayButton" to="." method="_on_okay_button_pressed"]
+[connection signal="value_changed" from="ScrollContainer/Control/Audio/AudioSlider" to="." method="_on_audio_slider_value_changed"]
+[connection signal="value_changed" from="ScrollContainer/Control/Audio/SoundEffectsSlider" to="." method="_on_sound_effects_slider_value_changed"]
+[connection signal="value_changed" from="ScrollContainer/Control/Game/TextReadSpeedSlider" to="." method="_on_text_read_speed_slider_value_changed"]
 [connection signal="pressed" from="ScrollContainer/Control/Game/ResetSaveFile" to="." method="_on_reset_save_file_pressed"]
