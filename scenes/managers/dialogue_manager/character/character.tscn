@@ -52,16 +52,16 @@ _data = {
 [node name="Character" type="Control" groups=["characters"]]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 768.0
 script = ExtResource("1_dppid")
 
 [node name="Texture" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_6gkpq")
 layout_mode = 0
-offset_right = 640.0
-offset_bottom = 768.0
-pivot_offset = Vector2(320, 384)
+offset_left = -540.0
+offset_top = -540.0
+offset_right = 540.0
+offset_bottom = 540.0
+pivot_offset = Vector2(540, 540)
 texture = ExtResource("2_jftni")
 expand_mode = 1
 stretch_mode = 5

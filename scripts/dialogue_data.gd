@@ -26,13 +26,13 @@ func _init(initial_data: PackedStringArray) -> void:
 
 func set_default_parameter_sizes() -> void:
 	match type:
-		"BG", "WAIT", "MUSIC":
+		"ACTION", "BG", "WAIT", "MUSIC":
 			parameters.resize(1)
-		"CHAR", "C_ZOOM":
+		"C_ZOOM":
 			parameters.resize(2)
-		"C_MOVE", "C_MOVE_R", "SAY":
+		"C_MOVE", "C_MOVE_R", "OBJ", "SAY":
 			parameters.resize(3)
-		"C_MAZ", "CHAR_MOVE":
+		"CHAR", "C_MAZ", "CHAR_MOVE":
 			parameters.resize(4)
 		_:
 			pass

@@ -12,10 +12,13 @@ func _on_dialogue_manager_log_showing_requested() -> void:
 	log_manager.show_log()
 
 func _on_dialogue_manager_change_background(path: String) -> void:
-	background.texture = load(path)
+	if !ResourceLoader.exists(path):
+		background.texture = null
+	else:
+		background.texture = load(path)
 
 func _on_dialogue_manager_dialogue_finished() -> void:
-	pass
+	SignalHandler.emit_signal("scene_manager_change_scene", "res://scenes/stage_select_screen/stage_select_screen.tscn")
 
 func _on_dialogue_manager_dialogue_said(character: String, dialogue: String) -> void:
 	log_manager.update_log(character, dialogue)

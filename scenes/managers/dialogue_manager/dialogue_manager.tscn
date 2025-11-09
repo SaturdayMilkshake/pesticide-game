@@ -90,7 +90,6 @@ offset_left = 64.0
 offset_top = 760.0
 offset_right = 1856.0
 offset_bottom = 1016.0
-metadata/_edit_group_ = true
 
 [node name="TextBoxBackground" type="Panel" parent="CanvasLayer/DialogueBox"]
 layout_mode = 0
@@ -164,6 +163,16 @@ vertical_alignment = 1
 [node name="AdvanceTimer" type="Timer" parent="CanvasLayer/DialogueBox"]
 one_shot = true
 
+[node name="DialogueProgress" type="ProgressBar" parent="CanvasLayer/DialogueBox"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 240.0
+offset_right = 1776.0
+offset_bottom = 248.0
+max_value = 1.0
+step = 0.001
+show_percentage = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_gv2nn")
@@ -173,6 +182,12 @@ libraries = {
 anchors_preset = 0
 offset_right = 1928.0
 offset_bottom = 1088.0
+metadata/_edit_lock_ = true
+
+[node name="Objects" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 metadata/_edit_lock_ = true
 
 [node name="DialogueFileManager" parent="." instance=ExtResource("4_wja8m")]

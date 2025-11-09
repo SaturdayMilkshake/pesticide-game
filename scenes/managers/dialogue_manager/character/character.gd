@@ -14,6 +14,9 @@ func change_texture(target: String, new_texture: String) -> void:
 	if target == character_name:
 		texture.texture = load(new_texture)
 		
+func change_texture_untargeted(new_texture: String) -> void:
+	texture.texture = load(new_texture)
+		
 func set_saying_status(target: String) -> void:
 	if target == character_name:
 		highlight_character(true)

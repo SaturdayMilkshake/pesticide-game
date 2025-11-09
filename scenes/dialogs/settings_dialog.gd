@@ -20,11 +20,14 @@ func _on_okay_button_pressed() -> void:
 func _on_reset_save_file_pressed() -> void:
 	SignalHandler.emit_signal("scene_manager_show_dialog", "option", "reset_save_file")
 
-func _on_audio_slider_value_changed(value: float) -> void:
+func _on_audio_slider_value_changed(_value: float) -> void:
 	pass # Replace with function body.
 
-func _on_sound_effects_slider_value_changed(value: float) -> void:
+func _on_sound_effects_slider_value_changed(_value: float) -> void:
 	pass # Replace with function body.
 
 func _on_text_read_speed_slider_value_changed(value: float) -> void:
 	DataHandler.game_settings["text_read_speed"] = value
+
+func _on_auto_advance_time_slider_value_changed(value: float) -> void:
+	DataHandler.game_settings["auto_advance_time"] = value

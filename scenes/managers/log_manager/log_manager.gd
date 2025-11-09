@@ -2,6 +2,7 @@ extends Control
 
 @export var scroll_container: Node = null
 @export var log_item_container: Node = null
+
 func _ready() -> void:
 	self.visible = false
 

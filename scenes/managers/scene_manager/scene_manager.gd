@@ -18,6 +18,7 @@ func _ready() -> void:
 	SignalHandler.connect("scene_manager_change_scene", Callable(self, "change_scene"))
 	SignalHandler.connect("scene_manager_show_dialog", Callable(self, "scene_manager_show_dialog"))
 	SignalHandler.connect("scene_manager_show_settings", Callable(self, "scene_manager_show_settings"))
+	SignalHandler.connect("scene_manager_process_action", Callable(self, "process_action"))
 	if starting_scene_override:
 		change_scene(starting_scene_override)
 	else:
