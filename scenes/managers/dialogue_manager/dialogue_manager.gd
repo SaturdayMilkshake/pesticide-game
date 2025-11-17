@@ -18,15 +18,6 @@ extends Control
 @onready var music_player: Node = $MusicPlayer
 @onready var sound_effect_player: Node = $SoundEffectPlayer
 
-var example_dialogue: Dictionary = {
-	"character": "Magenta",
-	"dialogue": "Hello!",
-}
-
-var word_definitions: Dictionary = {
-	"Test URL": "A basic example of a description.",
-}
-
 var active_characters: Array = []
 var active_objects: Array = []
 
@@ -70,7 +61,7 @@ func _physics_process(_delta: float) -> void:
 func advance_dialogue() -> void:
 	if current_dialogue_index >= dialogue.size() - 1:
 		print_debug("Cannot advance dialogue, index exceeded size!")
-		animation_player.play("HideDialogueBox")
+		animation_player.play("HideDialogueBox_End")
 		var ending_timer: Timer = Timer.new()
 		add_child(ending_timer)
 		ending_timer.connect("timeout", Callable(self, "_on_ending_timer_timeout"))
@@ -108,13 +99,15 @@ func dialogue_tween_finished() -> void:
 
 func _on_skip_pressed() -> void:
 	text_box_state = TextBoxState.FINISHED
+	SignalHandler.emit_signal("scene_manager_show_dialog", "option", "skip_dialogue")
 
 func _on_log_pressed() -> void:
 	emit_signal("log_showing_requested")
 
 func _on_text_label_meta_clicked(meta: Variant) -> void:
-	if word_definitions.has(meta):
-		print(word_definitions[meta])
+	var word_definitions: WordDefinitions = WordDefinitions.new()
+	if word_definitions.definitions.has(meta):
+		prints(word_definitions.definitions[meta]["definition"], word_definitions.definitions[meta]["source"])
 	else:
 		print("No definition set.")
 
@@ -217,10 +210,17 @@ func process_dialogue_command() -> void:
 				tween.tween_callback(func() -> void: advance_dialogue())
 			else:
 				advance_dialogue()
+		"DB_HIDE":
+			animation_player.play("HideDialogueBox")
+		"DB_SHOW":
+			animation_player.play("ShowDialogueBox")
 		"MUSIC":
 			if ResourceLoader.exists(current_command.parameters[0]) && str(current_command.parameters[0]).get_extension() == "ogg":
 				music_player.stream = load(current_command.parameters[0])
 				music_player.play()
+			else:
+				music_player.stop()
+				music_player.stream = null
 			advance_dialogue()
 		"OBJ":
 			if current_command.parameters[0] != "":

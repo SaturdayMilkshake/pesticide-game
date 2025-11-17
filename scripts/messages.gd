@@ -28,6 +28,12 @@ var messages: Dictionary = {
 		"action": "reset_save",
 		"cancel": "",
 	},
+	"skip_dialogue": {
+		"title": "Skip Current Dialogue?",
+		"message": "Are you sure you want to skip the current dialogue?",
+		"action": "skip_dialogue",
+		"cancel": "",
+	},
 	"survey": {
 		"title": "Heads up!",
 		"message": "Are you one of the participants of the study? If so, please press Okay to be redirected to the pre-test.",

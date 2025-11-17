@@ -3,6 +3,9 @@ extends Control
 @onready var animation_player: Node = $AnimationPlayer
 @onready var panel: Node = $Panel
 
+var music_bus = AudioServer.get_bus_index("Music")
+var sfx_bus = AudioServer.get_bus_index("SoundEffects")
+
 var button: Node = null
 
 func _ready() -> void:
@@ -20,11 +23,13 @@ func _on_okay_button_pressed() -> void:
 func _on_reset_save_file_pressed() -> void:
 	SignalHandler.emit_signal("scene_manager_show_dialog", "option", "reset_save_file")
 
-func _on_audio_slider_value_changed(_value: float) -> void:
-	pass # Replace with function body.
+func _on_audio_slider_value_changed(value: float) -> void:
+	DataHandler.game_settings["music_volume"] = value
+	AudioServer.set_bus_volume_db(music_bus, linear_to_db(value))
 
-func _on_sound_effects_slider_value_changed(_value: float) -> void:
-	pass # Replace with function body.
+func _on_sound_effects_slider_value_changed(value: float) -> void:
+	DataHandler.game_settings["sound_effects_volume"] = value
+	AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(value))
 
 func _on_text_read_speed_slider_value_changed(value: float) -> void:
 	DataHandler.game_settings["text_read_speed"] = value

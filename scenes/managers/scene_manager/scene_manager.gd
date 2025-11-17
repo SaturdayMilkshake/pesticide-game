@@ -82,6 +82,8 @@ func process_action(action: String) -> void:
 	match action:
 		"scene_title":
 			change_scene("res://scenes/title_screen/title_screen.tscn")
+		"skip_dialogue":
+			pass
 		"survey_pre":
 			OS.shell_open("https://docs.google.com/forms/d/e/1FAIpQLSdV9vULENCtw_Moc_J189RC0ePo314hT0Sni5v7lnRBig1T-Q/viewform?usp=publish-editor")
 			get_tree().root.mode = Window.MODE_MINIMIZED

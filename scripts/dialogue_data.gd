@@ -22,6 +22,8 @@ func _init(initial_data: PackedStringArray) -> void:
 				pass
 			else:
 				parameters[current_parameter_index - 1] = parameter
+		if current_parameter_index >= parameters.size():
+			break
 		current_parameter_index += 1
 
 func set_default_parameter_sizes() -> void:

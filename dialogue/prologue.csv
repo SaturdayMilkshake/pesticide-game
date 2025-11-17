@@ -3,8 +3,8 @@ CHAR,Magenta,0.3,0.7,res://assets/characters/magenta_down.png
 CHAR,Navy,0.7,0.7,res://assets/characters/navy_down.png
 OBJ,0,0,res://assets/characters/navy_down.png,
 WAIT,1,,,
-SAY,Magenta,Hello world!,,
-SAY,Magenta,Demonstration!,res://assets/characters/magenta_hurt_down.png,
+SAY,Magenta,[color=red]Hello world![/color],,
+SAY,Magenta,[color=ff00ff]Demonstration![/color],res://assets/characters/magenta_hurt_down.png,
 SAY,Magenta,The quick brown fox jumps over the lazy dog.,res://assets/characters/magenta_down.png,
 CHAR_MOVE,Navy,0.7,0.7,0.7
 SAY,Navy,Shut up with these weird dialogue demonstrations.,res://assets/characters/navy_down.png,
@@ -36,7 +36,9 @@ SAY,Magenta,I know there’s an image of the Silverstone circuit in the game fil
 SAY,Navy,...interesting.,,
 SAY,Magenta,I guess so! I’ll pull it up.,,
 BG,res://assets/backgrounds/silverstone.png,,,
+DB_HIDE,,,,
 WAIT,3,,,
+DB_SHOW,,,,
 SAY,Sat,"Alright, new rule: No more rummaging through the development files.",,
 BG,NULL,,,
 SAY,Magenta,Aww...,res://assets/characters/magenta_hurt_down.png,
