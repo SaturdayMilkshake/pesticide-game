@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://xqobrvjuq81b"]
+[gd_scene load_steps=3 format=3 uid="uid://xqobrvjuq81b"]
 
 [ext_resource type="Script" uid="uid://ygfhxc8cvlrk" path="res://scenes/managers/log_manager/log_item.gd" id="1_04rs2"]
+[ext_resource type="Theme" uid="uid://cfe5ygomt3n1n" path="res://styles/default_theme.tres" id="2_80brt"]
 
 [node name="LogItem" type="Control" node_paths=PackedStringArray("character", "dialogue")]
 custom_minimum_size = Vector2(1664, 128)
@@ -12,17 +13,25 @@ character = NodePath("Character")
 dialogue = NodePath("Dialogue")
 
 [node name="Character" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 0
 offset_right = 176.0
 offset_bottom = 64.0
 theme_override_font_sizes/font_size = 32
 vertical_alignment = 1
 
-[node name="Dialogue" type="Label" parent="."]
+[node name="Dialogue" type="RichTextLabel" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 0
 offset_left = 16.0
 offset_top = 64.0
 offset_right = 1664.0
 offset_bottom = 128.0
-theme_override_font_sizes/font_size = 46
+mouse_filter = 2
+theme = ExtResource("2_80brt")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
 vertical_alignment = 1

@@ -1,16 +1,16 @@
 SAY,???,Hmm...,,
 CHAR,Magenta,0.3,0.7,res://assets/characters/magenta_down.png
-CHAR,Navy,0.7,0.7,res://assets/characters/navy_down.png
-OBJ,0,0,res://assets/characters/navy_down.png,
+CHAR,Maya,0.7,0.7,res://assets/characters/maya_base.png
+OBJ,0,0,,
 WAIT,1,,,
 SAY,Magenta,[color=red]Hello world![/color],,
-SAY,Magenta,[color=ff00ff]Demonstration![/color],res://assets/characters/magenta_hurt_down.png,
+SAY,Magenta,[color=ff00ff]Demonstration![/color] iajwidjiwajidjajdj wdjajwjdipawjpidjipawd wijadjwpdijawipdjipawjid [color=cyan]CYAN!!!!!!![/color] testing testing testing word length large large large,res://assets/characters/magenta_hurt_down.png,
 SAY,Magenta,The quick brown fox jumps over the lazy dog.,res://assets/characters/magenta_down.png,
-CHAR_MOVE,Navy,0.7,0.7,0.7
-SAY,Navy,Shut up with these weird dialogue demonstrations.,res://assets/characters/navy_down.png,
+CHAR_MOVE,Maya,0.7,0.7,0.7
+SAY,Maya,Shut up with these weird dialogue demonstrations.,res://assets/characters/maya_base.png,
 SAY,Magenta,Not sure what they meant by that.,,
 SAY,Magenta,"Have you ever tried stand-up comedy, Navy?",,
-SAY,Navy,I have no interest in such frivolous matters.,,
+SAY,Maya,I have no interest in such frivolous matters.,,
 C_ZOOM,2,0.3,,
 SAY,Magenta,Oh well. Does the zooming work?,,
 C_MOVE,0,0,0.5,
@@ -33,7 +33,7 @@ SAY,Magenta,"Cool. Please, don’t touch the camera anymore.",res://assets/chara
 SAY,Magenta,Just step from it away slowly... it’s already good as it is. Thanks!,,
 SAY,Magenta,"Anyway... Sat is a huge Formula 1 fan, you know?",,
 SAY,Magenta,I know there’s an image of the Silverstone circuit in the game files.,,
-SAY,Navy,...interesting.,,
+SAY,Maya,...interesting.,,
 SAY,Magenta,I guess so! I’ll pull it up.,,
 BG,res://assets/backgrounds/silverstone.png,,,
 DB_HIDE,,,,
@@ -42,5 +42,5 @@ DB_SHOW,,,,
 SAY,Sat,"Alright, new rule: No more rummaging through the development files.",,
 BG,NULL,,,
 SAY,Magenta,Aww...,res://assets/characters/magenta_hurt_down.png,
-SAY,Navy,Eh.,,
+SAY,Maya,Eh.,,
 SAY,Magenta,Oh well.,res://assets/characters/magenta_down.png,

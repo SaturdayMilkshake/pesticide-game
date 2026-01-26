@@ -1,9 +1,11 @@
 extends Node2D
 
 @onready var animation_player: Node = $AnimationPlayer
+@onready var background_animation: Node = $BackgroundAnimation
 
 func _ready() -> void:
 	$UI/Version.text = "Version %s" % ProjectSettings.get_setting("application/config/version")
+	background_animation.play("BackgroundAnim")
 
 func load_ready() -> void:
 	DataHandler.load_data()

@@ -357,7 +357,6 @@ theme_type_variation = &"DialogButtonAccept"
 text = "Okay"
 
 [node name="CancelButton" type="Button" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -88.0
 offset_top = 16.0

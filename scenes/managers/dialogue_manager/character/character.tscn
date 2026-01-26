@@ -7,8 +7,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6gkpq"]
 resource_local_to_scene = true
 shader = ExtResource("2_aoss6")
-shader_parameter/brightness = 0.5
-shader_parameter/highlighted = true
+shader_parameter/brightness = 0.2
+shader_parameter/highlighted = false
 
 [sub_resource type="Animation" id="Animation_jftni"]
 resource_name = "CharacterIdle"

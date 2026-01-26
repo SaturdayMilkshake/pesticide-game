@@ -3,10 +3,13 @@
 [ext_resource type="Script" uid="uid://3axtgfdac5nk" path="res://scenes/managers/log_manager/log_manager.gd" id="1_guclr"]
 
 [node name="LogManager" type="Control" node_paths=PackedStringArray("scroll_container", "log_item_container")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_guclr")
 scroll_container = NodePath("ScrollContainer")
 log_item_container = NodePath("ScrollContainer/LogItemContainer")
@@ -37,5 +40,6 @@ horizontal_scroll_mode = 0
 
 [node name="LogItemContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

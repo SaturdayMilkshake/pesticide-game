@@ -9,3 +9,5 @@ signal scene_manager_show_dialog(dialog_type: String, message_header: String)
 signal scene_manager_show_settings
 @warning_ignore("unused_signal")
 signal scene_manager_process_action(action: String)
+@warning_ignore("unused_signal")
+signal skip_dialogue

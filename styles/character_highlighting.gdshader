@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
-uniform float brightness = 0.25;
+//the lower the brightness value the brighter it is
+uniform float brightness = 0.3;
 uniform bool highlighted = true;
 
 void fragment() {

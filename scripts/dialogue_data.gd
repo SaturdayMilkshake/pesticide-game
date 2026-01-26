@@ -28,7 +28,7 @@ func _init(initial_data: PackedStringArray) -> void:
 
 func set_default_parameter_sizes() -> void:
 	match type:
-		"ACTION", "BG", "WAIT", "MUSIC":
+		"ACTION", "ADD_SCENE", "BG", "COVER", "WAIT", "MUSIC":
 			parameters.resize(1)
 		"C_ZOOM":
 			parameters.resize(2)

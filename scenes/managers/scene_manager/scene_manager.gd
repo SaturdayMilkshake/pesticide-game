@@ -38,23 +38,23 @@ func add_new_root_scene() -> void:
 func check_scene_loading_status() -> void:
 	if !scene_loaded:
 		animation_player.queue("AnimateLoading")
+		add_new_root_scene()
 	else:
 		animation_player.queue("HideLoading")
 		animation_player.clear_queue()
 	
-func load_scene(path: String) -> void:
+func load_scene() -> void:
+	if root_scene:
+		root_scene.queue_free()
 	scene_loaded = false
-	root_scene_path = path
 	ResourceLoader.load_threaded_request(root_scene_path)
 	
 func change_scene(path: String) -> void:
-	animation_player.play("ShowLoading")
 	if FileAccess.file_exists(path):
-		if root_scene:
-			root_scene.queue_free()
-			root_scene_path = ""
-		load_scene(path)
+		animation_player.play("ShowLoading")
+		root_scene_path = path
 	else:
+		root_scene_path = ""
 		print_debug("Cannot change scene, as %s does not exist." % path)
 		scene_manager_show_dialog("message", "error_scene")
 
@@ -83,7 +83,7 @@ func process_action(action: String) -> void:
 		"scene_title":
 			change_scene("res://scenes/title_screen/title_screen.tscn")
 		"skip_dialogue":
-			pass
+			SignalHandler.emit_signal("skip_dialogue")
 		"survey_pre":
 			OS.shell_open("https://docs.google.com/forms/d/e/1FAIpQLSdV9vULENCtw_Moc_J189RC0ePo314hT0Sni5v7lnRBig1T-Q/viewform?usp=publish-editor")
 			get_tree().root.mode = Window.MODE_MINIMIZED

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://brmlv18klv8pn"]
+
+[ext_resource type="Script" uid="uid://dngms046ndqqt" path="res://scenes/journal_screen/word_item.gd" id="1_gpg36"]
+[ext_resource type="Theme" uid="uid://cfe5ygomt3n1n" path="res://styles/default_theme.tres" id="2_yp42v"]
+
+[node name="WordItem" type="Control"]
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 512.0
+offset_bottom = 128.0
+script = ExtResource("1_gpg36")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 128.0
+theme = ExtResource("2_yp42v")
+theme_override_font_sizes/font_size = 64
+text = "???"
+vertical_alignment = 1

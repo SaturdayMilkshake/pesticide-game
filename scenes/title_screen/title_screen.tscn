@@ -1,12 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7qiofigeie0o"]
+[gd_scene load_steps=6 format=3 uid="uid://c7qiofigeie0o"]
 
 [ext_resource type="Script" uid="uid://s61s7v3ysnh7" path="res://scenes/title_screen/title_screen.gd" id="1_5df70"]
+[ext_resource type="Texture2D" uid="uid://3bex4k25rdy6" path="res://assets/misc/title_bg.png" id="2_ri6bm"]
 [ext_resource type="Theme" uid="uid://cfe5ygomt3n1n" path="res://styles/default_theme.tres" id="2_vuv2h"]
+
+[sub_resource type="Animation" id="Animation_vuv2h"]
+resource_name = "BackgroundAnim"
+loop_mode = 1
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ri6bm"]
+_data = {
+&"BackgroundAnim": SubResource("Animation_vuv2h")
+}
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_5df70")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="BackgroundAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ri6bm")
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_ri6bm")
+
+[node name="BGAnim" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -18,25 +43,14 @@ theme = ExtResource("2_vuv2h")
 [node name="Play" type="Button" parent="UI"]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 704.0
-offset_right = 320.0
-offset_bottom = 768.0
-focus_mode = 0
-theme = ExtResource("2_vuv2h")
-theme_type_variation = &"DialogButton"
-text = "Play
-"
-
-[node name="Journal" type="Button" parent="UI"]
-layout_mode = 0
-offset_left = 64.0
 offset_top = 768.0
 offset_right = 320.0
 offset_bottom = 832.0
 focus_mode = 0
 theme = ExtResource("2_vuv2h")
 theme_type_variation = &"DialogButton"
-text = "Journal"
+text = "Play
+"
 
 [node name="Settings" type="Button" parent="UI"]
 layout_mode = 0

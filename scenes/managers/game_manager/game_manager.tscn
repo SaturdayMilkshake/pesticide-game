@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6l0abp45x6su"]
+[gd_scene load_steps=8 format=3 uid="uid://b6l0abp45x6su"]
 
 [ext_resource type="Script" uid="uid://u4d6t5gv2n7g" path="res://scenes/managers/game_manager/game_manager.gd" id="1_imdmq"]
 [ext_resource type="PackedScene" uid="uid://c7ykebmwpg4o6" path="res://scenes/managers/log_manager/log_manager.tscn" id="1_kiihf"]
 [ext_resource type="PackedScene" uid="uid://bkg48ip2pojym" path="res://scenes/managers/dialogue_manager/dialogue_manager.tscn" id="2_imdmq"]
+[ext_resource type="Texture2D" uid="uid://dh3jic6sd8f8s" path="res://assets/misc/settings_icon.png" id="3_6fqxo"]
+[ext_resource type="Texture2D" uid="uid://dghe64abda6b0" path="res://assets/misc/back_to_menu_icon.png" id="4_8anos"]
 
 [sub_resource type="Animation" id="Animation_imdmq"]
 resource_name = "DialogueFinished"
@@ -34,21 +36,16 @@ libraries = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="DictionaryButton" type="Button" parent="CanvasLayer"]
-offset_left = 1440.0
-offset_top = 32.0
-offset_right = 1568.0
-offset_bottom = 160.0
-focus_mode = 0
-text = "D"
-
 [node name="SettingsButton" type="Button" parent="CanvasLayer"]
 offset_left = 1600.0
 offset_top = 32.0
-offset_right = 1728.0
+offset_right = 1736.0
 offset_bottom = 160.0
 focus_mode = 0
-text = "S"
+icon = ExtResource("3_6fqxo")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="BackToMenuButton" type="Button" parent="CanvasLayer"]
 offset_left = 1760.0
@@ -56,10 +53,12 @@ offset_top = 32.0
 offset_right = 1888.0
 offset_bottom = 160.0
 focus_mode = 0
-text = "D"
+icon = ExtResource("4_8anos")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="LogManager" parent="CanvasLayer" instance=ExtResource("1_kiihf")]
-visible = false
 
 [connection signal="change_background" from="DialogueManager" to="." method="_on_dialogue_manager_change_background"]
 [connection signal="dialogue_finished" from="DialogueManager" to="." method="_on_dialogue_manager_dialogue_finished"]

@@ -18,6 +18,8 @@ extends Control
 @onready var music_player: Node = $MusicPlayer
 @onready var sound_effect_player: Node = $SoundEffectPlayer
 
+@onready var cover: Node = $Cover
+
 var active_characters: Array = []
 var active_objects: Array = []
 
@@ -46,7 +48,7 @@ signal dialogue_said(character: String, dialogue: String)
 signal dialogue_finished
 
 func _ready() -> void:
-	pass
+	SignalHandler.connect("skip_dialogue", Callable(self, "skip_dialogue"))
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") && advancing_active:
@@ -98,7 +100,6 @@ func dialogue_tween_finished() -> void:
 		advance_timer.start(DataHandler.game_settings["auto_advance_time"])
 
 func _on_skip_pressed() -> void:
-	text_box_state = TextBoxState.FINISHED
 	SignalHandler.emit_signal("scene_manager_show_dialog", "option", "skip_dialogue")
 
 func _on_log_pressed() -> void:
@@ -147,6 +148,11 @@ func process_dialogue_command() -> void:
 		"ACTION":
 			process_dialogue_action(current_command.parameters[0])
 			advance_dialogue()
+		"ADD_SCENE":
+			if ResourceLoader.exists(current_command.parameters[0]):
+				var new_game_scene: Node = load(current_command.parameters[0]).instantiate()
+				$Scenes.add_child(new_game_scene)
+			advance_dialogue()
 		"BG":
 			if current_command.parameters[0] == "NULL":
 				emit_signal("change_background", current_command.parameters[0])
@@ -158,6 +164,12 @@ func process_dialogue_command() -> void:
 			else:
 				emit_signal("change_background", current_command.parameters[0])
 				advance_dialogue()
+		"COVER":
+			if current_command.parameters[0] == "TRUE":
+				$CoverAnim.play("ShowCover")
+			elif current_command.parameters[0] == "FALSE":
+				$CoverAnim.play("HideCover")
+			advance_dialogue()	
 		"C_MAZ":
 			advancing_active = false
 			var movement_tween: Tween = create_tween()
@@ -197,7 +209,6 @@ func process_dialogue_command() -> void:
 		"CHAR_MOVE":
 			advancing_active = false
 			var tween: Tween = create_tween()
-			#TODO: get target character for moving
 			var target_character: Node = null
 			for character: Node in get_tree().get_nodes_in_group("characters"):
 				if character.character_name == current_command.parameters[0]:
@@ -231,6 +242,22 @@ func process_dialogue_command() -> void:
 				new_object.id = active_objects.size() + 1
 				new_object.change_texture(current_command.parameters[2])
 			advance_dialogue()
+		"OBJ_MOVE":
+			advancing_active = false
+			var tween: Tween = create_tween()
+			
+			var target_object: Node = null
+			for object: Node in get_tree().get_nodes_in_group("objects"):
+				if object.id == int(current_command.parameters[0]):
+					target_object = object
+					break
+				
+			if target_object:
+				tween.tween_property(target_object, "global_position", Vector2(float(current_command.parameters[1]) * get_viewport().size.x, float(current_command.parameters[2]) * get_viewport().size.y), float(current_command.parameters[3]))
+				tween.tween_callback(func() -> void: advancing_active = true)
+				tween.tween_callback(func() -> void: advance_dialogue())
+			else:
+				advance_dialogue()
 		"SAY":
 			text_box_state = TextBoxState.READING
 			text_label.visible_characters = 0
@@ -279,3 +306,8 @@ func process_dialogue_action(action: String) -> void:
 	match action:
 		_:
 			pass
+
+func skip_dialogue() -> void:
+	animation_player.play("HideDialogueBox_End")
+	advancing_active = false
+	emit_signal("dialogue_finished")

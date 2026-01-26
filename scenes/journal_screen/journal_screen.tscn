@@ -1,0 +1,840 @@
+[gd_scene load_steps=11 format=3 uid="uid://d1u7pfrpj8an4"]
+
+[ext_resource type="Script" uid="uid://bd483uoxt15qs" path="res://scenes/journal_screen/journal_screen.gd" id="1_4w50w"]
+[ext_resource type="Theme" uid="uid://cfe5ygomt3n1n" path="res://styles/default_theme.tres" id="2_hpyas"]
+[ext_resource type="PackedScene" uid="uid://c7ltg2m3wvovc" path="res://scenes/journal_screen/achievement_item.tscn" id="3_haoq5"]
+[ext_resource type="PackedScene" uid="uid://brmlv18klv8pn" path="res://scenes/journal_screen/word_item.tscn" id="4_kcir0"]
+
+[sub_resource type="Animation" id="Animation_s464a"]
+resource_name = "HideAchievements"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Achievements:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Achievements:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Achievements:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ToggleDisplay:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(256, 968), Vector2(256, 1032)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ToggleDisplay:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BackToTitle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(1408, 968), Vector2(1408, 1032)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BackToTitle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ToggleDisplay:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BackToTitle:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_krcge"]
+resource_name = "HideWordList"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WordList:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WordList:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WordList:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ToggleDisplay:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(256, 968), Vector2(256, 1032)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ToggleDisplay:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BackToTitle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(1408, 968), Vector2(1408, 1032)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BackToTitle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ToggleDisplay:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BackToTitle:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kcir0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Achievements:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Achievements:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WordList:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WordList:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Achievements:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WordList:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ToggleDisplay:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(256, 968)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ToggleDisplay:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ToggleDisplay:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BackToTitle:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BackToTitle:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1408, 968)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BackToTitle:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4w50w"]
+resource_name = "ShowAchievements"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Achievements:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Achievements:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(0, -32), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Achievements:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ToggleDisplay:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(256, 1032), Vector2(256, 968)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ToggleDisplay:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BackToTitle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(1408, 1032), Vector2(1408, 968)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BackToTitle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ToggleDisplay:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BackToTitle:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hpyas"]
+resource_name = "ShowWordList"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WordList:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(0, -32), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WordList:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WordList:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ToggleDisplay:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(256, 1032), Vector2(256, 968)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ToggleDisplay:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BackToTitle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(1408, 1032), Vector2(1408, 968)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BackToTitle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ToggleDisplay:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BackToTitle:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hpyas"]
+_data = {
+&"HideAchievements": SubResource("Animation_s464a"),
+&"HideWordList": SubResource("Animation_krcge"),
+&"RESET": SubResource("Animation_kcir0"),
+&"ShowAchievements": SubResource("Animation_4w50w"),
+&"ShowWordList": SubResource("Animation_hpyas")
+}
+
+[node name="JournalScreen" type="Node2D"]
+script = ExtResource("1_4w50w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hpyas")
+}
+
+[node name="Achievements" type="Control" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="WordList" type="Label" parent="Achievements"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 64.0
+offset_right = 1616.0
+offset_bottom = 131.0
+theme = ExtResource("2_hpyas")
+theme_type_variation = &"DialogText"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Achievements"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementItems" type="Control" parent="Achievements"]
+anchors_preset = 0
+offset_left = 192.0
+offset_top = 192.0
+offset_right = 1728.0
+offset_bottom = 768.0
+
+[node name="AchievementItem" parent="Achievements/AchievementItems" instance=ExtResource("3_haoq5")]
+layout_mode = 2
+achievement_id = 1
+
+[node name="AchievementItem4" parent="Achievements/AchievementItems" instance=ExtResource("3_haoq5")]
+offset_left = 320.0
+offset_right = 576.0
+achievement_id = 2
+
+[node name="AchievementItem2" parent="Achievements/AchievementItems" instance=ExtResource("3_haoq5")]
+offset_left = 640.0
+offset_right = 896.0
+achievement_id = 3
+
+[node name="AchievementItem3" parent="Achievements/AchievementItems" instance=ExtResource("3_haoq5")]
+offset_left = 960.0
+offset_right = 1216.0
+achievement_id = 4
+
+[node name="AchievementItem5" parent="Achievements/AchievementItems" instance=ExtResource("3_haoq5")]
+offset_left = 1280.0
+offset_right = 1536.0
+achievement_id = 5
+
+[node name="AchievementItem6" parent="Achievements/AchievementItems" instance=ExtResource("3_haoq5")]
+offset_top = 320.0
+offset_bottom = 576.0
+achievement_id = 6
+
+[node name="AchievementItem7" parent="Achievements/AchievementItems" instance=ExtResource("3_haoq5")]
+offset_left = 320.0
+offset_top = 320.0
+offset_right = 576.0
+offset_bottom = 576.0
+achievement_id = 7
+
+[node name="AchievementItem8" parent="Achievements/AchievementItems" instance=ExtResource("3_haoq5")]
+offset_left = 640.0
+offset_top = 320.0
+offset_right = 896.0
+offset_bottom = 576.0
+achievement_id = 8
+
+[node name="AchievementItem9" parent="Achievements/AchievementItems" instance=ExtResource("3_haoq5")]
+offset_left = 960.0
+offset_top = 320.0
+offset_right = 1216.0
+offset_bottom = 576.0
+achievement_id = 9
+
+[node name="AchievementItem10" parent="Achievements/AchievementItems" instance=ExtResource("3_haoq5")]
+offset_left = 1280.0
+offset_top = 320.0
+offset_right = 1536.0
+offset_bottom = 576.0
+achievement_id = 10
+
+[node name="AchievementDesc" type="Control" parent="Achievements"]
+anchors_preset = 0
+
+[node name="AchievementName" type="Label" parent="Achievements/AchievementDesc"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 832.0
+offset_right = 1408.0
+offset_bottom = 912.0
+theme = ExtResource("2_hpyas")
+theme_override_font_sizes/font_size = 48
+text = "So It Begins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementDesc" type="Label" parent="Achievements/AchievementDesc"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 912.0
+offset_right = 1344.0
+offset_bottom = 1024.0
+theme = ExtResource("2_hpyas")
+text = "Complete reading Act I."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WordList" type="Control" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="WordList" type="Label" parent="WordList"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 64.0
+offset_right = 1616.0
+offset_bottom = 131.0
+theme = ExtResource("2_hpyas")
+theme_type_variation = &"DialogText"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Word List"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="WordList"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 192.0
+offset_right = 712.0
+offset_bottom = 952.0
+horizontal_scroll_mode = 0
+
+[node name="WordContainer" type="VBoxContainer" parent="WordList/ScrollContainer"]
+custom_minimum_size = Vector2(512, 760)
+layout_mode = 2
+
+[node name="WordItem" parent="WordList/ScrollContainer/WordContainer" instance=ExtResource("4_kcir0")]
+layout_mode = 2
+
+[node name="WordItem2" parent="WordList/ScrollContainer/WordContainer" instance=ExtResource("4_kcir0")]
+layout_mode = 2
+
+[node name="WordItem3" parent="WordList/ScrollContainer/WordContainer" instance=ExtResource("4_kcir0")]
+layout_mode = 2
+
+[node name="WordItem4" parent="WordList/ScrollContainer/WordContainer" instance=ExtResource("4_kcir0")]
+layout_mode = 2
+
+[node name="WordItem5" parent="WordList/ScrollContainer/WordContainer" instance=ExtResource("4_kcir0")]
+layout_mode = 2
+
+[node name="WordItem6" parent="WordList/ScrollContainer/WordContainer" instance=ExtResource("4_kcir0")]
+layout_mode = 2
+
+[node name="WordItem7" parent="WordList/ScrollContainer/WordContainer" instance=ExtResource("4_kcir0")]
+layout_mode = 2
+
+[node name="CurrentWord" type="RichTextLabel" parent="WordList"]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 192.0
+offset_right = 1792.0
+offset_bottom = 280.0
+theme = ExtResource("2_hpyas")
+theme_override_colors/default_color = Color(0.754825, 0.754825, 0.754825, 1)
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Test [color=ff8cc8](n.)[/color]"
+vertical_alignment = 1
+
+[node name="Definition" type="Label" parent="WordList"]
+layout_mode = 0
+offset_left = 784.0
+offset_top = 296.0
+offset_right = 1776.0
+offset_bottom = 816.0
+theme = ExtResource("2_hpyas")
+theme_override_font_sizes/font_size = 42
+text = "The quick brown fox jumps over the lazy dog."
+
+[node name="Source" type="Label" parent="WordList"]
+layout_mode = 0
+offset_left = 784.0
+offset_top = 832.0
+offset_right = 1776.0
+offset_bottom = 960.0
+theme = ExtResource("2_hpyas")
+theme_override_font_sizes/font_size = 32
+text = "Source:"
+vertical_alignment = 1
+
+[node name="ToggleDisplay" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 256.0
+offset_top = 968.0
+offset_right = 512.0
+offset_bottom = 1032.0
+focus_mode = 0
+theme = ExtResource("2_hpyas")
+theme_type_variation = &"DialogButton"
+text = "Word List"
+
+[node name="BackToTitle" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1408.0
+offset_top = 968.0
+offset_right = 1664.0
+offset_bottom = 1032.0
+focus_mode = 0
+theme = ExtResource("2_hpyas")
+theme_type_variation = &"DialogButton"
+text = "Return"
+
+[connection signal="pressed" from="ToggleDisplay" to="." method="_on_toggle_display_pressed"]
+[connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]

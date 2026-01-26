@@ -6,3 +6,4 @@ extends Control
 func set_log_item_text(character_text: String, dialogue_text: String) -> void:
 	character.text = character_text
 	dialogue.text = dialogue_text
+	self.custom_minimum_size.y = character.get_combined_minimum_size().y + dialogue.get_combined_minimum_size().y
