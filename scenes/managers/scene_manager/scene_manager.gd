@@ -14,6 +14,8 @@ var root_scene_path: String = ""
 
 var scene_loaded: bool = false
 
+var dialogue_path: String = ""
+
 func _ready() -> void:
 	SignalHandler.connect("scene_manager_change_scene", Callable(self, "change_scene"))
 	SignalHandler.connect("scene_manager_show_dialog", Callable(self, "scene_manager_show_dialog"))
@@ -49,7 +51,7 @@ func load_scene() -> void:
 	scene_loaded = false
 	ResourceLoader.load_threaded_request(root_scene_path)
 	
-func change_scene(path: String) -> void:
+func change_scene(path: String, dialogue_arg: String = "") -> void:
 	if FileAccess.file_exists(path):
 		animation_player.play("ShowLoading")
 		root_scene_path = path
@@ -57,6 +59,9 @@ func change_scene(path: String) -> void:
 		root_scene_path = ""
 		print_debug("Cannot change scene, as %s does not exist." % path)
 		scene_manager_show_dialog("message", "error_scene")
+	
+	if dialogue_arg != "":
+		dialogue_path = dialogue_arg
 
 func _on_message_dialog_okay_pressed(action: String) -> void:
 	process_action(action)
@@ -117,3 +122,6 @@ func set_root_scene_load_ready() -> void:
 	if root_scene:
 		if root_scene.has_method("load_ready"):
 			root_scene.load_ready()
+		#DO NOT DO THIS KIDS!!! this is very dangerous
+		if root_scene.has_method("set_dialogue"):
+			root_scene.set_dialogue(dialogue_path)

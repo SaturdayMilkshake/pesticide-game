@@ -7,6 +7,16 @@ var messages: Dictionary = {
 		"message": "Are you sure you want to exit the current chapter?",
 		"action": "return_chapter",
 	},
+	"credits": {
+		"title": "Credits",
+		"message": "A game by Gian Marco Batarilan (SaturdayMilkshake)
+		Created for my research subject
+		
+		Made with Godot 4
+		Art created with Krita
+		Music composed with LMMS",
+		"action": "",
+	},
 	"error_header": {
 		"title": "Message Header Error",
 		"message": "Message header not found! Header: ",

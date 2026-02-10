@@ -6,9 +6,6 @@ signal dialogue_file_processed(dialogue: Array)
 
 var dialogue: Array = []
 
-func _ready() -> void:
-	read_file()
-
 func read_file() -> void:
 	var dialogue_file: FileAccess = FileAccess.open(dialogue_file_path, FileAccess.READ)
 	if dialogue_file != null:

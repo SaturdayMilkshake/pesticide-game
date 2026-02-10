@@ -5,30 +5,34 @@ extends Node2D
 var act_data: Array = [
 	{
 		"title": "Act I",
-		"desc": "The quick brown fox jumps over the lazy dog... Sat, I think this sentence is getting a bit repetitive...",
+		"desc": "The Human Reproductive System",
 		"topics": "-Topic 1\n-Topic 2\n-Topic 3",
+		"image": "res://assets/backgrounds/act1_bg.png",
+		"link": "res://scenes/managers/game_manager/game_manager.tscn",
+		"arg": "res://dialogue/prologue.csv",
 	},
 	{
 		"title": "Act II",
-		"desc": "The quick brown fox jumps over the lazy dog... Sat, I think this sentence is getting a bit repetitive...",
+		"desc": "Human Reproduction",
 		"topics": "-Topic 1\n-Topic 2\n-Topic 3",
+		"image": "res://assets/backgrounds/act2_bg.png",
+		"link": "res://scenes/managers/game_manager/game_manager.tscn",
+		"arg": "res://dialogue/yuri.csv",
 	},
 	{
 		"title": "Act III",
-		"desc": "The quick brown fox jumps over the lazy dog... Sat, I think this sentence is getting a bit repetitive...",
+		"desc": "Taking Care of Yourself",
 		"topics": "-Topic 1\n-Topic 2\n-Topic 3",
-	},
-	{
-		"title": "Epilogue",
-		"desc": "The quick brown fox jumps over the lazy dog... Sat, I think this sentence is getting a bit repetitive...",
-		"topics": "-Topic 1\n-Topic 2\n-Topic 3",
+		"image": "res://assets/backgrounds/act3_bg.png",
+		"link": "res://scenes/managers/game_manager/game_manager.tscn",
+		"arg": "",
 	},
 ]
 
 var current_act_index: int = 0
 
 func _ready() -> void:
-	pass
+	$BGAnim.play("AnimateBG")
 
 func load_ready() -> void:
 	animation_player.queue("ShowNewAct")
@@ -62,3 +66,11 @@ func change_act_info() -> void:
 	$ActDesc/ActTitle.text = current_act_data["title"]
 	$ActDesc/ActDesc.text = current_act_data["desc"]
 	$ActDesc/TopicDesc.text = current_act_data["topics"]
+	$ActBG/ActTexture.texture = load(current_act_data["image"])
+
+func _on_play_act_pressed() -> void:
+	var current_act_data: Dictionary = act_data[current_act_index]
+	
+	animation_player.play("HideAct")
+	$AnimationPlayer2.play("HidePlayButton")
+	SignalHandler.emit_signal("scene_manager_change_scene", current_act_data["link"], current_act_data["arg"])

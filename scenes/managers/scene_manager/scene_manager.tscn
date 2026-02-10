@@ -483,10 +483,10 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_kh10l"]
-interpolation_mode = 2
 interpolation_color_space = 2
-offsets = PackedFloat32Array(0.8775, 1)
-colors = PackedColorArray(0.57, 0.0171, 0.302765, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.8775, 0.9, 1)
+colors = PackedColorArray(0.57, 0.0171, 0.302765, 1, 0.29, 0, 0.140167, 0, 1, 1, 1, 0)
+metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_u1a3x"]
 gradient = SubResource("Gradient_kh10l")
@@ -495,7 +495,7 @@ fill_to = Vector2(0.5, 0)
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_570er")
-starting_scene_override = "uid://b6l0abp45x6su"
+starting_scene_override = "uid://bkpqfx1nvmimq"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

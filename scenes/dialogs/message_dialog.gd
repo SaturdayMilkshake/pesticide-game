@@ -2,7 +2,7 @@ extends Control
 
 @onready var animation_player: Node = $AnimationPlayer
 
-@onready var dialog_text: Node = $DialogText
+@onready var dialog_text: Node = $ScrollContainer/DialogText
 @onready var dialog_title: Node = $DialogTitle
 
 var button: Node = null

@@ -262,7 +262,7 @@ offset_bottom = 1016.0
 [node name="TextBoxBackground" type="Panel" parent="CanvasLayer/DialogueBox"]
 layout_mode = 0
 offset_right = 1792.0
-offset_bottom = 256.0
+offset_bottom = 264.0
 theme = ExtResource("2_56vqo")
 theme_type_variation = &"DialogPanel"
 
@@ -313,18 +313,18 @@ text = "Auto"
 [node name="CharacterLabelBackground" type="Panel" parent="CanvasLayer/DialogueBox"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = -32.0
+offset_top = -40.0
 offset_right = 528.0
-offset_bottom = 16.0
+offset_bottom = 8.0
 theme = ExtResource("2_56vqo")
 theme_type_variation = &"CharacterLabelPanel"
 
 [node name="CharacterLabel" type="Label" parent="CanvasLayer/DialogueBox"]
 layout_mode = 0
 offset_left = 32.0
-offset_top = -26.0
+offset_top = -32.0
 offset_right = 512.0
-offset_bottom = 8.0
+offset_bottom = 2.0
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -370,13 +370,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Cover" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
 [node name="DialogueFileManager" parent="." instance=ExtResource("4_wja8m")]
-dialogue_file_path = "uid://c6f3jjmuvlcno"
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(960, 540)

@@ -1,12 +1,12 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://cfe5ygomt3n1n"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://cfe5ygomt3n1n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsus1"]
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-shadow_color = Color(0.8, 0.8, 0.8, 0.603922)
-shadow_size = 8
 shadow_offset = Vector2(0, -2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yajo1"]
@@ -42,18 +42,18 @@ shadow_size = 2
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51cmb"]
-bg_color = Color(0.6, 0.6, 0.658824, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_blend = true
+bg_color = Color(0.37, 0.3478, 0.36334, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-shadow_color = Color(0.5, 0.5, 0.5, 0.541176)
-shadow_size = 2
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
 shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ew48u"]
@@ -134,18 +134,16 @@ shadow_size = 4
 shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obmgs"]
-bg_color = Color(0.922737, 0.922737, 0.922737, 1)
+bg_color = Color(0.97, 0.9021, 0.948498, 1)
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
-border_blend = true
+border_color = Color(0.122985, 0.122985, 0.122985, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-shadow_color = Color(0.8, 0.8, 0.8, 0.603922)
-shadow_size = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56hmt"]
 bg_color = Color(0.705882, 0.529412, 0.705882, 1)
@@ -163,11 +161,27 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkq3r"]
 bg_color = Color(0.681423, 0.681423, 0.681423, 1)
+border_width_left = 8
+border_width_right = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snjtj"]
 bg_color = Color(0.8, 0.52, 0.613333, 1)
+border_width_left = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kl3q"]
+bg_color = Color(0.860704, 0.849838, 0.859091, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
@@ -201,10 +215,12 @@ DialogTitle/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
 DialogTitle/font_sizes/font_size = 40
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_56hmt")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_xipde")
-Label/font_sizes/font_size = 32
+Label/font_sizes/font_size = 24
 LoadingLabel/base_type = &"Label"
 LoadingLabel/font_sizes/font_size = 48
 ProgressBar/styles/background = SubResource("StyleBoxFlat_qkq3r")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_snjtj")
 RichTextLabel/colors/default_color = Color(0.376471, 0.376471, 0.376471, 1)
 RichTextLabel/font_sizes/normal_font_size = 42
+StageSelectPanel/base_type = &"Panel"
+StageSelectPanel/styles/panel = SubResource("StyleBoxFlat_7kl3q")

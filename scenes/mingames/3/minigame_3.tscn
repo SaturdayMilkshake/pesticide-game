@@ -1,0 +1,264 @@
+[gd_scene load_steps=10 format=3 uid="uid://ptaqiqcqcjq3"]
+
+[ext_resource type="Script" uid="uid://b6gkr2f7bv4ew" path="res://scenes/mingames/3/minigame_3.gd" id="1_ipg6a"]
+[ext_resource type="Texture2D" uid="uid://btb06drpcfiri" path="res://assets/backgrounds/minigame3_bg.png" id="2_y3six"]
+[ext_resource type="Theme" uid="uid://cfe5ygomt3n1n" path="res://styles/default_theme.tres" id="3_xmkfl"]
+
+[sub_resource type="Animation" id="Animation_qtevx"]
+resource_name = "AnimateBG"
+length = 4.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MinigameBG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1920, -1080), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qbifi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MinigameBG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qbifi"]
+_data = {
+&"AnimateBG": SubResource("Animation_qtevx"),
+&"RESET": SubResource("Animation_qbifi")
+}
+
+[sub_resource type="Animation" id="Animation_xmkfl"]
+resource_name = "Intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObjects/Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameObjects/Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameObjects/Panel/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameObjects/Panel/Label:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_288ot"]
+resource_name = "Instructions"
+length = 6.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObjects/Panel2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameObjects/Panel2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameObjects/Panel2:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameObjects/Panel2/Instructions:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameObjects/Panel2/Instructions:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameObjects/Panel2/Okay:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GameObjects/Panel2/Okay:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iskgp"]
+_data = {
+&"Instructions": SubResource("Animation_288ot"),
+&"Intro": SubResource("Animation_xmkfl")
+}
+
+[node name="Minigame3" type="Node2D"]
+script = ExtResource("1_ipg6a")
+
+[node name="MinigameBG" type="TextureRect" parent="."]
+offset_right = 3840.0
+offset_bottom = 2160.0
+pivot_offset = Vector2(960, 540)
+texture = ExtResource("2_y3six")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="BGAnim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qbifi")
+}
+
+[node name="GameAnim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_iskgp")
+}
+
+[node name="GameObjects" type="Node2D" parent="."]
+
+[node name="Panel" type="Panel" parent="GameObjects"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 64.0
+offset_top = 832.0
+offset_right = 1856.0
+offset_bottom = 1024.0
+theme = ExtResource("3_xmkfl")
+theme_type_variation = &"DialogPanel"
+
+[node name="Label" type="RichTextLabel" parent="GameObjects/Panel"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 1752.0
+offset_bottom = 168.0
+text = "Let's apply what we've learned in this chapter!"
+
+[node name="Panel2" type="Panel" parent="GameObjects"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 192.0
+offset_top = 80.0
+offset_right = 1728.0
+offset_bottom = 248.0
+theme = ExtResource("3_xmkfl")
+theme_type_variation = &"DialogPanel"
+
+[node name="Instructions" type="RichTextLabel" parent="GameObjects/Panel2"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 8.0
+offset_top = -24.0
+offset_right = 1528.0
+offset_bottom = 128.0
+theme = ExtResource("3_xmkfl")
+theme_override_font_sizes/normal_font_size = 48
+text = "Instructions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Okay" type="Button" parent="GameObjects/Panel2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 672.0
+offset_top = 688.0
+offset_right = 864.0
+offset_bottom = 784.0
+focus_mode = 0
+theme = ExtResource("3_xmkfl")
+theme_type_variation = &"DialogButtonAccept"
+text = "Okay!"

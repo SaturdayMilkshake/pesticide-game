@@ -141,6 +141,7 @@ func set_character_portrait(_target: int, _new_texture: String) -> void:
 func _on_dialogue_file_manager_dialogue_file_processed(new_dialogue: Array) -> void:
 	dialogue = new_dialogue
 	advancing_active = true
+	process_dialogue_command()
 
 func process_dialogue_command() -> void:
 	var current_command: DialogueData = dialogue[current_dialogue_index]
@@ -282,6 +283,13 @@ func process_dialogue_command() -> void:
 			get_tree().call_group("characters", "set_saying_status", current_command.parameters[0])
 				
 			emit_signal("dialogue_said", current_command.parameters[0], current_command.parameters[1])
+		"SCENE":
+			if ResourceLoader.exists(current_command.parameters[0]):
+				SignalHandler.emit_signal("scene_manager_change_scene", current_command.parameters[0])
+				advancing_active = false
+				advance_timer.stop()
+			else:
+				advance_dialogue()
 		"WAIT":
 			advancing_active = false
 			wait_timer.start(float(current_command.parameters[0]))
@@ -311,3 +319,7 @@ func skip_dialogue() -> void:
 	animation_player.play("HideDialogueBox_End")
 	advancing_active = false
 	emit_signal("dialogue_finished")
+
+func set_dialogue(path: String) -> void:
+	$DialogueFileManager.dialogue_file_path = path
+	$DialogueFileManager.read_file()

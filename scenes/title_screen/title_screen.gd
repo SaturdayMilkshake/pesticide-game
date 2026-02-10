@@ -19,5 +19,6 @@ func _on_quit_pressed() -> void:
 func _on_play_pressed() -> void:
 	SignalHandler.emit_signal("scene_manager_change_scene", "res://scenes/stage_select_screen/stage_select_screen.tscn")
 
+#this is the credits
 func _on_button_pressed() -> void:
-	SignalHandler.emit_signal("scene_manager_change_scene", "res://scenes/credits_screen/credits_screen.tscn")
+	SignalHandler.emit_signal("scene_manager_show_dialog", "message", "credits")

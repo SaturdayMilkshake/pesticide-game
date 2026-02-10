@@ -1,13 +1,13 @@
 SAY,???,Hmm...,,
 CHAR,Magenta,0.3,0.7,res://assets/characters/magenta_down.png
-CHAR,Maya,0.7,0.7,res://assets/characters/maya_base.png
+CHAR,Maya,0.7,0.7,res://assets/characters/maya_normal.png
 OBJ,0,0,,
 WAIT,1,,,
 SAY,Magenta,[color=red]Hello world![/color],,
-SAY,Magenta,[color=ff00ff]Demonstration![/color] iajwidjiwajidjajdj wdjajwjdipawjpidjipawd wijadjwpdijawipdjipawjid [color=cyan]CYAN!!!!!!![/color] testing testing testing word length large large large,res://assets/characters/magenta_hurt_down.png,
-SAY,Magenta,The quick brown fox jumps over the lazy dog.,res://assets/characters/magenta_down.png,
+SAY,Magenta,Take us straight to the first minigame!,res://assets/characters/magenta_hurt_down.png,
+SCENE,res://scenes/mingames/1/minigame_1.tscn,,,
 CHAR_MOVE,Maya,0.7,0.7,0.7
-SAY,Maya,Shut up with these weird dialogue demonstrations.,res://assets/characters/maya_base.png,
+SAY,Maya,Yeah!!!,res://assets/characters/maya_happy.png,
 SAY,Magenta,Not sure what they meant by that.,,
 SAY,Magenta,"Have you ever tried stand-up comedy, Navy?",,
 SAY,Maya,I have no interest in such frivolous matters.,,

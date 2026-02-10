@@ -5,8 +5,12 @@ extends Node
 @export var background: Node = null
 @onready var animation_player: Node = $AnimationPlayer
 
+func set_dialogue(path: String) -> void:
+	dialogue_manager.set_dialogue(path)
+
 func load_ready() -> void:
-	dialogue_manager.process_dialogue_command()
+	#dialogue_manager.process_dialogue_command()
+	pass
 
 func _on_dialogue_manager_log_showing_requested() -> void:
 	log_manager.show_log()
