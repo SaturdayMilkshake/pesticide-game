@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bux8hg05irddo"]
+[gd_scene load_steps=33 format=3 uid="uid://bux8hg05irddo"]
 
 [ext_resource type="Script" uid="uid://bepvaix5s833m" path="res://scenes/mingames/2/minigame_2.gd" id="1_vmhmo"]
 [ext_resource type="Texture2D" uid="uid://17wvvnx22axh" path="res://assets/backgrounds/minigame2_bg.png" id="2_rlepj"]
-[ext_resource type="Theme" uid="uid://cfe5ygomt3n1n" path="res://styles/default_theme.tres" id="3_pym5u"]
+[ext_resource type="FontFile" uid="uid://b6q6w1yjybga3" path="res://assets/fonts/saturan.ttf" id="3_dhl8j"]
+[ext_resource type="Texture2D" uid="uid://42yc2r7v4jqt" path="res://assets/backgrounds/timer_gradient.png" id="4_dhl8j"]
 
 [sub_resource type="Animation" id="Animation_qtevx"]
 resource_name = "AnimateBG"
@@ -43,60 +44,98 @@ _data = {
 &"RESET": SubResource("Animation_qbifi")
 }
 
-[sub_resource type="Animation" id="Animation_pym5u"]
-resource_name = "Intro"
+[sub_resource type="Animation" id="Animation_bxh4o"]
+resource_name = "HideInstructions"
+length = 3.0
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameObjects/Panel:position")
+tracks/0/path = NodePath("GameObjects/Panel2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 0.2),
 "update": 0,
-"values": []
+"values": [Vector2(192, 112), Vector2(192, 80)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameObjects/Panel:modulate")
+tracks/1/path = NodePath("GameObjects/Panel2:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 0.2),
 "update": 0,
-"values": []
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("GameObjects/Panel/Label:position")
+tracks/2/path = NodePath("GameObjects/Panel2/Instructions:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(0.2, 0.2),
 "update": 0,
-"values": []
+"values": [Vector2(8, 8), Vector2(8, -24)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("GameObjects/Panel/Label:modulate")
+tracks/3/path = NodePath("GameObjects/Panel2/Instructions:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(0.2, 0.2),
 "update": 0,
-"values": []
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameObjects/Panel2/Okay:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameObjects/Panel2:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(1536, 848), Vector2(1536, 168)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GameObjects/Panel2/Okay:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(672, 688), Vector2(672, 112)]
 }
 
 [sub_resource type="Animation" id="Animation_dhl8j"]
 resource_name = "Instructions"
-length = 6.0
+length = 4.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -171,6 +210,57 @@ tracks/5/keys = {
 "values": [Vector2(1536, 168), Vector2(1536, 168), Vector2(1536, 848)]
 }
 
+[sub_resource type="Animation" id="Animation_pym5u"]
+resource_name = "Intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObjects/Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameObjects/Panel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameObjects/Panel/Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameObjects/Panel/Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
 [sub_resource type="Animation" id="Animation_w6tgr"]
 resource_name = "RESET"
 length = 0.001
@@ -187,20 +277,345 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1536, 168)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameObjects/Panel2/Okay:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(672, 688)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameObjects/Panel2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v251m"]
+resource_name = "ShowTimer"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObjects/Timer/TextureRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.402044, 1),
+"update": 0,
+"values": [-6.28319, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameAnim")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"ShowQuestion", -1, 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dhl8j"]
 _data = {
+&"HideInstructions": SubResource("Animation_bxh4o"),
 &"Instructions": SubResource("Animation_dhl8j"),
 &"Intro": SubResource("Animation_pym5u"),
-&"RESET": SubResource("Animation_w6tgr")
+&"RESET": SubResource("Animation_w6tgr"),
+&"ShowTimer": SubResource("Animation_v251m")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsus1"]
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bonrw"]
+bg_color = Color(0.36, 0.3384, 0.35352, 0.384314)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kqqb"]
+bg_color = Color(0.37, 0.3478, 0.36334, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yajo1"]
+bg_color = Color(0.228558, 0.212942, 0.223881, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ew48u"]
+bg_color = Color(0.228558, 0.212942, 0.223881, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51cmb"]
+bg_color = Color(0.37, 0.3478, 0.36334, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5n7q"]
+bg_color = Color(0.228558, 0.212942, 0.223881, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4sti"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i2mm"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cl2hn"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqcqf"]
+bg_color = Color(0.84, 0.63, 0.749, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xtm7"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obmgs"]
+bg_color = Color(0.97, 0.9021, 0.948498, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.122985, 0.122985, 0.122985, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56hmt"]
+bg_color = Color(0.705882, 0.529412, 0.705882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xipde"]
+bg_color = Color(0.705882, 0.529412, 0.705882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkq3r"]
+bg_color = Color(0.681423, 0.681423, 0.681423, 1)
+border_width_left = 8
+border_width_right = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snjtj"]
+bg_color = Color(0.8, 0.52, 0.613333, 1)
+border_width_left = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kl3q"]
+bg_color = Color(0.860704, 0.849838, 0.859091, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_wja8m"]
+CharacterLabelPanel/base_type = &"Panel"
+CharacterLabelPanel/styles/panel = SubResource("StyleBoxFlat_nsus1")
+DialogButton/base_type = &"Button"
+DialogButton/colors/font_color = Color(1, 1, 1, 1)
+DialogButton/colors/font_outline_color = Color(1, 1, 1, 1)
+DialogButton/constants/outline_size = 8
+DialogButton/font_sizes/font_size = 32
+DialogButton/fonts/font = ExtResource("3_dhl8j")
+DialogButton/styles/disabled = SubResource("StyleBoxFlat_bonrw")
+DialogButton/styles/focus = SubResource("StyleBoxFlat_0kqqb")
+DialogButton/styles/hover = SubResource("StyleBoxFlat_yajo1")
+DialogButton/styles/hover_pressed = SubResource("StyleBoxFlat_ew48u")
+DialogButton/styles/normal = SubResource("StyleBoxFlat_51cmb")
+DialogButton/styles/pressed = SubResource("StyleBoxFlat_k5n7q")
+DialogButtonAccept/base_type = &"Button"
+DialogButtonAccept/colors/font_color = Color(1, 1, 1, 1)
+DialogButtonAccept/font_sizes/font_size = 32
+DialogButtonAccept/styles/disabled = null
+DialogButtonAccept/styles/focus = SubResource("StyleBoxFlat_l4sti")
+DialogButtonAccept/styles/hover = SubResource("StyleBoxFlat_5i2mm")
+DialogButtonAccept/styles/hover_pressed = SubResource("StyleBoxFlat_cl2hn")
+DialogButtonAccept/styles/normal = SubResource("StyleBoxFlat_pqcqf")
+DialogButtonAccept/styles/pressed = SubResource("StyleBoxFlat_5xtm7")
+DialogPanel/base_type = &"Panel"
+DialogPanel/styles/panel = SubResource("StyleBoxFlat_obmgs")
+DialogText/base_type = &"Label"
+DialogText/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
+DialogText/font_sizes/font_size = 48
+DialogText/fonts/font = ExtResource("3_dhl8j")
+DialogTitle/base_type = &"Label"
+DialogTitle/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
+DialogTitle/font_sizes/font_size = 40
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_56hmt")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_xipde")
+Label/constants/outline_size = 3
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("3_dhl8j")
+LoadingLabel/base_type = &"Label"
+LoadingLabel/font_sizes/font_size = 48
+ProgressBar/styles/background = SubResource("StyleBoxFlat_qkq3r")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_snjtj")
+RichTextLabel/colors/default_color = Color(0.376471, 0.376471, 0.376471, 1)
+RichTextLabel/colors/font_outline_color = Color(0.376471, 0.376471, 0.376471, 1)
+RichTextLabel/constants/outline_size = 6
+RichTextLabel/constants/table_v_separation = 12
+RichTextLabel/font_sizes/normal_font_size = 42
+RichTextLabel/fonts/normal_font = ExtResource("3_dhl8j")
+StageSelectPanel/base_type = &"Panel"
+StageSelectPanel/styles/panel = SubResource("StyleBoxFlat_7kl3q")
 
 [node name="Minigame2" type="Node2D"]
 script = ExtResource("1_vmhmo")
 
 [node name="MinigameBG" type="TextureRect" parent="."]
-offset_right = 3840.0
-offset_bottom = 2160.0
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("2_rlepj")
 expand_mode = 1
 stretch_mode = 1
@@ -223,7 +638,7 @@ offset_left = 64.0
 offset_top = 832.0
 offset_right = 1856.0
 offset_bottom = 1024.0
-theme = ExtResource("3_pym5u")
+theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogPanel"
 
 [node name="Label" type="RichTextLabel" parent="GameObjects/Panel"]
@@ -239,32 +654,55 @@ text = "Let's apply what we've learned in this chapter!"
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(1536, 168)
 offset_left = 192.0
-offset_top = 80.0
+offset_top = 112.0
 offset_right = 1728.0
-offset_bottom = 248.0
-theme = ExtResource("3_pym5u")
+offset_bottom = 960.0
+theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogPanel"
 
 [node name="Instructions" type="RichTextLabel" parent="GameObjects/Panel2"]
-modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 8.0
-offset_top = -24.0
+offset_top = 8.0
 offset_right = 1528.0
-offset_bottom = 128.0
-theme = ExtResource("3_pym5u")
+offset_bottom = 160.0
+theme = SubResource("Theme_wja8m")
 theme_override_font_sizes/normal_font_size = 48
 text = "Instructions"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Okay" type="Button" parent="GameObjects/Panel2"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 672.0
 offset_top = 688.0
 offset_right = 864.0
 offset_bottom = 784.0
 focus_mode = 0
-theme = ExtResource("3_pym5u")
+theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogButtonAccept"
 text = "Okay!"
+
+[node name="Timer" type="Node2D" parent="GameObjects"]
+
+[node name="Timer" type="Timer" parent="GameObjects/Timer"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GameObjects/Timer"]
+offset_left = 328.0
+offset_top = 80.0
+offset_right = 1664.0
+offset_bottom = 176.0
+max_value = 15.0
+step = 0.001
+value = 15.0
+texture_progress = ExtResource("4_dhl8j")
+
+[node name="TextureRect" type="ColorRect" parent="GameObjects/Timer"]
+offset_left = 256.0
+offset_top = 32.0
+offset_right = 448.0
+offset_bottom = 224.0
+rotation = -6.28319
+pivot_offset = Vector2(96, 96)
+
+[connection signal="pressed" from="GameObjects/Panel2/Okay" to="." method="_on_okay_pressed"]

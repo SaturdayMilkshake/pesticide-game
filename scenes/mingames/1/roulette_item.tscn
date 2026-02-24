@@ -1,55 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://c7qiofigeie0o"]
+[gd_scene load_steps=23 format=3 uid="uid://dyk3geju645e1"]
 
-[ext_resource type="Script" uid="uid://s61s7v3ysnh7" path="res://scenes/title_screen/title_screen.gd" id="1_5df70"]
-[ext_resource type="Texture2D" uid="uid://bajtyhw1dth5e" path="res://assets/backgrounds/scene_select_bg.png" id="2_ri6bm"]
-[ext_resource type="FontFile" uid="uid://b6q6w1yjybga3" path="res://assets/fonts/saturan.ttf" id="3_ri6bm"]
+[ext_resource type="Script" uid="uid://bpd560eud2g15" path="res://scenes/mingames/1/roulette_item.gd" id="1_6aqaw"]
+[ext_resource type="FontFile" uid="uid://b6q6w1yjybga3" path="res://assets/fonts/saturan.ttf" id="2_es2ix"]
 
-[sub_resource type="Animation" id="Animation_ri6bm"]
-resource_name = "OpeningAnimation"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_d6x3v"]
-_data = {
-&"OpeningAnimation": SubResource("Animation_ri6bm")
-}
-
-[sub_resource type="Animation" id="Animation_vuv2h"]
-resource_name = "BackgroundAnim"
-length = 8.0
-loop_mode = 1
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1920, 0), Vector2(3840, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_d6x3v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ri6bm"]
-_data = {
-&"BackgroundAnim": SubResource("Animation_vuv2h"),
-&"RESET": SubResource("Animation_d6x3v")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6aqaw"]
+size = Vector2(256, 256)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsus1"]
 border_width_left = 8
@@ -275,7 +230,7 @@ DialogButton/colors/font_color = Color(1, 1, 1, 1)
 DialogButton/colors/font_outline_color = Color(1, 1, 1, 1)
 DialogButton/constants/outline_size = 8
 DialogButton/font_sizes/font_size = 32
-DialogButton/fonts/font = ExtResource("3_ri6bm")
+DialogButton/fonts/font = ExtResource("2_es2ix")
 DialogButton/styles/disabled = SubResource("StyleBoxFlat_bonrw")
 DialogButton/styles/focus = SubResource("StyleBoxFlat_0kqqb")
 DialogButton/styles/hover = SubResource("StyleBoxFlat_yajo1")
@@ -296,7 +251,7 @@ DialogPanel/styles/panel = SubResource("StyleBoxFlat_obmgs")
 DialogText/base_type = &"Label"
 DialogText/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
 DialogText/font_sizes/font_size = 48
-DialogText/fonts/font = ExtResource("3_ri6bm")
+DialogText/fonts/font = ExtResource("2_es2ix")
 DialogTitle/base_type = &"Label"
 DialogTitle/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
 DialogTitle/font_sizes/font_size = 40
@@ -304,7 +259,7 @@ HSlider/styles/grabber_area = SubResource("StyleBoxFlat_56hmt")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_xipde")
 Label/constants/outline_size = 3
 Label/font_sizes/font_size = 24
-Label/fonts/font = ExtResource("3_ri6bm")
+Label/fonts/font = ExtResource("2_es2ix")
 LoadingLabel/base_type = &"Label"
 LoadingLabel/font_sizes/font_size = 48
 ProgressBar/styles/background = SubResource("StyleBoxFlat_qkq3r")
@@ -314,117 +269,23 @@ RichTextLabel/colors/font_outline_color = Color(0.376471, 0.376471, 0.376471, 1)
 RichTextLabel/constants/outline_size = 6
 RichTextLabel/constants/table_v_separation = 12
 RichTextLabel/font_sizes/normal_font_size = 42
-RichTextLabel/fonts/normal_font = ExtResource("3_ri6bm")
+RichTextLabel/fonts/normal_font = ExtResource("2_es2ix")
 StageSelectPanel/base_type = &"Panel"
 StageSelectPanel/styles/panel = SubResource("StyleBoxFlat_7kl3q")
 
-[node name="TitleScreen" type="Node2D"]
-script = ExtResource("1_5df70")
+[node name="RouletteItem" type="Node2D" groups=["roulette"]]
+script = ExtResource("1_6aqaw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_d6x3v")
-}
+[node name="Area2D" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
 
-[node name="BackgroundAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ri6bm")
-}
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_6aqaw")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 1920.0
-offset_right = 5760.0
-offset_bottom = 1080.0
-scale = Vector2(-1, 1)
-texture = ExtResource("2_ri6bm")
-stretch_mode = 1
-
-[node name="BGAnim" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme = SubResource("Theme_wja8m")
-
-[node name="Play" type="Button" parent="UI"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 768.0
-offset_right = 320.0
-offset_bottom = 832.0
-focus_mode = 0
-theme = SubResource("Theme_wja8m")
-theme_type_variation = &"DialogButton"
-text = "Play
-"
-
-[node name="Settings" type="Button" parent="UI"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 832.0
-offset_right = 320.0
-offset_bottom = 896.0
-focus_mode = 0
-theme = SubResource("Theme_wja8m")
-theme_type_variation = &"DialogButton"
-text = "Settings"
-
-[node name="Credits" type="Button" parent="UI"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 896.0
-offset_right = 320.0
-offset_bottom = 960.0
-theme = SubResource("Theme_wja8m")
-theme_type_variation = &"DialogButton"
-text = "Credits"
-
-[node name="Quit" type="Button" parent="UI"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 960.0
-offset_right = 320.0
-offset_bottom = 1024.0
-focus_mode = 0
-theme = SubResource("Theme_wja8m")
-theme_type_variation = &"DialogButton"
-text = "Quit"
-
-[node name="Version" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 1600.0
-offset_top = 1016.0
-offset_right = 1902.0
-offset_bottom = 1064.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "Version 0.1.0"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Title" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 320.0
+[node name="TextureRect" type="Panel" parent="."]
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
 offset_bottom = 128.0
 theme = SubResource("Theme_wja8m")
-theme_type_variation = &"DialogText"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Research Game"
-vertical_alignment = 1
-
-[node name="CharTexture" type="TextureRect" parent="."]
-offset_left = 896.0
-offset_top = 64.0
-offset_right = 1856.0
-offset_bottom = 1024.0
-
-[connection signal="pressed" from="UI/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="UI/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="UI/Credits" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="UI/Quit" to="." method="_on_quit_pressed"]
+theme_type_variation = &"DialogPanel"

@@ -6,7 +6,7 @@ var act_data: Array = [
 	{
 		"title": "Act I",
 		"desc": "The Human Reproductive System",
-		"topics": "-Topic 1\n-Topic 2\n-Topic 3",
+		"topics": "-Male Reproductive System\n-Female Reproductive System",
 		"image": "res://assets/backgrounds/act1_bg.png",
 		"link": "res://scenes/managers/game_manager/game_manager.tscn",
 		"arg": "res://dialogue/prologue.csv",
@@ -14,7 +14,7 @@ var act_data: Array = [
 	{
 		"title": "Act II",
 		"desc": "Human Reproduction",
-		"topics": "-Topic 1\n-Topic 2\n-Topic 3",
+		"topics": "-Fertilization\n",
 		"image": "res://assets/backgrounds/act2_bg.png",
 		"link": "res://scenes/managers/game_manager/game_manager.tscn",
 		"arg": "res://dialogue/yuri.csv",
@@ -22,7 +22,7 @@ var act_data: Array = [
 	{
 		"title": "Act III",
 		"desc": "Taking Care of Yourself",
-		"topics": "-Topic 1\n-Topic 2\n-Topic 3",
+		"topics": "-STIs\n-Teenage Pregnancy\n-Methods to avoid them",
 		"image": "res://assets/backgrounds/act3_bg.png",
 		"link": "res://scenes/managers/game_manager/game_manager.tscn",
 		"arg": "",
@@ -67,6 +67,14 @@ func change_act_info() -> void:
 	$ActDesc/ActDesc.text = current_act_data["desc"]
 	$ActDesc/TopicDesc.text = current_act_data["topics"]
 	$ActBG/ActTexture.texture = load(current_act_data["image"])
+	
+	if current_act_index <= 0:
+		$ActDesc/PreviousAct.disabled = true
+	elif current_act_index >= act_data.size() - 1:
+		$ActDesc/NextAct.disabled = true
+	else:
+		$ActDesc/PreviousAct.disabled = false
+		$ActDesc/NextAct.disabled = false
 
 func _on_play_act_pressed() -> void:
 	var current_act_data: Dictionary = act_data[current_act_index]
