@@ -51,14 +51,7 @@ func _ready() -> void:
 	SignalHandler.connect("skip_dialogue", Callable(self, "skip_dialogue"))
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept") && advancing_active:
-		match text_box_state:
-			TextBoxState.READY:
-				advance_dialogue()
-			TextBoxState.READING:
-				skip_playing_dialogue()
-			TextBoxState.FINISHED:
-				pass
+	pass
 
 func advance_dialogue() -> void:
 	if current_dialogue_index >= dialogue.size() - 1:
@@ -318,8 +311,32 @@ func process_dialogue_action(action: String) -> void:
 func skip_dialogue() -> void:
 	animation_player.play("HideDialogueBox_End")
 	advancing_active = false
-	emit_signal("dialogue_finished")
+	while current_dialogue_index < dialogue.size() - 1:
+		if current_dialogue_index >= dialogue.size() - 1:
+			pass
+		else:
+			advance_dialogue()
 
 func set_dialogue(path: String) -> void:
 	$DialogueFileManager.dialogue_file_path = path
 	$DialogueFileManager.read_file()
+
+func _on_text_label_gui_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("advance_dialogue") && advancing_active:
+		match text_box_state:
+			TextBoxState.READY:
+				advance_dialogue()
+			TextBoxState.READING:
+				skip_playing_dialogue()
+			TextBoxState.FINISHED:
+				pass
+		
+func _on_text_box_background_gui_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("advance_dialogue") && advancing_active:
+		match text_box_state:
+			TextBoxState.READY:
+				advance_dialogue()
+			TextBoxState.READING:
+				skip_playing_dialogue()
+			TextBoxState.FINISHED:
+				pass

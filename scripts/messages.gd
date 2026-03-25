@@ -7,6 +7,11 @@ var messages: Dictionary = {
 		"message": "Are you sure you want to exit the current chapter?",
 		"action": "return_chapter",
 	},
+	"return_minigame": {
+		"title": "Return to Chapter Select",
+		"message": "Are you sure you want to exit the current minigame?",
+		"action": "return_minigame",
+	},
 	"credits": {
 		"title": "Credits",
 		"message": "A game by Gian Marco Batarilan (SaturdayMilkshake)
@@ -55,9 +60,26 @@ var messages: Dictionary = {
 		"message": "The pre-test survey has been opened in your default web browser. Please press Okay when accomplished.\nThank you for your participation!",
 		"action": "scene_title",
 	},
+	"survey_1": {
+		"title": "Heads up!",
+		"message": "You have completed all three chapters! If you are one of the participants of the study, please press Okay to be redirected to the post-test questionnaire.",
+		"action": "survey_pre",
+		"cancel": "scene_title",
+	},
+	"survey_2": {
+		"title": "One last thing!",
+		"message": "Thank you so much for playing the game!\nThere's one last thing to do - answer this survey to evaluate if the game has been useful to you!\nMany thanks! (-Sat, the developer)",
+		"action": "survey_pre",
+		"cancel": "scene_title",
+	},
 	"survey_post": {
 		"title": "Post-Test Survey",
 		"message": "The post-test survey has been opened in your default web browser. Please press Okay when accomplished.\nThank you for your participation!",
+		"action": "",
+	},
+	"survey_exp": {
+		"title": "Game Experience Survey",
+		"message": "The game experience survey has been opened in your default web browser. Please press Okay when accomplished.\nThank you for your participation!",
 		"action": "",
 	},
 }

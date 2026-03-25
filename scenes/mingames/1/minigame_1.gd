@@ -14,13 +14,33 @@ var score: int = 0
 
 var questions: Array = [
 	{
-		"question": "",
-		"answer": "",
+		"question": "This organ produces the egg cells.",
+		"answer": "Ovaries",
 	},
 	{	
-		"question": "",
-		"answer": "",
-	}
+		"question": "The sperm exits through this tube during ejaculation.",
+		"answer": "Urethra",
+	},
+	{
+		"question": "This is a tube where sperm is stored.",
+		"answer": "Epididymis",
+	},
+	{	
+		"question": "This is a tube that connects the uterus to the outside of the body.",
+		"answer": "Vagina",
+	},
+	{
+		"question": "This organ connects the vagina to the uterus.",
+		"answer": "Cervix",
+	},
+	{	
+		"question": "These organs produce sperm and the hormone testosterone.",
+		"answer": "Testes",
+	},
+	{
+		"question": "This organ is where a baby grows during pregnancy.",
+		"answer": "Uterus",
+	},
 ]
 
 var correct_answer: String = ""
@@ -34,7 +54,7 @@ var correct_answer: String = ""
 
 func _ready() -> void:
 	$BGAnim.play("AnimateBG")
-	start_game()
+	game_anim.play("Intro")
 	roulette_items = get_tree().get_nodes_in_group("roulette")
 	
 func _physics_process(delta: float) -> void:
@@ -45,7 +65,7 @@ func _physics_process(delta: float) -> void:
 		$GameObjects/Timer/TextureProgressBar.value = question_timer.time_left
 		
 		if selection_active:
-			if Input.is_action_just_pressed("select"):
+			if Input.is_action_just_pressed("advance_dialogue") || Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				question_active = false
 				selection_active = false
 				get_tree().call_group("roulette", "stop_items")
@@ -64,9 +84,12 @@ func start_game() -> void:
 	
 func start_question() -> void:
 	current_question += 1
-	if current_question > 10:
+	#i love hardcoding values
+	if current_question > 7:
 		end_game()
-	$GameObjects/QuestionPanel/QuestionNumber.text = "Question %s / 10:" % current_question
+		return
+	$GameObjects/QuestionPanel/QuestionNumber.text = "Question %s / 7:" % current_question
+	$GameObjects/QuestionPanel/QuestionData.text = questions[current_question]["question"]
 	get_tree().call_group("roulette", "start_items", 2 + (current_question * 2))
 	question_active = true
 	game_anim.play("ShowTimer")
@@ -101,4 +124,10 @@ func _on_timer_timeout() -> void:
 	game_anim.queue("HideQuestion")
 
 func end_game() -> void:
-	pass
+	game_active = false
+
+func _on_settings_button_pressed() -> void:
+	SignalHandler.emit_signal("scene_manager_show_settings")
+
+func _on_back_to_menu_button_pressed() -> void:
+	SignalHandler.emit_signal("scene_manager_show_dialog", "option", "return_minigame")

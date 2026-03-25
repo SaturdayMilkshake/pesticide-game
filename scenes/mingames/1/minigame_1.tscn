@@ -1,10 +1,12 @@
-[gd_scene load_steps=44 format=3 uid="uid://6oaewdo74c6w"]
+[gd_scene load_steps=46 format=3 uid="uid://6oaewdo74c6w"]
 
 [ext_resource type="Script" uid="uid://basndw7tdj6af" path="res://scenes/mingames/1/minigame_1.gd" id="1_obqhj"]
 [ext_resource type="Texture2D" uid="uid://chp08dyh0kghc" path="res://assets/backgrounds/minigame1_bg.png" id="2_qtevx"]
 [ext_resource type="Texture2D" uid="uid://42yc2r7v4jqt" path="res://assets/backgrounds/timer_gradient.png" id="3_jtkc4"]
 [ext_resource type="PackedScene" uid="uid://dyk3geju645e1" path="res://scenes/mingames/1/roulette_item.tscn" id="4_fn54v"]
 [ext_resource type="FontFile" uid="uid://b6q6w1yjybga3" path="res://assets/fonts/saturan.ttf" id="4_jtkc4"]
+[ext_resource type="Texture2D" uid="uid://dh3jic6sd8f8s" path="res://assets/misc/settings_icon.png" id="6_ktap5"]
+[ext_resource type="Texture2D" uid="uid://dghe64abda6b0" path="res://assets/misc/back_to_menu_icon.png" id="7_k6cee"]
 
 [sub_resource type="Animation" id="Animation_qtevx"]
 resource_name = "AnimateBG"
@@ -167,8 +169,22 @@ tracks/7/keys = {
 "times": PackedFloat32Array(3),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [&"Part1Setup", -1, 1.0, false],
+"args": [&"ShowTimer", -1, 1.0, false],
 "method": &"play"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_game"
 }]
 }
 
@@ -451,6 +467,18 @@ tracks/12/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("GameObjects/Panel:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_fn54v"]
 resource_name = "Intro"
@@ -526,7 +554,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(6),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [&"Part1Instructions", -1, 1.0, false],
+"args": [&"Instructions", -1, 1.0, false],
 "method": &"play"
 }]
 }
@@ -784,6 +812,18 @@ tracks/20/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("GameObjects/Panel:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_nhfku"]
@@ -1246,7 +1286,10 @@ DialogButton/styles/normal = SubResource("StyleBoxFlat_51cmb")
 DialogButton/styles/pressed = SubResource("StyleBoxFlat_k5n7q")
 DialogButtonAccept/base_type = &"Button"
 DialogButtonAccept/colors/font_color = Color(1, 1, 1, 1)
+DialogButtonAccept/colors/font_outline_color = Color(1, 1, 1, 1)
+DialogButtonAccept/constants/outline_size = 4
 DialogButtonAccept/font_sizes/font_size = 32
+DialogButtonAccept/fonts/font = ExtResource("4_jtkc4")
 DialogButtonAccept/styles/disabled = null
 DialogButtonAccept/styles/focus = SubResource("StyleBoxFlat_l4sti")
 DialogButtonAccept/styles/hover = SubResource("StyleBoxFlat_5i2mm")
@@ -1310,28 +1353,41 @@ libraries = {
 [node name="Timer" type="Timer" parent="GameObjects/Timer"]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="GameObjects/Timer"]
-offset_left = 328.0
+offset_left = 416.0
 offset_top = 80.0
-offset_right = 1664.0
+offset_right = 1504.0
 offset_bottom = 176.0
 max_value = 15.0
 step = 0.001
 value = 15.0
+nine_patch_stretch = true
 texture_progress = ExtResource("3_jtkc4")
 
 [node name="TextureRect" type="ColorRect" parent="GameObjects/Timer"]
-offset_left = 256.0
+offset_left = 320.0
 offset_top = 32.0
-offset_right = 448.0
+offset_right = 512.0
 offset_bottom = 224.0
 pivot_offset = Vector2(96, 96)
+
+[node name="EndScreen" type="Panel" parent="GameObjects"]
+visible = false
+offset_left = 192.0
+offset_top = 112.0
+offset_right = 1728.0
+offset_bottom = 960.0
+mouse_filter = 2
+theme = SubResource("Theme_wja8m")
+theme_type_variation = &"DialogPanel"
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="GameObjects"]
 modulate = Color(1, 1, 1, 0)
 offset_left = 64.0
-offset_top = 832.0
+offset_top = 800.0
 offset_right = 1856.0
-offset_bottom = 1024.0
+offset_bottom = 992.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogPanel"
 
@@ -1339,9 +1395,9 @@ theme_type_variation = &"DialogPanel"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 40.0
-offset_top = 24.0
+offset_top = -8.0
 offset_right = 1752.0
-offset_bottom = 168.0
+offset_bottom = 136.0
 text = "Let's apply what we've learned in this chapter!"
 
 [node name="Panel2" type="Panel" parent="GameObjects"]
@@ -1350,12 +1406,13 @@ modulate = Color(1, 1, 1, 0)
 offset_left = 192.0
 offset_top = 112.0
 offset_right = 1728.0
-offset_bottom = 280.0
+offset_bottom = 960.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogPanel"
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Instructions" type="RichTextLabel" parent="GameObjects/Panel2"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -1368,7 +1425,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Okay" type="Button" parent="GameObjects/Panel2"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 672.0
 offset_top = 688.0
@@ -1383,9 +1439,9 @@ text = "Okay!"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 192.0
-offset_top = 144.0
+offset_top = 112.0
 offset_right = 576.0
-offset_bottom = 256.0
+offset_bottom = 224.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogText"
 theme_override_font_sizes/font_size = 42
@@ -1396,9 +1452,9 @@ horizontal_alignment = 1
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 952.0
-offset_top = 144.0
+offset_top = 112.0
 offset_right = 1336.0
-offset_bottom = 256.0
+offset_bottom = 224.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogText"
 theme_override_font_sizes/font_size = 42
@@ -1432,6 +1488,7 @@ offset_left = -384.0
 offset_top = 792.0
 offset_right = 2304.0
 offset_bottom = 856.0
+mouse_filter = 2
 theme = SubResource("Theme_wja8m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_qbifi")
 
@@ -1440,6 +1497,7 @@ offset_left = 928.0
 offset_top = 976.0
 offset_right = 992.0
 offset_bottom = 1048.0
+mouse_filter = 2
 
 [node name="RouletteItems" type="Node2D" parent="GameObjects/Roulette"]
 
@@ -1476,9 +1534,9 @@ end_cap_mode = 2
 [node name="QuestionPanel" type="Panel" parent="GameObjects"]
 modulate = Color(1, 1, 1, 0)
 offset_left = 256.0
-offset_top = 256.0
+offset_top = 192.0
 offset_right = 1664.0
-offset_bottom = 640.0
+offset_bottom = 576.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogPanel"
 
@@ -1486,9 +1544,9 @@ theme_type_variation = &"DialogPanel"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 512.0
-offset_top = 40.0
+offset_top = 8.0
 offset_right = 896.0
-offset_bottom = 107.0
+offset_bottom = 75.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogText"
 text = "Question 1 / 10:"
@@ -1499,14 +1557,37 @@ vertical_alignment = 1
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 128.0
-offset_top = 112.0
+offset_top = 80.0
 offset_right = 1304.0
-offset_bottom = 336.0
+offset_bottom = 304.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogText"
-text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SettingsButton" type="Button" parent="."]
+offset_left = 1600.0
+offset_top = 32.0
+offset_right = 1736.0
+offset_bottom = 160.0
+focus_mode = 0
+icon = ExtResource("6_ktap5")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="BackToMenuButton" type="Button" parent="."]
+offset_left = 1760.0
+offset_top = 32.0
+offset_right = 1888.0
+offset_bottom = 160.0
+focus_mode = 0
+icon = ExtResource("7_k6cee")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="timeout" from="GameObjects/Timer/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="GameObjects/Panel2/Okay" to="." method="_on_okay_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

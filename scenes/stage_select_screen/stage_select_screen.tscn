@@ -1169,7 +1169,7 @@ CharacterLabelPanel/styles/panel = SubResource("StyleBoxFlat_nsus1")
 DialogButton/base_type = &"Button"
 DialogButton/colors/font_color = Color(1, 1, 1, 1)
 DialogButton/colors/font_outline_color = Color(1, 1, 1, 1)
-DialogButton/constants/outline_size = 8
+DialogButton/constants/outline_size = 4
 DialogButton/font_sizes/font_size = 32
 DialogButton/fonts/font = ExtResource("3_veddw")
 DialogButton/styles/disabled = SubResource("StyleBoxFlat_bonrw")
@@ -1376,7 +1376,6 @@ offset_bottom = 448.0
 theme = SubResource("Theme_wja8m")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
-text = "H"
 autowrap_mode = 3
 
 [node name="TopicsCovered" type="Label" parent="ActDesc"]

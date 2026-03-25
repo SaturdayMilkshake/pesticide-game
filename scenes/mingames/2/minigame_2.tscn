@@ -1,9 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://bux8hg05irddo"]
+[gd_scene load_steps=35 format=3 uid="uid://bux8hg05irddo"]
 
 [ext_resource type="Script" uid="uid://bepvaix5s833m" path="res://scenes/mingames/2/minigame_2.gd" id="1_vmhmo"]
 [ext_resource type="Texture2D" uid="uid://17wvvnx22axh" path="res://assets/backgrounds/minigame2_bg.png" id="2_rlepj"]
 [ext_resource type="FontFile" uid="uid://b6q6w1yjybga3" path="res://assets/fonts/saturan.ttf" id="3_dhl8j"]
 [ext_resource type="Texture2D" uid="uid://42yc2r7v4jqt" path="res://assets/backgrounds/timer_gradient.png" id="4_dhl8j"]
+[ext_resource type="Texture2D" uid="uid://dh3jic6sd8f8s" path="res://assets/misc/settings_icon.png" id="5_bxh4o"]
+[ext_resource type="Texture2D" uid="uid://dghe64abda6b0" path="res://assets/misc/back_to_menu_icon.png" id="6_v251m"]
 
 [sub_resource type="Animation" id="Animation_qtevx"]
 resource_name = "AnimateBG"
@@ -212,53 +214,66 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_pym5u"]
 resource_name = "Intro"
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameObjects/Panel:position")
+tracks/0/path = NodePath("GameObjects/Panel/Label:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0.1, 0.7, 2, 2.6, 3.2, 4.4, 5),
+"transitions": PackedFloat32Array(0.2, 1, 1, 0.2, 0.2, 1, 1),
 "update": 0,
-"values": []
+"values": [Vector2(40, -8), Vector2(40, 24), Vector2(40, 24), Vector2(40, -8), Vector2(40, 24), Vector2(40, 24), Vector2(40, -8)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameObjects/Panel:modulate")
+tracks/1/path = NodePath("GameObjects/Panel/Label:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0.1, 0.7, 2, 2.6, 3.2, 4.4, 5),
+"transitions": PackedFloat32Array(0.2, 1, 1, 0.2, 1, 1, 0.2),
 "update": 0,
-"values": []
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("GameObjects/Panel/Label:position")
+tracks/2/path = NodePath("GameObjects/Panel/Label:text")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Let's have another minigame to see if we've learned something this chapter!", "Have fun!"]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("GameObjects/Panel/Label:modulate")
+tracks/3/path = NodePath("GameObjects/Panel:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.6, 4.4, 5),
+"transitions": PackedFloat32Array(0.2, 1, 0.2, 0.2),
 "update": 0,
-"values": []
+"values": [Vector2(64, 800), Vector2(64, 832), Vector2(64, 832), Vector2(64, 800)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameObjects/Panel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6, 4.4, 5),
+"transitions": PackedFloat32Array(0.2, 1, 0.2, 0.2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_w6tgr"]
@@ -635,9 +650,9 @@ libraries = {
 [node name="Panel" type="Panel" parent="GameObjects"]
 modulate = Color(1, 1, 1, 0)
 offset_left = 64.0
-offset_top = 832.0
+offset_top = 800.001
 offset_right = 1856.0
-offset_bottom = 1024.0
+offset_bottom = 992.001
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogPanel"
 
@@ -645,27 +660,28 @@ theme_type_variation = &"DialogPanel"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 40.0
-offset_top = 24.0
+offset_top = -8.0
 offset_right = 1752.0
-offset_bottom = 168.0
-text = "Let's apply what we've learned in this chapter!"
+offset_bottom = 136.0
+text = "Have fun!"
 
 [node name="Panel2" type="Panel" parent="GameObjects"]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(1536, 168)
 offset_left = 192.0
-offset_top = 112.0
+offset_top = 80.0
 offset_right = 1728.0
-offset_bottom = 960.0
+offset_bottom = 248.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogPanel"
 
 [node name="Instructions" type="RichTextLabel" parent="GameObjects/Panel2"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 8.0
-offset_top = 8.0
+offset_top = -24.0
 offset_right = 1528.0
-offset_bottom = 160.0
+offset_bottom = 128.0
 theme = SubResource("Theme_wja8m")
 theme_override_font_sizes/normal_font_size = 48
 text = "Instructions"
@@ -673,6 +689,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Okay" type="Button" parent="GameObjects/Panel2"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 672.0
 offset_top = 688.0
@@ -688,21 +705,44 @@ text = "Okay!"
 [node name="Timer" type="Timer" parent="GameObjects/Timer"]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="GameObjects/Timer"]
-offset_left = 328.0
+offset_left = 416.0
 offset_top = 80.0
-offset_right = 1664.0
+offset_right = 1504.0
 offset_bottom = 176.0
 max_value = 15.0
 step = 0.001
 value = 15.0
+nine_patch_stretch = true
 texture_progress = ExtResource("4_dhl8j")
 
 [node name="TextureRect" type="ColorRect" parent="GameObjects/Timer"]
-offset_left = 256.0
+offset_left = 320.0
 offset_top = 32.0
-offset_right = 448.0
+offset_right = 512.0
 offset_bottom = 224.0
 rotation = -6.28319
 pivot_offset = Vector2(96, 96)
+
+[node name="SettingsButton" type="Button" parent="."]
+offset_left = 1600.0
+offset_top = 32.0
+offset_right = 1736.0
+offset_bottom = 160.0
+focus_mode = 0
+icon = ExtResource("5_bxh4o")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="BackToMenuButton" type="Button" parent="."]
+offset_left = 1760.0
+offset_top = 32.0
+offset_right = 1888.0
+offset_bottom = 160.0
+focus_mode = 0
+icon = ExtResource("6_v251m")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [connection signal="pressed" from="GameObjects/Panel2/Okay" to="." method="_on_okay_pressed"]

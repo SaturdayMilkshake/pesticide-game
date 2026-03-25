@@ -226,7 +226,7 @@ CharacterLabelPanel/styles/panel = SubResource("StyleBoxFlat_nsus1")
 DialogButton/base_type = &"Button"
 DialogButton/colors/font_color = Color(1, 1, 1, 1)
 DialogButton/colors/font_outline_color = Color(1, 1, 1, 1)
-DialogButton/constants/outline_size = 8
+DialogButton/constants/outline_size = 4
 DialogButton/font_sizes/font_size = 32
 DialogButton/fonts/font = ExtResource("1_gv2nn")
 DialogButton/styles/disabled = SubResource("StyleBoxFlat_bonrw")
@@ -509,6 +509,7 @@ offset_right = 136.32
 offset_bottom = 831.6
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.00168, 1.00244)
 theme = SubResource("Theme_wja8m")
 script = ExtResource("1_g3jrk")
 text_label = NodePath("CanvasLayer/DialogueBox/TextLabel")
@@ -657,6 +658,8 @@ bus = &"Music"
 
 [node name="SoundEffectPlayer" type="AudioStreamPlayer" parent="."]
 
+[connection signal="gui_input" from="CanvasLayer/DialogueBox/TextBoxBackground" to="." method="_on_text_box_background_gui_input"]
+[connection signal="gui_input" from="CanvasLayer/DialogueBox/TextLabel" to="." method="_on_text_label_gui_input"]
 [connection signal="meta_clicked" from="CanvasLayer/DialogueBox/TextLabel" to="." method="_on_text_label_meta_clicked"]
 [connection signal="pressed" from="CanvasLayer/DialogueBox/Log" to="." method="_on_log_pressed"]
 [connection signal="pressed" from="CanvasLayer/DialogueBox/Skip" to="." method="_on_skip_pressed"]

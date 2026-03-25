@@ -273,7 +273,7 @@ CharacterLabelPanel/styles/panel = SubResource("StyleBoxFlat_nsus1")
 DialogButton/base_type = &"Button"
 DialogButton/colors/font_color = Color(1, 1, 1, 1)
 DialogButton/colors/font_outline_color = Color(1, 1, 1, 1)
-DialogButton/constants/outline_size = 8
+DialogButton/constants/outline_size = 4
 DialogButton/font_sizes/font_size = 32
 DialogButton/fonts/font = ExtResource("3_ri6bm")
 DialogButton/styles/disabled = SubResource("StyleBoxFlat_bonrw")
@@ -332,8 +332,7 @@ libraries = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 1920.0
-offset_right = 5760.0
+offset_right = 3840.0
 offset_bottom = 1080.0
 scale = Vector2(-1, 1)
 texture = ExtResource("2_ri6bm")
@@ -353,12 +352,13 @@ theme = SubResource("Theme_wja8m")
 [node name="Play" type="Button" parent="UI"]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 768.0
-offset_right = 320.0
+offset_top = 736.0
+offset_right = 384.0
 offset_bottom = 832.0
 focus_mode = 0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogButton"
+theme_override_font_sizes/font_size = 42
 text = "Play
 "
 
@@ -366,24 +366,27 @@ text = "Play
 layout_mode = 0
 offset_left = 64.0
 offset_top = 832.0
-offset_right = 320.0
-offset_bottom = 896.0
+offset_right = 384.0
+offset_bottom = 928.0
 focus_mode = 0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogButton"
+theme_override_font_sizes/font_size = 42
 text = "Settings"
 
 [node name="Credits" type="Button" parent="UI"]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 896.0
-offset_right = 320.0
-offset_bottom = 960.0
+offset_top = 928.0
+offset_right = 384.0
+offset_bottom = 1024.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogButton"
+theme_override_font_sizes/font_size = 42
 text = "Credits"
 
 [node name="Quit" type="Button" parent="UI"]
+visible = false
 layout_mode = 0
 offset_left = 64.0
 offset_top = 960.0

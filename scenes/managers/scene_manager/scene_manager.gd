@@ -96,6 +96,9 @@ func process_action(action: String) -> void:
 		"survey_post":
 			OS.shell_open("https://en.uncyclopedia.co")
 			scene_manager_show_dialog("message", "survey_post")
+		"survey_exp":
+			OS.shell_open("https://en.uncyclopedia.co")
+			scene_manager_show_dialog("message", "survey_post")
 		"reset_save":
 			DataHandler.reset_data()
 			root_scene.queue_free()
@@ -104,6 +107,8 @@ func process_action(action: String) -> void:
 			settings_dialog.hide_dialog()
 			change_scene("res://scenes/research_scenes/pre_test_scene.tscn")
 		"return_chapter":
+			change_scene("res://scenes/stage_select_screen/stage_select_screen.tscn")
+		"return_minigame":
 			change_scene("res://scenes/stage_select_screen/stage_select_screen.tscn")
 		_:
 			pass
