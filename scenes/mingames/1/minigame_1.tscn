@@ -1,10 +1,11 @@
-[gd_scene load_steps=46 format=3 uid="uid://6oaewdo74c6w"]
+[gd_scene load_steps=47 format=3 uid="uid://6oaewdo74c6w"]
 
 [ext_resource type="Script" uid="uid://basndw7tdj6af" path="res://scenes/mingames/1/minigame_1.gd" id="1_obqhj"]
 [ext_resource type="Texture2D" uid="uid://chp08dyh0kghc" path="res://assets/backgrounds/minigame1_bg.png" id="2_qtevx"]
 [ext_resource type="Texture2D" uid="uid://42yc2r7v4jqt" path="res://assets/backgrounds/timer_gradient.png" id="3_jtkc4"]
 [ext_resource type="PackedScene" uid="uid://dyk3geju645e1" path="res://scenes/mingames/1/roulette_item.tscn" id="4_fn54v"]
 [ext_resource type="FontFile" uid="uid://b6q6w1yjybga3" path="res://assets/fonts/saturan.ttf" id="4_jtkc4"]
+[ext_resource type="Texture2D" uid="uid://gi5vhbqifpcy" path="res://assets/misc/hourglass-empty-svgrepo-com.svg" id="4_k6cee"]
 [ext_resource type="Texture2D" uid="uid://dh3jic6sd8f8s" path="res://assets/misc/settings_icon.png" id="6_ktap5"]
 [ext_resource type="Texture2D" uid="uid://dghe64abda6b0" path="res://assets/misc/back_to_menu_icon.png" id="7_k6cee"]
 
@@ -386,11 +387,11 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("GameObjects/Panel2/Img1:modulate")
+tracks/6/path = NodePath("GameObjects/Panel2/Inst1:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(2.1, 2.7),
+"times": PackedFloat32Array(1.5, 2.1),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -398,11 +399,11 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("GameObjects/Panel2/Img2:modulate")
+tracks/7/path = NodePath("GameObjects/Panel2/Inst2:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(2.1, 2.7),
+"times": PackedFloat32Array(1.5, 2.1),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -410,26 +411,26 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("GameObjects/Panel2/Inst1:modulate")
+tracks/8/path = NodePath("GameObjects/Panel2:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(1.5, 2.1),
-"transitions": PackedFloat32Array(0.2, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("GameObjects/Panel2/Inst2:modulate")
+tracks/9/path = NodePath("GameObjects/Panel:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(1.5, 2.1),
-"transitions": PackedFloat32Array(0.2, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -441,7 +442,7 @@ tracks/10/keys = {
 "times": PackedFloat32Array(1.49, 2.1),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(192, 112), Vector2(192, 144)]
+"values": [Vector2(192, 304), Vector2(136, 320)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -450,34 +451,10 @@ tracks/11/path = NodePath("GameObjects/Panel2/Inst2:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(1.49, 2.1),
+"times": PackedFloat32Array(1.5, 2.1),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(952, 112), Vector2(952, 144)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("GameObjects/Panel2:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("GameObjects/Panel:visible")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [Vector2(952, 304), Vector2(904, 320)]
 }
 
 [sub_resource type="Animation" id="Animation_fn54v"]
@@ -684,146 +661,146 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("GameObjects/Panel2/Inst1:position")
+tracks/10/path = NodePath("GameObjects/Panel2:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(192, 144)]
+"update": 1,
+"values": [false]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("GameObjects/Panel2/Inst2:position")
+tracks/11/path = NodePath("GameObjects/Roulette/Line2D:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(952, 144)]
+"update": 1,
+"values": [false]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("GameObjects/Panel2:visible")
+tracks/12/path = NodePath("GameObjects/Roulette/Line2D:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("GameObjects/Roulette/Line2D:visible")
+tracks/13/path = NodePath("GameObjects/Roulette:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("GameObjects/Roulette/Line2D:modulate")
+tracks/14/path = NodePath("GameObjects/Roulette:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(0, 0)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("GameObjects/Roulette:modulate")
+tracks/15/path = NodePath("GameObjects/QuestionPanel:position")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(256, 256)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("GameObjects/Roulette:position")
+tracks/16/path = NodePath("GameObjects/QuestionPanel/QuestionNumber:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(512, 40)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("GameObjects/QuestionPanel:position")
+tracks/17/path = NodePath("GameObjects/QuestionPanel/QuestionData:position")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(256, 256)]
+"values": [Vector2(128, 112)]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("GameObjects/QuestionPanel/QuestionNumber:position")
+tracks/18/path = NodePath("GameObjects/Timer/TextureRect:rotation")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(512, 40)]
+"values": [0.0]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("GameObjects/QuestionPanel/QuestionData:position")
+tracks/19/path = NodePath("GameObjects/Panel:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(128, 112)]
+"update": 1,
+"values": [true]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("GameObjects/Timer/TextureRect:rotation")
+tracks/20/path = NodePath("GameObjects/Timer:visible")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("GameObjects/Panel:visible")
+tracks/21/path = NodePath("GameObjects/QuestionPanel:visible")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_nhfku"]
@@ -962,6 +939,18 @@ tracks/6/keys = {
 "method": &"play"
 }]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GameObjects/QuestionPanel:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_sqcbx"]
 resource_name = "ShowRoulette"
@@ -1034,6 +1023,18 @@ tracks/1/keys = {
 "method": &"play"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameObjects/Timer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jtkc4"]
 _data = {
@@ -1053,7 +1054,7 @@ _data = {
 &"ShowTimer": SubResource("Animation_8c8ng")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsus1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktap5"]
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
@@ -1062,7 +1063,7 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 shadow_offset = Vector2(0, -2)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bonrw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6cee"]
 bg_color = Color(0.36, 0.3384, 0.35352, 0.384314)
 border_width_left = 4
 border_width_top = 4
@@ -1076,7 +1077,7 @@ corner_radius_bottom_left = 8
 shadow_size = 1
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kqqb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqcbx"]
 bg_color = Color(0.37, 0.3478, 0.36334, 1)
 border_width_left = 4
 border_width_top = 4
@@ -1091,7 +1092,7 @@ shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
 shadow_size = 1
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yajo1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhfku"]
 bg_color = Color(0.228558, 0.212942, 0.223881, 1)
 border_width_left = 4
 border_width_top = 4
@@ -1106,7 +1107,7 @@ shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
 shadow_size = 1
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ew48u"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44wat"]
 bg_color = Color(0.228558, 0.212942, 0.223881, 1)
 border_width_left = 4
 border_width_top = 4
@@ -1121,7 +1122,7 @@ shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
 shadow_size = 1
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51cmb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxp33"]
 bg_color = Color(0.37, 0.3478, 0.36334, 1)
 border_width_left = 4
 border_width_top = 4
@@ -1136,7 +1137,7 @@ shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
 shadow_size = 1
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5n7q"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1r6d3"]
 bg_color = Color(0.228558, 0.212942, 0.223881, 1)
 border_width_left = 4
 border_width_top = 4
@@ -1151,7 +1152,7 @@ shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
 shadow_size = 1
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4sti"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sut8a"]
 bg_color = Color(0.512964, 0.288623, 0.423746, 1)
 border_width_left = 8
 border_width_top = 8
@@ -1164,7 +1165,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i2mm"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jao1x"]
 bg_color = Color(0.512964, 0.288623, 0.423746, 1)
 border_width_left = 8
 border_width_top = 8
@@ -1177,7 +1178,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cl2hn"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppe2x"]
 bg_color = Color(0.512964, 0.288623, 0.423746, 1)
 border_width_left = 8
 border_width_top = 8
@@ -1190,7 +1191,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqcqf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8c8ng"]
 bg_color = Color(0.84, 0.63, 0.749, 1)
 border_width_left = 8
 border_width_top = 8
@@ -1203,7 +1204,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xtm7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y333i"]
 bg_color = Color(0.512964, 0.288623, 0.423746, 1)
 border_width_left = 8
 border_width_top = 8
@@ -1216,7 +1217,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obmgs"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eww2j"]
 bg_color = Color(0.97, 0.9021, 0.948498, 1)
 border_width_left = 8
 border_width_top = 8
@@ -1228,21 +1229,21 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56hmt"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eixh7"]
 bg_color = Color(0.705882, 0.529412, 0.705882, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xipde"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7ida"]
 bg_color = Color(0.705882, 0.529412, 0.705882, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkq3r"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fgnw"]
 bg_color = Color(0.681423, 0.681423, 0.681423, 1)
 border_width_left = 8
 border_width_right = 8
@@ -1250,14 +1251,14 @@ border_color = Color(0.121569, 0.121569, 0.121569, 1)
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snjtj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hklpa"]
 bg_color = Color(0.8, 0.52, 0.613333, 1)
 border_width_left = 8
 border_color = Color(0.121569, 0.121569, 0.121569, 1)
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kl3q"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhimr"]
 bg_color = Color(0.860704, 0.849838, 0.859091, 1)
 border_width_left = 8
 border_width_top = 8
@@ -1271,19 +1272,19 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="Theme" id="Theme_wja8m"]
 CharacterLabelPanel/base_type = &"Panel"
-CharacterLabelPanel/styles/panel = SubResource("StyleBoxFlat_nsus1")
+CharacterLabelPanel/styles/panel = SubResource("StyleBoxFlat_ktap5")
 DialogButton/base_type = &"Button"
 DialogButton/colors/font_color = Color(1, 1, 1, 1)
 DialogButton/colors/font_outline_color = Color(1, 1, 1, 1)
 DialogButton/constants/outline_size = 8
 DialogButton/font_sizes/font_size = 32
 DialogButton/fonts/font = ExtResource("4_jtkc4")
-DialogButton/styles/disabled = SubResource("StyleBoxFlat_bonrw")
-DialogButton/styles/focus = SubResource("StyleBoxFlat_0kqqb")
-DialogButton/styles/hover = SubResource("StyleBoxFlat_yajo1")
-DialogButton/styles/hover_pressed = SubResource("StyleBoxFlat_ew48u")
-DialogButton/styles/normal = SubResource("StyleBoxFlat_51cmb")
-DialogButton/styles/pressed = SubResource("StyleBoxFlat_k5n7q")
+DialogButton/styles/disabled = SubResource("StyleBoxFlat_k6cee")
+DialogButton/styles/focus = SubResource("StyleBoxFlat_sqcbx")
+DialogButton/styles/hover = SubResource("StyleBoxFlat_nhfku")
+DialogButton/styles/hover_pressed = SubResource("StyleBoxFlat_44wat")
+DialogButton/styles/normal = SubResource("StyleBoxFlat_wxp33")
+DialogButton/styles/pressed = SubResource("StyleBoxFlat_1r6d3")
 DialogButtonAccept/base_type = &"Button"
 DialogButtonAccept/colors/font_color = Color(1, 1, 1, 1)
 DialogButtonAccept/colors/font_outline_color = Color(1, 1, 1, 1)
@@ -1291,13 +1292,13 @@ DialogButtonAccept/constants/outline_size = 4
 DialogButtonAccept/font_sizes/font_size = 32
 DialogButtonAccept/fonts/font = ExtResource("4_jtkc4")
 DialogButtonAccept/styles/disabled = null
-DialogButtonAccept/styles/focus = SubResource("StyleBoxFlat_l4sti")
-DialogButtonAccept/styles/hover = SubResource("StyleBoxFlat_5i2mm")
-DialogButtonAccept/styles/hover_pressed = SubResource("StyleBoxFlat_cl2hn")
-DialogButtonAccept/styles/normal = SubResource("StyleBoxFlat_pqcqf")
-DialogButtonAccept/styles/pressed = SubResource("StyleBoxFlat_5xtm7")
+DialogButtonAccept/styles/focus = SubResource("StyleBoxFlat_sut8a")
+DialogButtonAccept/styles/hover = SubResource("StyleBoxFlat_jao1x")
+DialogButtonAccept/styles/hover_pressed = SubResource("StyleBoxFlat_ppe2x")
+DialogButtonAccept/styles/normal = SubResource("StyleBoxFlat_8c8ng")
+DialogButtonAccept/styles/pressed = SubResource("StyleBoxFlat_y333i")
 DialogPanel/base_type = &"Panel"
-DialogPanel/styles/panel = SubResource("StyleBoxFlat_obmgs")
+DialogPanel/styles/panel = SubResource("StyleBoxFlat_eww2j")
 DialogText/base_type = &"Label"
 DialogText/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
 DialogText/font_sizes/font_size = 48
@@ -1305,15 +1306,15 @@ DialogText/fonts/font = ExtResource("4_jtkc4")
 DialogTitle/base_type = &"Label"
 DialogTitle/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
 DialogTitle/font_sizes/font_size = 40
-HSlider/styles/grabber_area = SubResource("StyleBoxFlat_56hmt")
-HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_xipde")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_eixh7")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_d7ida")
 Label/constants/outline_size = 3
 Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("4_jtkc4")
 LoadingLabel/base_type = &"Label"
 LoadingLabel/font_sizes/font_size = 48
-ProgressBar/styles/background = SubResource("StyleBoxFlat_qkq3r")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_snjtj")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_7fgnw")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_hklpa")
 RichTextLabel/colors/default_color = Color(0.376471, 0.376471, 0.376471, 1)
 RichTextLabel/colors/font_outline_color = Color(0.376471, 0.376471, 0.376471, 1)
 RichTextLabel/constants/outline_size = 6
@@ -1321,7 +1322,7 @@ RichTextLabel/constants/table_v_separation = 12
 RichTextLabel/font_sizes/normal_font_size = 42
 RichTextLabel/fonts/normal_font = ExtResource("4_jtkc4")
 StageSelectPanel/base_type = &"Panel"
-StageSelectPanel/styles/panel = SubResource("StyleBoxFlat_7kl3q")
+StageSelectPanel/styles/panel = SubResource("StyleBoxFlat_vhimr")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbifi"]
 bg_color = Color(0.298866, 0.316293, 0.275978, 1)
@@ -1330,8 +1331,10 @@ bg_color = Color(0.298866, 0.316293, 0.275978, 1)
 script = ExtResource("1_obqhj")
 
 [node name="MinigameBG" type="TextureRect" parent="."]
-offset_right = 3840.0
-offset_bottom = 2160.0
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("2_qtevx")
 expand_mode = 1
 stretch_mode = 1
@@ -1349,6 +1352,7 @@ libraries = {
 [node name="GameObjects" type="Node2D" parent="."]
 
 [node name="Timer" type="Node2D" parent="GameObjects"]
+visible = false
 
 [node name="Timer" type="Timer" parent="GameObjects/Timer"]
 
@@ -1363,31 +1367,21 @@ value = 15.0
 nine_patch_stretch = true
 texture_progress = ExtResource("3_jtkc4")
 
-[node name="TextureRect" type="ColorRect" parent="GameObjects/Timer"]
+[node name="TextureRect" type="TextureRect" parent="GameObjects/Timer"]
 offset_left = 320.0
 offset_top = 32.0
 offset_right = 512.0
 offset_bottom = 224.0
 pivot_offset = Vector2(96, 96)
-
-[node name="EndScreen" type="Panel" parent="GameObjects"]
-visible = false
-offset_left = 192.0
-offset_top = 112.0
-offset_right = 1728.0
-offset_bottom = 960.0
-mouse_filter = 2
-theme = SubResource("Theme_wja8m")
-theme_type_variation = &"DialogPanel"
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
+texture = ExtResource("4_k6cee")
+expand_mode = 1
 
 [node name="Panel" type="Panel" parent="GameObjects"]
 modulate = Color(1, 1, 1, 0)
 offset_left = 64.0
-offset_top = 800.0
+offset_top = 832.0
 offset_right = 1856.0
-offset_bottom = 992.0
+offset_bottom = 1024.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogPanel"
 
@@ -1395,27 +1389,26 @@ theme_type_variation = &"DialogPanel"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 40.0
-offset_top = -8.0
+offset_top = 24.0
 offset_right = 1752.0
-offset_bottom = 136.0
+offset_bottom = 168.0
 text = "Let's apply what we've learned in this chapter!"
 
 [node name="Panel2" type="Panel" parent="GameObjects"]
 visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = 192.0
-offset_top = 112.0
+offset_top = 111.999
 offset_right = 1728.0
-offset_bottom = 960.0
+offset_bottom = 959.999
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogPanel"
-metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Instructions" type="RichTextLabel" parent="GameObjects/Panel2"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 8.0
+offset_top = 7.99996
 offset_right = 1528.0
 offset_bottom = 160.0
 theme = SubResource("Theme_wja8m")
@@ -1436,48 +1429,33 @@ theme_type_variation = &"DialogButtonAccept"
 text = "Okay!"
 
 [node name="Inst1" type="Label" parent="GameObjects/Panel2"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 192.0
-offset_top = 112.0
-offset_right = 576.0
-offset_bottom = 224.0
+offset_left = 136.0
+offset_top = 320.0
+offset_right = 632.0
+offset_bottom = 456.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogText"
+theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 0.501961, 1)
 theme_override_font_sizes/font_size = 42
-text = "Testing!"
+text = "A roulette spins with options to answer the question displayed!"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Inst2" type="Label" parent="GameObjects/Panel2"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 952.0
-offset_top = 112.0
-offset_right = 1336.0
-offset_bottom = 224.0
+offset_left = 904.009
+offset_top = 319.997
+offset_right = 1400.01
+offset_bottom = 455.997
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogText"
+theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 0.501961, 1)
 theme_override_font_sizes/font_size = 42
-text = "Testing!"
+text = "Click to select the correct answer!
+Try not to miss!"
 horizontal_alignment = 1
-
-[node name="Img1" type="ColorRect" parent="GameObjects/Panel2"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 192.0
-offset_top = 272.0
-offset_right = 576.0
-offset_bottom = 656.0
-color = Color(0.323213, 0.323213, 0.323213, 1)
-
-[node name="Img2" type="ColorRect" parent="GameObjects/Panel2"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 952.0
-offset_top = 272.0
-offset_right = 1336.0
-offset_bottom = 656.0
-color = Color(0.323213, 0.323213, 0.323213, 1)
+autowrap_mode = 3
 
 [node name="Roulette" type="Node2D" parent="GameObjects"]
 modulate = Color(1, 1, 1, 0)
@@ -1532,38 +1510,39 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="QuestionPanel" type="Panel" parent="GameObjects"]
-modulate = Color(1, 1, 1, 0)
+visible = false
 offset_left = 256.0
-offset_top = 192.0
+offset_top = 256.0
 offset_right = 1664.0
-offset_bottom = 576.0
+offset_bottom = 640.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogPanel"
+metadata/_edit_lock_ = true
 
 [node name="QuestionNumber" type="Label" parent="GameObjects/QuestionPanel"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 512.0
-offset_top = 8.0
+offset_top = 40.0
 offset_right = 896.0
-offset_bottom = 75.0
+offset_bottom = 107.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogText"
+theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 0.501961, 1)
 text = "Question 1 / 10:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="QuestionData" type="Label" parent="GameObjects/QuestionPanel"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 128.0
-offset_top = 80.0
+offset_top = 112.0
 offset_right = 1304.0
-offset_bottom = 304.0
+offset_bottom = 336.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogText"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="SettingsButton" type="Button" parent="."]
 offset_left = 1600.0

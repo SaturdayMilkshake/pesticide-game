@@ -18,8 +18,7 @@ var messages: Dictionary = {
 		Created for my research subject
 		
 		Made with Godot 4
-		Art created with Krita
-		Music composed with LMMS",
+		Art created with Krita",
 		"action": "",
 	},
 	"error_header": {
@@ -36,6 +35,20 @@ var messages: Dictionary = {
 		"title": "Save File Error",
 		"message": "No save file detected. A new save file will be created.",
 		"action": "new_save",
+	},
+	"retry_game": {
+		"title": "Game Results",
+		"message": "Total Score: 7",
+		"action": "return_chapter",
+		"cancel": "return_chapter",
+		"override": ["Retry", "Next"]
+	},
+	"retry_game_1": {
+		"title": "Game Results",
+		"message": "Total Score: 7",
+		"action": "survey_post_scene",
+		"cancel": "survey_post_scene",
+		"override": ["Retry", "Next"]
 	},
 	"reset_save_file": {
 		"title": "Reset Save File?",
@@ -62,24 +75,24 @@ var messages: Dictionary = {
 	},
 	"survey_1": {
 		"title": "Heads up!",
-		"message": "You have completed all three chapters! If you are one of the participants of the study, please press Okay to be redirected to the post-test questionnaire.",
-		"action": "survey_pre",
+		"message": "You have completed the last chapter! If you are one of the participants of the study, please press Okay to be redirected to the post-test questionnaire.",
+		"action": "survey_post",
 		"cancel": "scene_title",
 	},
 	"survey_2": {
 		"title": "One last thing!",
 		"message": "Thank you so much for playing the game!\nThere's one last thing to do - answer this survey to evaluate if the game has been useful to you!\nMany thanks! (-Sat, the developer)",
-		"action": "survey_pre",
+		"action": "survey_exp",
 		"cancel": "scene_title",
 	},
 	"survey_post": {
 		"title": "Post-Test Survey",
 		"message": "The post-test survey has been opened in your default web browser. Please press Okay when accomplished.\nThank you for your participation!",
-		"action": "",
+		"action": "survey_exp_scene",
 	},
 	"survey_exp": {
 		"title": "Game Experience Survey",
 		"message": "The game experience survey has been opened in your default web browser. Please press Okay when accomplished.\nThank you for your participation!",
-		"action": "",
+		"action": "scene_title",
 	},
 }

@@ -1,6 +1,6 @@
 extends Node
 
-@export_file var starting_scene_override: String = ""
+@export_file var starting_scene_override: String = "res://scenes/research_scenes/pre_test_scene.tscn"
 @export var root_scene: Node = null
 var root_scene_path: String = ""
 
@@ -72,16 +72,22 @@ func _on_option_dialog_okay_pressed(action: String) -> void:
 func _on_option_dialog_cancel_pressed(action_cancel: String) -> void:
 	process_action_cancel(action_cancel)
 
-func scene_manager_show_dialog(dialog_type: String, message_header: String) -> void:
+func scene_manager_show_dialog(dialog_type: String, message_header: String, score: int = 0) -> void:
 	if !messages.messages.has(message_header):
 		assert(!messages.messages.has(message_header), "Error header is missing!")
 		scene_manager_show_dialog("message", "error_header")
 	else:
 		match dialog_type:
 			"message":
-				message_dialog.show_dialog(messages.messages[message_header])
+				if message_header == "retry_game" || message_header == "retry_game_1":
+					message_dialog.show_dialog(messages.messages[message_header], score, true)
+				else:
+					message_dialog.show_dialog(messages.messages[message_header])
 			"option":
-				option_dialog.show_dialog(messages.messages[message_header])
+				if message_header == "retry_game":
+					option_dialog.show_dialog(messages.messages[message_header], score, true)
+				else:
+					option_dialog.show_dialog(messages.messages[message_header])
 
 func process_action(action: String) -> void:
 	match action:
@@ -89,16 +95,20 @@ func process_action(action: String) -> void:
 			change_scene("res://scenes/title_screen/title_screen.tscn")
 		"skip_dialogue":
 			SignalHandler.emit_signal("skip_dialogue")
+		"survey_post_scene":
+			change_scene("res://scenes/post_test_scene.tscn")
+		"survey_exp_scene":
+			change_scene("res://scenes/game_exp_scene.tscn")
 		"survey_pre":
-			OS.shell_open("https://docs.google.com/forms/d/e/1FAIpQLSdV9vULENCtw_Moc_J189RC0ePo314hT0Sni5v7lnRBig1T-Q/viewform?usp=publish-editor")
+			OS.shell_open("https://docs.google.com/forms/d/e/1FAIpQLSeA_S2IDtYqgbGZgU4l06wudstrv5rn4bEs6jLZvRKzQ0T25w/viewform?usp=sharing&ouid=100944385831711877623")
 			get_tree().root.mode = Window.MODE_MINIMIZED
 			scene_manager_show_dialog("message", "survey_pre")
 		"survey_post":
-			OS.shell_open("https://en.uncyclopedia.co")
+			OS.shell_open("https://docs.google.com/forms/d/e/1FAIpQLSc8iRvPSMpYJyl-O5kjgVwhhCPCwTWhO4T_f2OYQdcVGirvtw/viewform?usp=sharing&ouid=100944385831711877623")
 			scene_manager_show_dialog("message", "survey_post")
 		"survey_exp":
-			OS.shell_open("https://en.uncyclopedia.co")
-			scene_manager_show_dialog("message", "survey_post")
+			OS.shell_open("https://docs.google.com/forms/d/e/1FAIpQLSfPVlnDCHjFdpqkikikpik1hHhlZpPIxggTECnkn4w-id4ihA/viewform?usp=sharing&ouid=100944385831711877623")
+			scene_manager_show_dialog("message", "survey_exp")
 		"reset_save":
 			DataHandler.reset_data()
 			root_scene.queue_free()
@@ -106,6 +116,8 @@ func process_action(action: String) -> void:
 			root_scene_path = ""
 			settings_dialog.hide_dialog()
 			change_scene("res://scenes/research_scenes/pre_test_scene.tscn")
+		"retry_game":
+			SignalHandler.emit_signal("retry_game")
 		"return_chapter":
 			change_scene("res://scenes/stage_select_screen/stage_select_screen.tscn")
 		"return_minigame":

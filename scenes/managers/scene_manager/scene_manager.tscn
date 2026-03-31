@@ -762,7 +762,6 @@ fill_to = Vector2(0.5, 0)
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_570er")
-starting_scene_override = "uid://bjm4p3dkrvmhq"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

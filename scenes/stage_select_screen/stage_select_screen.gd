@@ -9,7 +9,7 @@ var act_data: Array = [
 		"topics": "-Male Reproductive System\n-Female Reproductive System",
 		"image": "res://assets/backgrounds/act1_bg.png",
 		"link": "res://scenes/managers/game_manager/game_manager.tscn",
-		"arg": "res://dialogue/prologue.csv",
+		"arg": "res://dialogue/act_1.csv",
 	},
 	{
 		"title": "Act II",
@@ -17,7 +17,7 @@ var act_data: Array = [
 		"topics": "-Fertilization\n",
 		"image": "res://assets/backgrounds/act2_bg.png",
 		"link": "res://scenes/managers/game_manager/game_manager.tscn",
-		"arg": "res://dialogue/yuri.csv",
+		"arg": "res://dialogue/act_2.csv",
 	},
 	{
 		"title": "Act III",
@@ -25,7 +25,7 @@ var act_data: Array = [
 		"topics": "-STIs\n-Teenage Pregnancy\n-Methods to avoid them",
 		"image": "res://assets/backgrounds/act3_bg.png",
 		"link": "res://scenes/managers/game_manager/game_manager.tscn",
-		"arg": "",
+		"arg": "res://dialogue/act_3.csv",
 	},
 ]
 

@@ -1,10 +1,12 @@
-[gd_scene load_steps=35 format=3 uid="uid://ptaqiqcqcjq3"]
+[gd_scene load_steps=98 format=3 uid="uid://ptaqiqcqcjq3"]
 
 [ext_resource type="Script" uid="uid://b6gkr2f7bv4ew" path="res://scenes/mingames/3/minigame_3.gd" id="1_ipg6a"]
 [ext_resource type="Texture2D" uid="uid://btb06drpcfiri" path="res://assets/backgrounds/minigame3_bg.png" id="2_y3six"]
 [ext_resource type="FontFile" uid="uid://b6q6w1yjybga3" path="res://assets/fonts/saturan.ttf" id="3_288ot"]
 [ext_resource type="Texture2D" uid="uid://42yc2r7v4jqt" path="res://assets/backgrounds/timer_gradient.png" id="4_288ot"]
+[ext_resource type="Texture2D" uid="uid://gi5vhbqifpcy" path="res://assets/misc/hourglass-empty-svgrepo-com.svg" id="5_cnyfy"]
 [ext_resource type="Texture2D" uid="uid://dh3jic6sd8f8s" path="res://assets/misc/settings_icon.png" id="5_ifu53"]
+[ext_resource type="PackedScene" uid="uid://dyk3geju645e1" path="res://scenes/mingames/1/roulette_item.tscn" id="5_m6kj6"]
 [ext_resource type="Texture2D" uid="uid://dghe64abda6b0" path="res://assets/misc/back_to_menu_icon.png" id="6_m6kj6"]
 
 [sub_resource type="Animation" id="Animation_qtevx"]
@@ -53,38 +55,38 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameObjects/Panel2:modulate")
+tracks/0/path = NodePath("GameObjects/Panel2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 0.2),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Vector2(192, 112), Vector2(192, 80)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameObjects/Panel2:position")
+tracks/1/path = NodePath("GameObjects/Panel2:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(1, 0.2),
 "update": 0,
-"values": [Vector2(192, 80), Vector2(192, 80)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("GameObjects/Panel2:size")
+tracks/2/path = NodePath("GameObjects/Panel2/Instructions:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0.1, 0.7),
 "transitions": PackedFloat32Array(0.2, 0.2),
 "update": 0,
-"values": [Vector2(1536, 848), Vector2(1536, 168)]
+"values": [Vector2(8, 8), Vector2(8, -24)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -101,26 +103,26 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("GameObjects/Panel2/Instructions:position")
+tracks/4/path = NodePath("GameObjects/Panel2/Okay:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.7),
-"transitions": PackedFloat32Array(0.2, 0.2),
-"update": 0,
-"values": [Vector2(8, 8), Vector2(8, -24)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("GameObjects/Panel2/Okay:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(0.2, 0.2),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameObjects/Panel2:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(1536, 848), Vector2(1536, 168)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -134,6 +136,125 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(672, 688), Vector2(672, 112)]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GameAnim")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"ShowTimer", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_game"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_v3elx"]
+resource_name = "HideQuestion"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObjects/QuestionPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.6),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameObjects/QuestionPanel/QuestionNumber:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.1, 1.7),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameObjects/QuestionPanel/QuestionData:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 2.5),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameObjects/QuestionPanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.6),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Vector2(256, 256), Vector2(256, 192)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameObjects/QuestionPanel/QuestionNumber:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.1, 1.7),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Vector2(512, 40), Vector2(512, 8)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameObjects/QuestionPanel/QuestionData:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2, 2.5),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Vector2(128, 112), Vector2(128, 80)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_question"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_288ot"]
 resource_name = "Instructions"
@@ -142,38 +263,38 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameObjects/Panel2:modulate")
+tracks/0/path = NodePath("GameObjects/Panel2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Vector2(192, 80), Vector2(192, 112)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameObjects/Panel2:position")
+tracks/1/path = NodePath("GameObjects/Panel2:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(2.98023e-08, 0.6),
+"transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(192, 80), Vector2(192, 80)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("GameObjects/Panel2:size")
+tracks/2/path = NodePath("GameObjects/Panel2/Instructions:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6, 2),
-"transitions": PackedFloat32Array(1, 0.2, 1),
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(1536, 168), Vector2(1536, 168), Vector2(1536, 848)]
+"values": [Vector2(8, -24), Vector2(8, 8)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -190,31 +311,92 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("GameObjects/Panel2/Instructions:position")
+tracks/4/path = NodePath("GameObjects/Panel2/Okay:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.7),
-"transitions": PackedFloat32Array(0.2, 1),
-"update": 0,
-"values": [Vector2(8, -24), Vector2(8, 8)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("GameObjects/Panel2/Okay:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(3, 3.6),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameObjects/Panel2:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 0.2, 1),
+"update": 0,
+"values": [Vector2(1536, 168), Vector2(1536, 168), Vector2(1536, 848)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GameObjects/Panel2/Inst1:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.5, 2.1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GameObjects/Panel2/Inst2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.5, 2.1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GameObjects/Panel2/Inst1:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.49, 2.1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(192, 304), Vector2(136, 320)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GameObjects/Panel2/Inst2:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.49, 2.1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(952, 304), Vector2(904, 320)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("GameObjects/Panel2:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_xmkfl"]
 resource_name = "Intro"
 length = 6.0
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -275,56 +457,228 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameAnim")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Instructions", -1, 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_iskgp"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameObjects/Panel2/Instructions:position")
+tracks/0/path = NodePath("GameObjects/Timer:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(8, -24)]
+"update": 1,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameObjects/Panel2:position")
+tracks/1/path = NodePath("GameObjects/Options:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(192, 80)]
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("GameObjects/Panel2:size")
+tracks/2/path = NodePath("GameObjects/QuestionPanel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1536, 168)]
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("GameObjects/Panel2/Okay:position")
+tracks/3/path = NodePath("GameObjects/Panel2:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_01c8g"]
+resource_name = "ShowOptions"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObjects/Options:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(672, 688)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameObjects/Options:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(0, 32), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameObjects/Options:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_timer"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cnyfy"]
+resource_name = "ShowQuestion"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObjects/QuestionPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameObjects/QuestionPanel/QuestionNumber:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameObjects/QuestionPanel/QuestionData:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameObjects/QuestionPanel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(256, 192), Vector2(256, 256)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameObjects/QuestionPanel/QuestionNumber:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(512, 8), Vector2(512, 40)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameObjects/QuestionPanel/QuestionData:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(128, 80), Vector2(128, 112)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GameAnim")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"ShowOptions", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GameObjects/QuestionPanel:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_m6kj6"]
@@ -356,13 +710,70 @@ tracks/1/keys = {
 "method": &"play"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameObjects/Timer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8iqm6"]
+resource_name = "HideOptions"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObjects/Options:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameObjects/Options:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameObjects/Options:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iskgp"]
 _data = {
 &"HideInstructions": SubResource("Animation_ifu53"),
+&"HideOptions": SubResource("Animation_8iqm6"),
+&"HideQuestion": SubResource("Animation_v3elx"),
 &"Instructions": SubResource("Animation_288ot"),
 &"Intro": SubResource("Animation_xmkfl"),
 &"RESET": SubResource("Animation_iskgp"),
+&"ShowOptions": SubResource("Animation_01c8g"),
+&"ShowQuestion": SubResource("Animation_cnyfy"),
 &"ShowTimer": SubResource("Animation_m6kj6")
 }
 
@@ -633,12 +1044,822 @@ RichTextLabel/fonts/normal_font = ExtResource("3_288ot")
 StageSelectPanel/base_type = &"Panel"
 StageSelectPanel/styles/panel = SubResource("StyleBoxFlat_7kl3q")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6kj6"]
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnyfy"]
+bg_color = Color(0.36, 0.3384, 0.35352, 0.384314)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3elx"]
+bg_color = Color(0.37, 0.3478, 0.36334, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01c8g"]
+bg_color = Color(0.228558, 0.212942, 0.223881, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iqm6"]
+bg_color = Color(0.228558, 0.212942, 0.223881, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmei6"]
+bg_color = Color(0.37, 0.3478, 0.36334, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erwca"]
+bg_color = Color(0.228558, 0.212942, 0.223881, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydnak"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a07he"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjmal"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee42q"]
+bg_color = Color(0.84, 0.63, 0.749, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jutpt"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1wqlp"]
+bg_color = Color(0.97, 0.9021, 0.948498, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.122985, 0.122985, 0.122985, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vg2cg"]
+bg_color = Color(0.705882, 0.529412, 0.705882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_liw0x"]
+bg_color = Color(0.705882, 0.529412, 0.705882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxr81"]
+bg_color = Color(0.681423, 0.681423, 0.681423, 1)
+border_width_left = 8
+border_width_right = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anv2t"]
+bg_color = Color(0.8, 0.52, 0.613333, 1)
+border_width_left = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f58o1"]
+bg_color = Color(0.860704, 0.849838, 0.859091, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_v3elx"]
+CharacterLabelPanel/base_type = &"Panel"
+CharacterLabelPanel/styles/panel = SubResource("StyleBoxFlat_m6kj6")
+DialogButton/base_type = &"Button"
+DialogButton/colors/font_color = Color(1, 1, 1, 1)
+DialogButton/colors/font_outline_color = Color(1, 1, 1, 1)
+DialogButton/constants/outline_size = 8
+DialogButton/font_sizes/font_size = 32
+DialogButton/fonts/font = ExtResource("3_288ot")
+DialogButton/styles/disabled = SubResource("StyleBoxFlat_cnyfy")
+DialogButton/styles/focus = SubResource("StyleBoxFlat_v3elx")
+DialogButton/styles/hover = SubResource("StyleBoxFlat_01c8g")
+DialogButton/styles/hover_pressed = SubResource("StyleBoxFlat_8iqm6")
+DialogButton/styles/normal = SubResource("StyleBoxFlat_kmei6")
+DialogButton/styles/pressed = SubResource("StyleBoxFlat_erwca")
+DialogButtonAccept/base_type = &"Button"
+DialogButtonAccept/colors/font_color = Color(1, 1, 1, 1)
+DialogButtonAccept/colors/font_outline_color = Color(1, 1, 1, 1)
+DialogButtonAccept/constants/outline_size = 4
+DialogButtonAccept/font_sizes/font_size = 32
+DialogButtonAccept/fonts/font = ExtResource("3_288ot")
+DialogButtonAccept/styles/disabled = null
+DialogButtonAccept/styles/focus = SubResource("StyleBoxFlat_ydnak")
+DialogButtonAccept/styles/hover = SubResource("StyleBoxFlat_a07he")
+DialogButtonAccept/styles/hover_pressed = SubResource("StyleBoxFlat_xjmal")
+DialogButtonAccept/styles/normal = SubResource("StyleBoxFlat_ee42q")
+DialogButtonAccept/styles/pressed = SubResource("StyleBoxFlat_jutpt")
+DialogPanel/base_type = &"Panel"
+DialogPanel/styles/panel = SubResource("StyleBoxFlat_1wqlp")
+DialogText/base_type = &"Label"
+DialogText/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
+DialogText/font_sizes/font_size = 48
+DialogText/fonts/font = ExtResource("3_288ot")
+DialogTitle/base_type = &"Label"
+DialogTitle/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
+DialogTitle/font_sizes/font_size = 40
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_vg2cg")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_liw0x")
+Label/constants/outline_size = 3
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("3_288ot")
+LoadingLabel/base_type = &"Label"
+LoadingLabel/font_sizes/font_size = 48
+ProgressBar/styles/background = SubResource("StyleBoxFlat_mxr81")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_anv2t")
+RichTextLabel/colors/default_color = Color(0.376471, 0.376471, 0.376471, 1)
+RichTextLabel/colors/font_outline_color = Color(0.376471, 0.376471, 0.376471, 1)
+RichTextLabel/constants/outline_size = 6
+RichTextLabel/constants/table_v_separation = 12
+RichTextLabel/font_sizes/normal_font_size = 42
+RichTextLabel/fonts/normal_font = ExtResource("3_288ot")
+StageSelectPanel/base_type = &"Panel"
+StageSelectPanel/styles/panel = SubResource("StyleBoxFlat_f58o1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifu53"]
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwk6u"]
+bg_color = Color(0.36, 0.3384, 0.35352, 0.384314)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bytci"]
+bg_color = Color(0.37, 0.3478, 0.36334, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17fu4"]
+bg_color = Color(0.228558, 0.212942, 0.223881, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdhq3"]
+bg_color = Color(0.228558, 0.212942, 0.223881, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10lvm"]
+bg_color = Color(0.37, 0.3478, 0.36334, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s660j"]
+bg_color = Color(0.228558, 0.212942, 0.223881, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3p81"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xyssi"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cajvs"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snlkl"]
+bg_color = Color(0.84, 0.63, 0.749, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwdnx"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmm8m"]
+bg_color = Color(0.97, 0.9021, 0.948498, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.122985, 0.122985, 0.122985, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3r6n"]
+bg_color = Color(0.705882, 0.529412, 0.705882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0y14h"]
+bg_color = Color(0.705882, 0.529412, 0.705882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_semq2"]
+bg_color = Color(0.681423, 0.681423, 0.681423, 1)
+border_width_left = 8
+border_width_right = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd6hb"]
+bg_color = Color(0.8, 0.52, 0.613333, 1)
+border_width_left = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqind"]
+bg_color = Color(0.860704, 0.849838, 0.859091, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_lv26y"]
+CharacterLabelPanel/base_type = &"Panel"
+CharacterLabelPanel/styles/panel = SubResource("StyleBoxFlat_ifu53")
+DialogButton/base_type = &"Button"
+DialogButton/colors/font_color = Color(1, 1, 1, 1)
+DialogButton/colors/font_outline_color = Color(1, 1, 1, 1)
+DialogButton/constants/outline_size = 8
+DialogButton/font_sizes/font_size = 32
+DialogButton/fonts/font = ExtResource("3_288ot")
+DialogButton/styles/disabled = SubResource("StyleBoxFlat_mwk6u")
+DialogButton/styles/focus = SubResource("StyleBoxFlat_bytci")
+DialogButton/styles/hover = SubResource("StyleBoxFlat_17fu4")
+DialogButton/styles/hover_pressed = SubResource("StyleBoxFlat_jdhq3")
+DialogButton/styles/normal = SubResource("StyleBoxFlat_10lvm")
+DialogButton/styles/pressed = SubResource("StyleBoxFlat_s660j")
+DialogButtonAccept/base_type = &"Button"
+DialogButtonAccept/colors/font_color = Color(1, 1, 1, 1)
+DialogButtonAccept/font_sizes/font_size = 32
+DialogButtonAccept/fonts/font = ExtResource("3_288ot")
+DialogButtonAccept/styles/disabled = null
+DialogButtonAccept/styles/focus = SubResource("StyleBoxFlat_o3p81")
+DialogButtonAccept/styles/hover = SubResource("StyleBoxFlat_xyssi")
+DialogButtonAccept/styles/hover_pressed = SubResource("StyleBoxFlat_cajvs")
+DialogButtonAccept/styles/normal = SubResource("StyleBoxFlat_snlkl")
+DialogButtonAccept/styles/pressed = SubResource("StyleBoxFlat_pwdnx")
+DialogPanel/base_type = &"Panel"
+DialogPanel/styles/panel = SubResource("StyleBoxFlat_dmm8m")
+DialogText/base_type = &"Label"
+DialogText/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
+DialogText/font_sizes/font_size = 48
+DialogText/fonts/font = ExtResource("3_288ot")
+DialogTitle/base_type = &"Label"
+DialogTitle/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
+DialogTitle/font_sizes/font_size = 40
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_t3r6n")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_0y14h")
+Label/constants/outline_size = 3
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("3_288ot")
+LoadingLabel/base_type = &"Label"
+LoadingLabel/font_sizes/font_size = 48
+ProgressBar/styles/background = SubResource("StyleBoxFlat_semq2")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_dd6hb")
+RichTextLabel/colors/default_color = Color(0.376471, 0.376471, 0.376471, 1)
+RichTextLabel/colors/font_outline_color = Color(0.376471, 0.376471, 0.376471, 1)
+RichTextLabel/constants/outline_size = 6
+RichTextLabel/constants/table_v_separation = 12
+RichTextLabel/font_sizes/normal_font_size = 42
+RichTextLabel/fonts/normal_font = ExtResource("3_288ot")
+StageSelectPanel/base_type = &"Panel"
+StageSelectPanel/styles/panel = SubResource("StyleBoxFlat_lqind")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxh4o"]
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v251m"]
+bg_color = Color(0.36, 0.3384, 0.35352, 0.384314)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f78xv"]
+bg_color = Color(0.37, 0.3478, 0.36334, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcf3l"]
+bg_color = Color(0.228558, 0.212942, 0.223881, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31x87"]
+bg_color = Color(0.228558, 0.212942, 0.223881, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm7by"]
+bg_color = Color(0.37, 0.3478, 0.36334, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0trg3"]
+bg_color = Color(0.228558, 0.212942, 0.223881, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.122985, 0.122985, 0.122985, 0.8)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12sft"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_raucj"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmpba"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqjkr"]
+bg_color = Color(0.84, 0.63, 0.749, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_paeep"]
+bg_color = Color(0.512964, 0.288623, 0.423746, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj36s"]
+bg_color = Color(0.97, 0.9021, 0.948498, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.122985, 0.122985, 0.122985, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqcji"]
+bg_color = Color(0.705882, 0.529412, 0.705882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3738b"]
+bg_color = Color(0.705882, 0.529412, 0.705882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_osr3m"]
+bg_color = Color(0.681423, 0.681423, 0.681423, 1)
+border_width_left = 8
+border_width_right = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjsja"]
+bg_color = Color(0.8, 0.52, 0.613333, 1)
+border_width_left = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahc4w"]
+bg_color = Color(0.860704, 0.849838, 0.859091, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_fvued"]
+CharacterLabelPanel/base_type = &"Panel"
+CharacterLabelPanel/styles/panel = SubResource("StyleBoxFlat_bxh4o")
+DialogButton/base_type = &"Button"
+DialogButton/colors/font_color = Color(1, 1, 1, 1)
+DialogButton/colors/font_outline_color = Color(1, 1, 1, 1)
+DialogButton/constants/outline_size = 8
+DialogButton/font_sizes/font_size = 32
+DialogButton/fonts/font = ExtResource("3_288ot")
+DialogButton/styles/disabled = SubResource("StyleBoxFlat_v251m")
+DialogButton/styles/focus = SubResource("StyleBoxFlat_f78xv")
+DialogButton/styles/hover = SubResource("StyleBoxFlat_xcf3l")
+DialogButton/styles/hover_pressed = SubResource("StyleBoxFlat_31x87")
+DialogButton/styles/normal = SubResource("StyleBoxFlat_gm7by")
+DialogButton/styles/pressed = SubResource("StyleBoxFlat_0trg3")
+DialogButtonAccept/base_type = &"Button"
+DialogButtonAccept/colors/font_color = Color(1, 1, 1, 1)
+DialogButtonAccept/colors/font_outline_color = Color(1, 1, 1, 1)
+DialogButtonAccept/constants/outline_size = 4
+DialogButtonAccept/font_sizes/font_size = 32
+DialogButtonAccept/fonts/font = ExtResource("3_288ot")
+DialogButtonAccept/styles/disabled = null
+DialogButtonAccept/styles/focus = SubResource("StyleBoxFlat_12sft")
+DialogButtonAccept/styles/hover = SubResource("StyleBoxFlat_raucj")
+DialogButtonAccept/styles/hover_pressed = SubResource("StyleBoxFlat_jmpba")
+DialogButtonAccept/styles/normal = SubResource("StyleBoxFlat_vqjkr")
+DialogButtonAccept/styles/pressed = SubResource("StyleBoxFlat_paeep")
+DialogPanel/base_type = &"Panel"
+DialogPanel/styles/panel = SubResource("StyleBoxFlat_aj36s")
+DialogText/base_type = &"Label"
+DialogText/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
+DialogText/font_sizes/font_size = 48
+DialogText/fonts/font = ExtResource("3_288ot")
+DialogTitle/base_type = &"Label"
+DialogTitle/colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
+DialogTitle/font_sizes/font_size = 40
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_aqcji")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_3738b")
+Label/constants/outline_size = 3
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("3_288ot")
+LoadingLabel/base_type = &"Label"
+LoadingLabel/font_sizes/font_size = 48
+ProgressBar/styles/background = SubResource("StyleBoxFlat_osr3m")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_kjsja")
+RichTextLabel/colors/default_color = Color(0.376471, 0.376471, 0.376471, 1)
+RichTextLabel/colors/font_outline_color = Color(0.376471, 0.376471, 0.376471, 1)
+RichTextLabel/constants/outline_size = 6
+RichTextLabel/constants/table_v_separation = 12
+RichTextLabel/font_sizes/normal_font_size = 42
+RichTextLabel/fonts/normal_font = ExtResource("3_288ot")
+StageSelectPanel/base_type = &"Panel"
+StageSelectPanel/styles/panel = SubResource("StyleBoxFlat_ahc4w")
+
 [node name="Minigame3" type="Node2D"]
 script = ExtResource("1_ipg6a")
 
 [node name="MinigameBG" type="TextureRect" parent="."]
-offset_right = 3840.0
-offset_bottom = 2160.0
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 pivot_offset = Vector2(960, 540)
 texture = ExtResource("2_y3six")
 expand_mode = 1
@@ -672,42 +1893,13 @@ offset_left = 40.0
 offset_top = -8.0
 offset_right = 1752.0
 offset_bottom = 136.0
-text = "You can do it!"
-
-[node name="Panel2" type="Panel" parent="GameObjects"]
-offset_left = 192.0
-offset_top = 80.0
-offset_right = 1728.0
-offset_bottom = 928.0
-theme = SubResource("Theme_wja8m")
-theme_type_variation = &"DialogPanel"
-
-[node name="Instructions" type="RichTextLabel" parent="GameObjects/Panel2"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 1528.0
-offset_bottom = 160.0
-theme = SubResource("Theme_wja8m")
-theme_override_font_sizes/normal_font_size = 48
-text = "Instructions"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Okay" type="Button" parent="GameObjects/Panel2"]
-layout_mode = 0
-offset_left = 672.0
-offset_top = 688.0
-offset_right = 864.0
-offset_bottom = 784.0
-focus_mode = 0
-theme = SubResource("Theme_wja8m")
-theme_type_variation = &"DialogButtonAccept"
-text = "Okay!"
+text = "This is the last one!"
 
 [node name="Timer" type="Node2D" parent="GameObjects"]
+visible = false
 
 [node name="Timer" type="Timer" parent="GameObjects/Timer"]
+one_shot = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="GameObjects/Timer"]
 offset_left = 416.0
@@ -720,12 +1912,133 @@ value = 15.0
 nine_patch_stretch = true
 texture_progress = ExtResource("4_288ot")
 
-[node name="TextureRect" type="ColorRect" parent="GameObjects/Timer"]
+[node name="TextureRect" type="TextureRect" parent="GameObjects/Timer"]
 offset_left = 320.0
 offset_top = 32.0
 offset_right = 512.0
 offset_bottom = 224.0
+rotation = -6.28319
 pivot_offset = Vector2(96, 96)
+texture = ExtResource("5_cnyfy")
+expand_mode = 1
+
+[node name="QuestionPanel" type="Panel" parent="GameObjects"]
+visible = false
+offset_left = 256.0
+offset_top = 256.0
+offset_right = 1664.0
+offset_bottom = 640.0
+mouse_filter = 2
+theme = SubResource("Theme_v3elx")
+theme_type_variation = &"DialogPanel"
+metadata/_edit_lock_ = true
+
+[node name="QuestionNumber" type="Label" parent="GameObjects/QuestionPanel"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 40.0
+offset_right = 896.0
+offset_bottom = 107.0
+theme = SubResource("Theme_v3elx")
+theme_type_variation = &"DialogText"
+theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 0.501961, 1)
+text = "Question 1 / 10:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestionData" type="Label" parent="GameObjects/QuestionPanel"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 112.0
+offset_right = 1304.0
+offset_bottom = 336.0
+theme = SubResource("Theme_v3elx")
+theme_type_variation = &"DialogText"
+theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_constants/outline_size = 4
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel2" type="Panel" parent="GameObjects"]
+visible = false
+custom_minimum_size = Vector2(1536, 168)
+offset_left = 192.0
+offset_top = 112.0
+offset_right = 1728.0
+offset_bottom = 960.0
+theme = SubResource("Theme_lv26y")
+theme_type_variation = &"DialogPanel"
+
+[node name="Instructions" type="RichTextLabel" parent="GameObjects/Panel2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1528.0
+offset_bottom = 160.0
+theme = SubResource("Theme_lv26y")
+theme_override_font_sizes/normal_font_size = 48
+text = "Instructions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Okay" type="Button" parent="GameObjects/Panel2"]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 688.0
+offset_right = 864.0
+offset_bottom = 784.0
+focus_mode = 0
+theme = SubResource("Theme_lv26y")
+theme_type_variation = &"DialogButtonAccept"
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "Okay!"
+
+[node name="Inst1" type="Label" parent="GameObjects/Panel2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 192.0
+offset_top = 304.0
+offset_right = 688.0
+offset_bottom = 440.0
+theme = SubResource("Theme_fvued")
+theme_type_variation = &"DialogText"
+theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_font_sizes/font_size = 42
+text = "Answer true-or-false questions in this minigame!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Inst2" type="Label" parent="GameObjects/Panel2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 952.0
+offset_top = 304.0
+offset_right = 1448.0
+offset_bottom = 440.0
+theme = SubResource("Theme_fvued")
+theme_type_variation = &"DialogText"
+theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_font_sizes/font_size = 42
+text = "Select the option that you think is the correct answer!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Options" type="Node2D" parent="GameObjects"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 32)
+
+[node name="RouletteItem" parent="GameObjects/Options" instance=ExtResource("5_m6kj6")]
+position = Vector2(576, 832)
+mini_2_item = true
+item_content = "True"
+
+[node name="RouletteItem2" parent="GameObjects/Options" instance=ExtResource("5_m6kj6")]
+position = Vector2(1336, 832)
+mini_2_item = true
+item_content = "False"
 
 [node name="SettingsButton" type="Button" parent="."]
 offset_left = 1600.0
@@ -749,4 +2062,7 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
+[connection signal="timeout" from="GameObjects/Timer/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="GameObjects/Panel2/Okay" to="." method="_on_okay_pressed"]
+[connection signal="item_selected" from="GameObjects/Options/RouletteItem" to="." method="_on_roulette_item_item_selected"]
+[connection signal="item_selected" from="GameObjects/Options/RouletteItem2" to="." method="_on_roulette_item_2_item_selected"]

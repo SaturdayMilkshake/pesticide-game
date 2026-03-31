@@ -15,15 +15,21 @@ signal cancel_pressed
 func _ready() -> void:
 	self.global_position = get_viewport_rect().size / 2
 	
-func show_dialog(messages: Dictionary = {}) -> void:
+func show_dialog(messages: Dictionary = {}, score: int = 0, score_display: bool = false) -> void:
 	if messages.has("message"):
-		dialog_text.text = str(messages["message"])
+		if score_display:
+			dialog_text.text = "Total Score: %d" % score
+		else:
+			dialog_text.text = str(messages["message"])
 	if messages.has("title"):
 		dialog_title.text = str(messages["title"])
 	if messages.has("action"):
 		current_action = str(messages["action"])
 	if messages.has("cancel"):
 		current_action_cancel = str(messages["cancel"])
+	if messages.has("override"):
+		$AcceptButton.text = str(messages["override"][0])
+		$CancelButton.text = str(messages["override"][1])
 	
 	animation_player.queue("ShowDialog")
 	

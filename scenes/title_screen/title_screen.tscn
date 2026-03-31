@@ -321,6 +321,11 @@ StageSelectPanel/styles/panel = SubResource("StyleBoxFlat_7kl3q")
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_5df70")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 1248.0
+offset_bottom = 760.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_d6x3v")
@@ -405,21 +410,34 @@ offset_right = 1902.0
 offset_bottom = 1064.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "Version 0.1.0"
+text = "Version 1.0.0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Title" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 72.0
 offset_top = 64.0
-offset_right = 320.0
-offset_bottom = 128.0
+offset_right = 555.0
+offset_bottom = 129.0
 theme = SubResource("Theme_wja8m")
 theme_type_variation = &"DialogText"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Research Game"
+theme_override_font_sizes/font_size = 64
+text = "Maya's Lessons"
 vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 152.0
+offset_right = 712.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "A serious video game about promoting sexual education"
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="CharTexture" type="TextureRect" parent="."]
 offset_left = 896.0
