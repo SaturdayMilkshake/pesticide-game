@@ -1,17 +1,3 @@
 [remap]
 
-importer="csv_translation"
-type="Translation"
-uid="uid://b8ohrdu3rdvj2"
-
-[deps]
-
-files=["res://dialogue/act_1.res://assets/backgrounds/classroom.translation"]
-
-source_file="res://dialogue/act_1.csv"
-dest_files=["res://dialogue/act_1.res://assets/backgrounds/classroom.translation"]
-
-[params]
-
-compress=true
-delimiter=0
+importer="keep"
